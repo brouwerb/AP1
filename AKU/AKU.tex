@@ -1,0 +1,65 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath}
+
+\title{Versuch 1: Akustik}
+\author{Jascha Fricker, Benedict Brouwer}
+
+\begin{document}
+    \maketitle
+
+    \section{Abstract}
+    In diesem Versuch wird die Schallgeschwindigkeit in verschiedenen elastischen Medien
+    duch verschieden Versuchsaufbauten bestimmt.
+    
+    \section{Theorie}
+    Schall breitet sich in Form einer Welle aus. Diese Welle kann mit der Funktion
+    \begin{align}
+        a(x, t) = A \cdot cos(\omega t-kx+\phi )
+    \end{align}
+    beschrieben werden. Mit dieser Formel kann die Phasengeschwindugkeit
+    \begin{align}
+        \nu = \frac{\lambda}{T} = \frac{\omega}{k} = f \cdot \lambda
+    \end{align}
+    hergeleitet werden. \\
+    \section{Phasengeschwindigkeit in Festkörpern}
+
+    \subsection{Theorie und experiemteller Aufbau}
+    In Aufgabe 1 wird die Phasengeschwindigkeit einer longitundinalen Welle in elastischen Festkörpern (Staben aus verschiedenen Materialien) bestimmt.
+    Nachdem diese am oberen Ende angeschlagen wurden, laufen die Wellenpackete entlang des Stabes und werden an den Enden reflektiert.
+    Durch ein Piezoelement kann an einem Ende mit einem Oszilloskop ein Ausschlag gemessen werden, wenn eine Welle ankommt.
+    Mithilfe der Differenz dieser Ausschläge kann dann die Phasengeschwindigkeit berechnet werden. Es gilt
+    \begin{align}
+        \nu = 2l \cdot \Delta t \ ,
+    \end{align}
+    da die Welle zweimal die Stablänge zurücklegt.
+
+    \section{Schallgeschwindigkeit mittels stehenden Wellen}
+
+    \subsection{Theorie und experiemteller Aufbau}
+    In Aufgabe 2 wird die Phasengeschwindigkeit durch das Erzeugen und Messen 
+    einer stehenden Welle in einem Rohr bestimmt, dessen Länge mit einem Stopfen verändert werden kann.
+    In dieser überlagern sich die gegeneinander laufenden Wellen,
+    die  am Ende vom Stopfen reflektiert werden. Stehende Wellen entstehen nur, wenn das Rohr eine bestimmte Länge hat
+    und somit beim am Stopfen ein Knoten und bei der Öffung ein Bauch entsteht, also wenn
+    \begin{align} \label{stehwelle}
+        l = \frac{2n+1}{4} \lambda = \frac{2n + 1}{4} \cdot \frac{\nu}{f}
+    \end{align}
+    gilt. Wenn also die Lautstärke im Mikrofon am Rohranfang maximal wird, entsteht dort ein Bauch und die Gleichung
+    (\ref{stehwelle}) gilt. Es gilt: 
+    \begin{align}
+        \delta l = l_n+1 - l_n &= \frac{2n+3}{4} \lambda - \frac{2n+1}{4} \lambda \nonumber \\
+        &= \frac{\nu}{2f} \nonumber \\
+         \Rightarrow \nu &= 2f \cdot \delta l
+    \end{align}
+    Somit kann mit der Differenz der verschiedenen Rohrlängen, bei denen eine stehende Welle 
+    entsteht, die Schallgeschwindigkeit ausgerechnet werden.
+
+    \section{Schallgeschwindigkeit mittels Laufzeitdifferenz}
+
+    \subsection{Theorie und experiemteller Aufbau}
+    In Aufgabe 3 wird die Schallgeschwindigkeit in der Luft durch den Laufzeitunterschied der Schallwellen einer Schallquelle zu zwei unterschiedlich
+    weit entfernten Mikrofonen gemessen. Dadurch dass dies bei verschieden Abständen gemessenen wird, kann ein systematischer
+    Fehler herausgerechnet werden. 
+
+
+\end{document}
