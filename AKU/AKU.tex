@@ -73,7 +73,7 @@
     \end{align}
     Da die Differenz jedoch mit zwei Cursor gemesser wird, gilt:
     \begin{align} \label{eqt}
-        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = \sqrt{\frac{20}{3}}ms
+        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = \sqrt{10\frac{2}{3}}ms
     \end{align}
     \paragraph{Länge}
     Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
@@ -143,12 +143,12 @@
     dass der Mikrofonabstand systematisch um eine Konstante ($-1,88cm$) abweicht, da die Mikrofone unterschiedlich gebaut und unterschiedlich in die 
     Vorrischtung eingespannt waren. Die Steigung der Ausgleichsgeraden beträgt $28,75\frac{\mu s}{cm}$. Daraus folgt
     dass die Schallgeschwindigkeit
-    \begin{align}
+    \begin{align} \label{sch1}
         \nu = \frac{1}{28.75\frac{\mu s}{cm}} = 347.8\frac{m}{s}
     \end{align}
     beträgt. Auch mit dem Literaturwert und der Raumtemeratur von $295,3K$ kann man die Schallgeschwindigkeit
-    \begin{align}
-        \nu_T\frac{T}{T_0} = 331,5 \sqrt{\frac{285,3}{273}} = 344\frac{m}{s}
+    \begin{align} \label{sch2}
+        \nu_T\frac{T}{T_0} = 331,5 \sqrt{\frac{285,3}{273,15}} = 344,8\frac{m}{s}
     \end{align}
     berechnet werden. Diese liegt sehr nahe an der gemessen Schallgeschwindigkeit.
 
@@ -179,23 +179,30 @@
     entsteht, die Schallgeschwindigkeit ausgerechnet werden.
 
     \subsection{Ergebnisse}
+    \begin{figure}[h]
+        
+        \includegraphics{./Test.pdf}
+
+        \caption{Röhrenlänge bei unterschiedlichen Frequenzen}
+        \label{fig:graph3}
+    \end{figure}
     Der Graph stellt die Positionen des Stopfen für die Maxima dar. Mit der Steigung kann die Schallgeschwindigkeit
     ausgerechnet werden (Steigung $= \Delta t$ ). Die Unsicherheit der Ausgleichsgeraden wird mithilfe der Formeln im Anhang bestimmt.
     Beim Oszilloskop wurde bei 1kHz eine Schwankung von $\pm 2Hz$, bei $ 2kHz \ \pm 30Hz$ und bei $0.5kHz \ \pm 2Hz $ beobachtet.
-    \begin{align}
-        t
-    \end{align}
-
+  
 
     \begin{table}
         \centering
         \begin{tabular}[]{c|c|c|c}
-            Frequenz & 0.5kHz & 1kHz & 2kHz \\
-            Steigung & 
-
-
+            Frequenz & $500(2)Hz$ & $1000(4)Hz$ & $2000(30)Hz$ \\ \hline
+            Steigung &  $ 34,4(1,2) \frac{cm}{n}$ & $17,28(71)\frac{cm}{n}$ & $8,56(31)\frac{cm}{n}$ \\ \hline
+            Geschwindigkeit & $345,6(14,3) \frac{m}{s}$ & $342,2(13,5) \frac{m}{s}$ & $344,0(12,0)\frac{m}{s}$ 
         \end{tabular}
     \end{table}
+
+    Der gewichtete Mittelwert (Formel siehe Anhang) ist $\bar{x} = 344,03 \frac{m}{s}$. Er hat eine 
+    interne Unsicherheit $u_{int} = 0,16\frac{m}{s}$ und eine größere externe und somit Gesamtunsicherheit $u_{ext} = 0,95\frac{m}{s}$.
+    Damit stimmt diese Schallgeschwindigkeit mit der in (\ref{sch1}) und der in (\ref{sch2}) überein.
 
 
     
@@ -217,5 +224,11 @@
         u(a_1) = \sigma_y \sqrt{\frac{n}{D}}
     \end{align}
     berechnen.
+
+    \paragraph{Gewichteter Mittelwert}
+    \begin{align}
+        \bar{x} = \frac{\sum_{i=1}^n w_i \cdot x_i}{\sum_{i=1}^n w_i} \\
+        mit: \ \ w_i = \frac{1}{u(x_i)^2}
+    \end{align}
 
 \end{document}
