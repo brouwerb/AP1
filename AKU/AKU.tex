@@ -67,11 +67,11 @@
     Das Oszilloskop misst die Zeit mit einer Cursorgenauigkeit von $ 20ms $. Da das Oszilloskop digital ist, wird
     eine rechteckige Zufallsverteilung angenommen.
     \begin{align}
-        a = 20ms \ \Rightarrow \ u_{Cursor}(t) = \frac{a}{2 \sqrt{3}}
+        a = 20ms \ \Rightarrow \ u_{Cursor}(t) = \frac{a}{2 \sqrt{3}} = \frac{10}{\sqrt{3}ms}
     \end{align}
     Da die Differenz jedoch mit zwei Cursor gemesser wird, gilt:
-    \begin{align}
-        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t)
+    \begin{align} \label{eqt}
+        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = 10\sqrt{\frac{2}{3}}
     \end{align}
     \paragraph{Länge}
     Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
@@ -85,7 +85,7 @@
     \end{align}
     da der Zollstock jeden Millimeter ein Strich hat und eine Dreiecksverteilung angenommen wird.
     Daraus folgt:
-    \begin{align}
+    \begin{align} \label{eql}
         u_l = \sqrt{u_H(L)^2 + u_A(L)^2}
     \end{align}
 
@@ -104,7 +104,8 @@
         16 \bar{l}^4\bar{t}^4 \cdot u_{\rho}(\rho)
         } \nonumber
     \end{align}
-    Mit
+    Mit dieser Formel, den Gleichungen (\ref{eql}) und (\ref{eqt}) und der Angabe in der Aufgabenstellung lassen
+    sich die Unsicherheiten ausrechnen.
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
