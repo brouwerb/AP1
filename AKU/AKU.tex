@@ -132,15 +132,30 @@
     \end{align}
 
     \subsection{Ergebnisse}
-    Im Graph sieht man den Laufzeitunterschied $\Delta t$ auf der Y-Achse verglichen mit dem Abstand der Mikrophone
-    auf der Y-Achse. Man kann erkennen, dass die Ausgleichsgerade nicht durch den Ursprung geht, das liegt daran,
-    dass der Mikrofonabstand systematisch um eine Konstante (-1,88cm) abweicht, da die Mikrofone unterschiedlich gebaut und unterschiedlich in die 
+    \begin{figure}[h]
+        
+        \includegraphics{./2Mikros.pdf}
+
+        \caption{Laufzeitunterschied der Schallwellen}
+        \label{fig:graph2}
+    \end{figure}
+    Im Graph \ref{fig:graph2} sieht man anhand der Steigung die Schallgeschwindigkeit. Man kann erkennen, dass die Ausgleichsgerade nicht durch den Ursprung geht. Das liegt daran,
+    dass der Mikrofonabstand systematisch um eine Konstante ($-1,88cm$) abweicht, da die Mikrofone unterschiedlich gebaut und unterschiedlich in die 
     Vorrischtung eingespannt waren. Die Steigung der Ausgleichsgeraden beträgt $28,75\frac{\mu s}{cm}$. Daraus folgt
     dass die Schallgeschwindigkeit
     \begin{align}
         \nu = \frac{1}{28.75\frac{\mu s}{cm}} = 347.8\frac{m}{s}
     \end{align}
-    beträgt.
+    beträgt. Auch mit dem Literaturwert und der Raumtemeratur von $295,3K$ kann man die Schallgeschwindigkeit
+    \begin{align}
+        \nu_T\frac{T}{T_0} = 331,5 \sqrt{\frac{285,3}{273}} = 344\frac{m}{s}
+    \end{align}
+    berechnet werden. Diese liegt sehr nahe an der gemessen Schallgeschwindigkeit.
+
+    $\kappa$ kann anhand von $\nu$, dem der Gaskonstante $R = 8,314 \frac{J}{molK}$ der Temperatur $T=295,3$ und der molaren Masse $M=28,96\frac{g}{mol}$ berechnet werden.
+    \begin{align}
+        \nu = \sqrt{\kappa \frac{RT}{M}} \Rightarrow \kappa = \frac{\nu^2 M}{RT}=1,42
+    \end{align}
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
@@ -164,24 +179,43 @@
     entsteht, die Schallgeschwindigkeit ausgerechnet werden.
 
     \subsection{Ergebnisse}
+    Der Graph stellt die Positionen des Stopfen für die Maxima dar. Mit der Steigung kann die Schallgeschwindigkeit
+    ausgerechnet werden (Steigung $= \Delta t$ ). Die Unsicherheit der Ausgleichsgeraden wird mithilfe der Formeln im Anhang bestimmt.
+    Beim Oszilloskop wurde bei 1kHz eine Schwankung von $\pm 2Hz$, bei $ 2kHz \ \pm 30Hz$ und bei $0.5kHz \ \pm 2Hz $ beobachtet.
+    \begin{align}
+        t
+    \end{align}
+
+
+    \begin{table}
+        \centering
+        \begin{tabular}[]{c|c|c|c}
+            Frequenz & 0.5kHz & 1kHz & 2kHz \\
+            Steigung & 
+
+
+        \end{tabular}
+    \end{table}
 
 
     
-    \begin{figure}[h]
-        
-        \includegraphics{./2Mikros.pdf}
-
-        \caption{Meine Grafik}
-        \label{fig:meine-grafik}
-    \end{figure}
+   
     \section{Anhang}
     \subsection{Fehlerrechnung}
-    \paragraph{Lineare REgression}
-    Die Ausgleichsgeraden der Graphen wurde so gezeichnet dass
+    \paragraph{Lineare Regression}
+    Die Ausgleichsgeraden der Graphen wurden so gezeichnet dass
     \begin{align}
         S=\sum_{i=1}^n(y_i - (a_0 + a_1 x_i))
     \end{align}
-    minimal ist. 
-
+    minimal ist. Die Unsicherheit der Steigung $a_1$ lässt sich mit
+    \begin{align}
+        \sigma_y &= \sqrt{\frac{S}{n-2}} \\
+        D &= n \sum_{i=1}^n x_i^2 - \left( \sum_{i=1}^n x_i \right)^2
+    \end{align}
+    und der Formel
+    \begin{align}
+        u(a_1) = \sigma_y \sqrt{\frac{n}{D}}
+    \end{align}
+    berechnen.
 
 \end{document}
