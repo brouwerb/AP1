@@ -4,7 +4,7 @@ font.sans-serif: Arial, sans-serif
 font.size: 10
 
 
-axes.titlesize:20
+axes.titlesize:16
 
 grid.linewidth: 0.6
 lines.linewidth: 1.4
