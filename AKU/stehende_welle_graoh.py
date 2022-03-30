@@ -10,7 +10,7 @@ X_START =0
 Y_START =0
 X_END = 10
 Y_END = 100
-TITEL = "Titel"
+TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
 Y_LABEL = r"Länge der Röhre in $cm$"
 X_LABEL = "Ordnung der Maxima"
 X_ERROR = 0.02
@@ -20,7 +20,7 @@ Y_MAJOR_TICK =10
 X_MINOR_TICK =10
 Y_MINOR_TICK = 2
 SAVE_AS = "AKU\Test.pdf"
-POINT_STYLE = [".","1","x"]
+POINT_STYLE = ["o","^","x"]
 COLOR_STYLE =["C0","C1","C3"]
 
 workbook = xlrd.open_workbook('./AKU/Testergebnisse.xls')
@@ -60,7 +60,7 @@ for i in range(2+1):
         capsize=2,
         capthick=0.5
         )
-    ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i])
+    ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=10)
     ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
 plt.legend((f"2 $kHz$",f"$a={round(reg[0].intercept,2)}$ und $b={round(reg[0].slope,2)}$"
             ,f"0,5 $kHz$",f"$a={round(reg[1].intercept,2)}$ und $b={round(reg[1].slope,2)}$"
