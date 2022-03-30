@@ -19,9 +19,9 @@ X_MAJOR_TICK = 10
 Y_MAJOR_TICK =500
 X_MINOR_TICK =2
 Y_MINOR_TICK = 100
-SAVE_AS = "AKU\Test.pdf"
+SAVE_AS = "./AKU/Test.pdf"
 
-workbook = xlrd.open_workbook('AKU\Testergebnisse.xls')
+workbook = xlrd.open_workbook('./AKU/Testergebnisse.xls')
 worksheet = workbook.sheet_by_name('2 mikros')
 
 def getData(row1,collumn1,row2,collumn2):
