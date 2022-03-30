@@ -92,19 +92,19 @@
     \paragraph{Fehlerfortpflanzung}
     Es gilt:
     \begin{align}
-        E(t, l, \rho ) = 4l^2 t^2 \rho \\
+        E(t, l, \rho ) = 4l^2 \frac{t}{3}^2 \rho \\
     \end{align}
     daraus folgt:
     \begin{align}
         u(\bar{E}) &= \sqrt{\left[\frac{\partial E}{\partial t}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{t}(\bar{t})^2 +
         \left[\frac{\partial E}{\partial l}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{l}(\bar{l})^2 +
-        \left[\frac{\partial E}{\partial \rho}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{\rho}}(\bar{\rho})^2 \\ \nonumber
-        &= \sqrt{64 \bar{l}^2\bar{t}^4 \bar{\rho}^2 \cdot u_t(t) +
-        64 \bar{l}^4\bar{t}^2 \bar{\rho}^2 \cdot u_l(l) +
-        4 \bar{l}^4\bar{t}^4 \cdot u_{\rho}(\rho)
-        }
+        \left[\frac{\partial E}{\partial \rho}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{\rho}}(\bar{\rho})^2 \nonumber \\
+        &= \sqrt{64 \bar{l}^4\bar{t}^2 \bar{\rho}^2 \cdot u_t(t) +
+        64 \bar{l}^2 \bar{t}^4 \bar{\rho}^2 \cdot u_l(l) +
+        16 \bar{l}^4\bar{t}^4 \cdot u_{\rho}(\rho)
+        } \nonumber
     \end{align}
-
+    Mit
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
