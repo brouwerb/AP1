@@ -19,7 +19,7 @@ X_MAJOR_TICK = 10
 Y_MAJOR_TICK =500
 X_MINOR_TICK =2
 Y_MINOR_TICK = 100
-SAVE_AS = "Test.pdf"
+SAVE_AS = "AKU\Test.pdf"
 
 workbook = xlrd.open_workbook('AKU\Testergebnisse.xls')
 worksheet = workbook.sheet_by_name('2 mikros')
@@ -53,9 +53,10 @@ ax.grid()
 
 #ax.errorbar(x, y, xerr = X_ERROR, yerr = Y_ERROR,fmt='x', ecolor = 'black',color="C0")
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL,title=TITEL)
+ax.scatter(x,y,marker='x',color="C0")
 ax.plot([X_START,X_END],[reg.intercept,reg.intercept+X_END*reg.slope],color="red",linewidth=0.8)
 
-ax.scatter(x,y,marker='x',color="C0")
+
 ax.set_xlim(X_START,X_END)
 ax.set_ylim(Y_START,Y_END)
 

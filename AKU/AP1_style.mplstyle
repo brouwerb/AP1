@@ -1,4 +1,11 @@
 
+font.family: sans-serif
+font.sans-serif: Arial, sans-serif
+font.size: 10
+
+
+axes.titlesize:20
+
 grid.linewidth: 0.8
 lines.linewidth: 1.4
 patch.linewidth: 0.24
