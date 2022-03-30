@@ -43,7 +43,7 @@ x=getAxis(1,0,13)
 y=getAxis(1,1,13)
 
 
-plt.style.use("./AP1_style.mplstyle")
+plt.style.use("./AKU/AP1_style.mplstyle")
 
 
 reg = stats.linregress(x,y)
