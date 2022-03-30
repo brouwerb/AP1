@@ -91,7 +91,7 @@ for i in range(2+1):
     ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=10)
     ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
 plt.legend((f"2 $kHz$",f"$a={round(reg[0].intercept,3)}$ und $b={round(reg[0].slope,2)}(31)$"
-            ,f"0,5 $kHz$",f"$a={round(reg[1].intercept,2)}$ und $b={round(reg[1].slope,2)}(12)$"
+            ,f"0,5 $kHz$",f"$a={round(reg[1].intercept,2)}$ und $b={round(reg[1].slope,2)}(1.2)$"
             ,f"1 $kHz$",f"$a={round(reg[2].intercept,3)}$ und $b={round(reg[2].slope,2)}(71)$" ),title = f"fits mit $y=a+bx$" ,loc=4)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL,title=TITEL)
