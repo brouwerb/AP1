@@ -31,7 +31,30 @@
     \begin{align}
         \nu = 2l \cdot \Delta t \ ,
     \end{align}
-    da die Welle zweimal die Stablänge zurücklegt.
+    da die Welle zweimal die Stablänge zurücklegt. Um die Genauigkeit zu vergößern, wurde der Abstand des ersten zum
+    vierten Peak gemessen, deshalb muss bei der Auswertung die gemessene Zeit durch drei geteilt werden.
+
+    \subsection{Ergebnisse}
+    \subsubsection{Messwerte}
+    Zu jedem Material wurde ein mehrmals der Abstand des ersten zum
+    vierten Peak gemessen, um die Genauigkeit zu vergrößern. Da die Messwerte aber immer im Fehlerbereich lagen,
+    wird zu vereinfachung der Auswertung immer nur ein Messwert betrachtet. Dieser ist in Tabelle \ref{ex:mess1}
+    angegeben. 
+    \begin{table}[!th]
+        \centering
+        \begin{tabular}{c | c | c | c}
+           & Messig & Kupfer & Plexiglas \\ \hline
+            $ \Delta t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\
+        \end{tabular}
+        \caption{Messwerte der Zeitdifferenz der Peaks}
+        \label{ex:mess1}
+    \end{table}
+    \subsubsection{Messunsicherheiten}
+    Das Oszilloskop misst die Zeit mit einer Cursorgenauigkeit von $ 20ms $. Da das Oszilloskop digital ist, wird
+    eine rechteckige Zufallsverteilung angenommen
+    \begin{align}
+        a = 20ms \ \Leftarrow \ u(\mu) = \frac{a}{2 \sqrt{3}}
+    \end{align}
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
