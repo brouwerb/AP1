@@ -11,7 +11,7 @@ Y_START =0
 X_END = 90
 Y_END = 2500
 TITEL = "Titel"
-Y_LABEL = r"Zeitdifferenz in $\mu m$"
+Y_LABEL = r"Zeitdifferenz in $\mu s$"
 X_LABEL = r"Abstand in $cm$"
 X_ERROR = 0.02
 Y_ERROR = 20
@@ -46,15 +46,15 @@ y=getAxis(1,1,13)
 plt.style.use("./AKU/AP1_style.mplstyle")
 
 
-reg = stats.linregress(x,y)
+slope, intercept, r_value, p_value, std_err = stats.linregress(x,y)
 
 fig, ax = plt.subplots()
 ax.grid()
 
-#ax.errorbar(x, y, xerr = X_ERROR, yerr = Y_ERROR,fmt='x', ecolor = 'black',color="C0")
+#ax.errorbar(x, y, xerr = X_ERROR, yerr = Y_ERROR,fmt='.', ecolor = 'black',color="C0")
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL,title=TITEL)
 ax.scatter(x,y,marker='x',color="C0")
-ax.plot([X_START,X_END],[reg.intercept,reg.intercept+X_END*reg.slope],color="red",linewidth=0.8)
+ax.plot([X_START,X_END],[intercept,intercept+X_END*slope],color="red",linewidth=0.8)
 
 
 ax.set_xlim(X_START,X_END)
@@ -67,7 +67,8 @@ ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
-plt.legend(("Daten", f"Ausgleichsgerade $a +bx$ \nmit $a={round(reg.intercept,2)}$ und $b={round(reg.slope,2)}$"), loc=4)
+plt.legend(("Daten", f"Ausgleichsgerade $a +bx$ \nmit $a={round(intercept,2)}$ und $b={round(slope,2)}$"), loc=4)
+print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)
 
