@@ -11,13 +11,13 @@ Y_START =0
 X_END = 10
 Y_END = 100
 TITEL = "Titel"
-Y_LABEL = r"Zeitdifferenz in $\mu s$"
-X_LABEL = r"Abstand in $cm$"
+Y_LABEL = r"Länge der Röhre in $cm$"
+X_LABEL = "Ordnung der Maxima"
 X_ERROR = 0.02
 Y_ERROR = 1
 X_MAJOR_TICK = 1
 Y_MAJOR_TICK =10
-X_MINOR_TICK =0.2
+X_MINOR_TICK =10
 Y_MINOR_TICK = 2
 SAVE_AS = "AKU\Test.pdf"
 POINT_STYLE = [".","1","x"]
@@ -62,6 +62,9 @@ for i in range(2+1):
         )
     ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i])
     ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
+plt.legend((f"2 $kHz$",f"$a={round(reg[0].intercept,2)}$ und $b={round(reg[0].slope,2)}$"
+            ,f"0,5 $kHz$",f"$a={round(reg[1].intercept,2)}$ und $b={round(reg[1].slope,2)}$"
+            ,f"1 $kHz$",f"$a={round(reg[2].intercept,2)}$ und $b={round(reg[2].slope,2)}$" ),title = f"fits mit $y=a+bx$" ,loc=4)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL,title=TITEL)
 #ax.scatter(x,y,marker='x',color="C0")
@@ -78,7 +81,6 @@ ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
-#plt.legend(("Daten", f"Ausgleichsgerade $a +bx$ \nmit $a={round(intercept,2)}$ und $b={round(slope,2)}$"), loc=4)
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)
