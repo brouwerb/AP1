@@ -10,6 +10,10 @@
     \section{Abstract}
     In diesem Versuch wird die Schallgeschwindigkeit in verschiedenen elastischen Medien
     duch verschieden Versuchsaufbauten bestimmt.
+
+    \tableofcontents
+
+    \newpage
     
     \section{Theorie}
     Schall breitet sich in Form einer Welle aus. Diese Welle kann mit der Funktion
@@ -31,9 +35,7 @@
     \begin{align}
         \nu = 2l \cdot \Delta t \ ,
     \end{align}
-    da die Welle zweimal die Stablänge zurücklegt. Um die Genauigkeit zu vergößern, wurde der Abstand des ersten zum
-    vierten Peak gemessen, deshalb muss bei der Auswertung die gemessene Zeit durch drei geteilt werden.
-
+    da die Welle zweimal die Stablänge zurücklegt.
     \subsection{Ergebnisse}
     \subsubsection{Messwerte}
     Zu jedem Material wurde ein mehrmals der Abstand des ersten zum
@@ -44,17 +46,37 @@
         \centering
         \begin{tabular}{c | c | c | c}
            & Messig & Kupfer & Plexiglas \\ \hline
-            $ \Delta t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\
+            $ \Delta t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\ \hline
+            Länge des Stabs & $140,7cm$ & $150,1cm$ & $74,6cm$ \\
         \end{tabular}
-        \caption{Messwerte der Zeitdifferenz der Peaks}
+        \caption{Messwerte der Zeitdifferenz der Peaks und Länge der  Stäbe}
         \label{ex:mess1}
     \end{table}
     \subsubsection{Messunsicherheiten}
+    \paragraph{Zeitmessung}
     Das Oszilloskop misst die Zeit mit einer Cursorgenauigkeit von $ 20ms $. Da das Oszilloskop digital ist, wird
-    eine rechteckige Zufallsverteilung angenommen
+    eine rechteckige Zufallsverteilung angenommen.
     \begin{align}
-        a = 20ms \ \Leftarrow \ u(\mu) = \frac{a}{2 \sqrt{3}}
+        a = 20ms \ \Rightarrow \ u_{Cursor}(t) = \frac{a}{2 \sqrt{3}}
     \end{align}
+    Da die Differenz jedoch mit zwei Cursor gemesser wird, gilt:
+    \begin{align}
+        u_{Zeit}(t) = \sqrt{2} \cdot u_{Cursor}(t)
+    \end{align}
+    \paragraph{Länge}
+    Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
+    \begin{align}
+        u_H(L) = a+b\cdot L = 0,6 + 0,4L
+    \end{align}
+    angegeben, wobei L bei Messing und Kupfer $2m$ und bei Plexiglass $1m$ ist.
+    Für die Ablesegenauigkeit gilt
+    \begin{align}
+        u_A(L) = \frac{a}{2\sqrt{6}} = \frac{1mm}{2\sqrt{6}},
+    \end{align}
+    da der Zollstock jeden Millimeter ein Strich hat und eine Dreiecksverteilung angenommen wird.
+
+    \paragraph{Fehlerfortpflanzung}
+
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
