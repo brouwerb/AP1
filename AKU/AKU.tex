@@ -33,9 +33,18 @@
     Durch ein Piezoelement kann an einem Ende mit einem Oszilloskop ein Ausschlag gemessen werden, wenn eine Welle ankommt.
     Mithilfe der Differenz dieser Ausschläge kann dann die Phasengeschwindigkeit berechnet werden. Es gilt
     \begin{align}
-        \nu = 2l \cdot \Delta t \ ,
+        \nu = 2l \cdot t \ ,
     \end{align}
-    da die Welle zweimal die Stablänge zurücklegt.
+    da die Welle zweimal die Stablänge zurücklegt. Mit dieser und der Formel für longitundinale Wellen
+    \begin{align}
+        \nu = \sqrt{\frac{E}{\rho}}
+    \end{align}
+    kann das Elastizitätsmodul des Materials
+    \begin{align}
+        \nu = 2l \cdot t = \sqrt{\frac{E}{\rho}} \ \ \Rightarrow \ \ E = 4l^2 t^2 \rho
+    \end{align}
+    berechnet werden.
+
     \subsection{Ergebnisse}
     \subsubsection{Messwerte}
     Zu jedem Material wurde ein mehrmals der Abstand des ersten zum
@@ -46,7 +55,7 @@
         \centering
         \begin{tabular}{c | c | c | c}
            & Messig & Kupfer & Plexiglas \\ \hline
-            $ \Delta t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\ \hline
+            $ t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\ \hline
             Länge des Stabs & $140,7cm$ & $150,1cm$ & $74,6cm$ \\
         \end{tabular}
         \caption{Messwerte der Zeitdifferenz der Peaks und Länge der  Stäbe}
@@ -66,7 +75,7 @@
     \paragraph{Länge}
     Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
     \begin{align}
-        u_H(L) = a+b\cdot L = 0,6 + 0,4L
+        u_H(L) = a+b \cdot L = 0,6mm + 0,4\frac{mm}{m} \cdot L
     \end{align}
     angegeben, wobei L bei Messing und Kupfer $2m$ und bei Plexiglass $1m$ ist.
     Für die Ablesegenauigkeit gilt
@@ -76,6 +85,12 @@
     da der Zollstock jeden Millimeter ein Strich hat und eine Dreiecksverteilung angenommen wird.
 
     \paragraph{Fehlerfortpflanzung}
+    Es gilt:
+    \begin{align}
+        E(t, l, \rho ) = 4l^2 t^2 \rho \\
+        daraus folgt:\\
+        u(\bar{E}) = \sqrt{}
+    \end{align}
 
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
