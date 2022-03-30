@@ -34,7 +34,7 @@
     Durch ein Piezoelement kann an einem Ende mit einem Oszilloskop ein Ausschlag gemessen werden, wenn eine Welle ankommt.
     Mithilfe der Differenz dieser Ausschläge kann dann die Phasengeschwindigkeit berechnet werden. Es gilt
     \begin{align}
-        \nu = 2l \cdot t \ ,
+        \nu = \frac{2l}{t} \ ,
     \end{align}
     da die Welle zweimal die Stablänge zurücklegt. Mit dieser und der Formel für longitundinale Wellen
     \begin{align}
@@ -42,7 +42,7 @@
     \end{align}
     kann das Elastizitätsmodul des Materials
     \begin{align}
-        \nu = 2l \cdot t = \sqrt{\frac{E}{\rho}} \ \ \Rightarrow \ \ E = 4l^2 t^2 \rho
+        \nu = \frac{2l}{t} = \sqrt{\frac{E}{\rho}} \ \ \Rightarrow \ \ E = 4\frac{l^2}{t^2} \rho
     \end{align}
     berechnet werden.
 
@@ -57,7 +57,8 @@
         \begin{tabular}{c | c | c | c}
            & Messig & Kupfer & Plexiglas \\ \hline
             $ t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\ \hline
-            Länge des Stabs & $140,7cm$ & $150,1cm$ & $74,6cm$ \\
+            Länge des Stabs & $140,7cm$ & $150,1cm$ & $74,6cm$ \\ \hline
+            Elastizitätsmodul
         \end{tabular}
         \caption{Messwerte der Zeitdifferenz der Peaks und Länge der  Stäbe}
         \label{ex:mess1}
@@ -67,11 +68,11 @@
     Das Oszilloskop misst die Zeit mit einer Cursorgenauigkeit von $ 20ms $. Da das Oszilloskop digital ist, wird
     eine rechteckige Zufallsverteilung angenommen.
     \begin{align}
-        a = 20ms \ \Rightarrow \ u_{Cursor}(t) = \frac{a}{2 \sqrt{3}} = \frac{10}{\sqrt{3}ms}
+        a = 20ms \ \Rightarrow \ u_{Cursor}(t) = \frac{a}{2 \sqrt{3}} = \frac{10}{\sqrt{3}}ms
     \end{align}
     Da die Differenz jedoch mit zwei Cursor gemesser wird, gilt:
     \begin{align} \label{eqt}
-        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = 10\sqrt{\frac{2}{3}}
+        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = 10\sqrt{\frac{2}{3}}ms
     \end{align}
     \paragraph{Länge}
     Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
@@ -81,7 +82,7 @@
     angegeben, wobei L bei Messing und Kupfer $2m$ und bei Plexiglass $1m$ ist.
     Für die Ablesegenauigkeit gilt
     \begin{align}
-        u_A(L) = \frac{a}{2\sqrt{6}} = \frac{1mm}{2\sqrt{6}},
+        u_A(L) = \frac{a}{2\sqrt{6}} = \frac{1}{2\sqrt{6}}mm,
     \end{align}
     da der Zollstock jeden Millimeter ein Strich hat und eine Dreiecksverteilung angenommen wird.
     Daraus folgt:
@@ -99,10 +100,10 @@
         u(\bar{E}) &= \sqrt{\left[\frac{\partial E}{\partial t}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{t}(\bar{t})^2 +
         \left[\frac{\partial E}{\partial l}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{l}(\bar{l})^2 +
         \left[\frac{\partial E}{\partial \rho}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{\rho}}(\bar{\rho})^2 \nonumber \\
-        &= \sqrt{64 \bar{l}^4\bar{t}^2 \bar{\rho}^2 \cdot u_t(t) +
-        64 \bar{l}^2 \bar{t}^4 \bar{\rho}^2 \cdot u_l(l) +
-        16 \bar{l}^4\bar{t}^4 \cdot u_{\rho}(\rho)
-        } \nonumber
+        &= \sqrt{64 \frac{\bar{l}^4 \bar{\rho}^2}{\bar{t}^6} \cdot u_t(\bar{t}) +
+        64 \frac{\bar{l}^2 \bar{\rho}^2}{\bar{t}^4} \cdot u_l(\bar{l}) +
+        16 \frac{\bar{l}^4}{\bar{t}^4} \cdot u_{\rho}(\bar{\rho})
+        }
     \end{align}
     Mit dieser Formel, den Gleichungen (\ref{eql}) und (\ref{eqt}) und der Angabe in der Aufgabenstellung lassen
     sich die Unsicherheiten ausrechnen.
