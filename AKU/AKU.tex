@@ -52,13 +52,14 @@
     vierten Peak gemessen, um die Genauigkeit zu vergrößern. Da die Messwerte aber immer im Fehlerbereich lagen,
     wird zu vereinfachung der Auswertung immer nur ein Messwert betrachtet. Dieser ist in Tabelle \ref{ex:mess1}
     angegeben. 
-    \begin{table}[!th]
+    \begin{table}[]
         \centering
         \begin{tabular}{c | c | c | c}
-           & Messig & Kupfer & Plexiglas \\ \hline
-            $ t $ für 4 Peaks & $ 2480ms $ & $ 2360ms $ & $ 2360ms $ \\ \hline
-            Länge des Stabs & $140,7cm$ & $150,1cm$ & $74,6cm$ \\ \hline
-            Elastizitätsmodul
+           & Messig & Kupfer & Aluminium \\ \hline
+            $ t $ für 4 Peaks & $ 2480(6)ms $ & $ 2360(6)ms $ & $ 1800(6)ms $ \\ \hline
+            Länge $l$ des Stabs & $1407(14)mm$ & $1501(14)mm$ & $1502(14)mm$ \\ \hline
+            Elastizitätsmodul & $99,7(3,3)\frac{kN}{mm^2}$ & $130,3(3,3)\frac{kN}{mm^2}$ & $67,7(3,3)\frac{kN}{mm^2}$ \\ \hline
+            Literaturwert & $78-123\frac{kN}{mm^2}$ & $120\frac{kN}{mm^2}$ & $70\frac{kN}{mm^2}$
         \end{tabular}
         \caption{Messwerte der Zeitdifferenz der Peaks und Länge der  Stäbe}
         \label{ex:mess1}
@@ -72,46 +73,79 @@
     \end{align}
     Da die Differenz jedoch mit zwei Cursor gemesser wird, gilt:
     \begin{align} \label{eqt}
-        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = 10\sqrt{\frac{2}{3}}ms
+        u_{t}(t) = \sqrt{2} \cdot u_{Cursor}(t) = \sqrt{\frac{20}{3}}ms
     \end{align}
     \paragraph{Länge}
     Die Länge wurde mit einem Zollstock gemessen. Im Aufgabenblatt wird die Herstellungsgenauigkeit
     \begin{align}
-        u_H(L) = a+b \cdot L = 0,6mm + 0,4\frac{mm}{m} \cdot L
+        u_H(l) = a+b \cdot L = 0,6mm + 0,4\frac{mm}{m} \cdot L = 1,4mm
     \end{align}
-    angegeben, wobei L bei Messing und Kupfer $2m$ und bei Plexiglass $1m$ ist.
+    angegeben, da L bei Messing Kupfer und Aluminium $2m$ ist.
     Für die Ablesegenauigkeit gilt
     \begin{align}
-        u_A(L) = \frac{a}{2\sqrt{6}} = \frac{1}{2\sqrt{6}}mm,
+        u_A(l) = \frac{a}{2\sqrt{6}} = \frac{1}{2\sqrt{6}}mm,
     \end{align}
     da der Zollstock jeden Millimeter ein Strich hat und eine Dreiecksverteilung angenommen wird.
     Daraus folgt:
     \begin{align} \label{eql}
-        u_l = \sqrt{u_H(L)^2 + u_A(L)^2}
+        u_l = \sqrt{u_H(l)^2 + u_A(l)^2} = \sqrt{\frac{173}{120}}mm
     \end{align}
 
     \paragraph{Fehlerfortpflanzung}
     Es gilt:
     \begin{align}
-        E(t, l, \rho ) = 4l^2 \frac{t}{3}^2 \rho \\
+        E = 4\frac{l^2}{\frac{t}{3}^2} \rho \\
     \end{align}
     daraus folgt:
     \begin{align}
-        u(\bar{E}) &= \sqrt{\left[\frac{\partial E}{\partial t}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{t}(\bar{t})^2 +
+        u(\bar{E}) &= \sqrt{\left[\frac{\partial E}{\partial t}\right]^2_{\bar{l}, \frac{\bar{t}}{3}, \bar{\rho}} u_{t}(\bar{t})^2 +
         \left[\frac{\partial E}{\partial l}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{l}(\bar{l})^2 +
         \left[\frac{\partial E}{\partial \rho}\right]^2_{\bar{l}, \bar{t}, \bar{\rho}} u_{\rho}}(\bar{\rho})^2 \nonumber \\
-        &= \sqrt{64 \frac{\bar{l}^4 \bar{\rho}^2}{\bar{t}^6} \cdot u_t(\bar{t}) +
-        64 \frac{\bar{l}^2 \bar{\rho}^2}{\bar{t}^4} \cdot u_l(\bar{l}) +
-        16 \frac{\bar{l}^4}{\bar{t}^4} \cdot u_{\rho}(\bar{\rho})
+        &= \sqrt{64 \frac{\bar{l}^4 \bar{\rho}^2}{\frac{\bar{t}}{3}^6} \cdot u_t(\bar{t})^2 +
+        64 \frac{\bar{l}^2 \bar{\rho}^2}{\frac{\bar{t}}{3}^4} \cdot u_l(\bar{l})^2 +
+        16 \frac{\bar{l}^4}{\frac{\bar{t}}{3}^4} \cdot u_{\rho}(\bar{\rho})^2
+        } \nonumber \\
+        &= \sqrt{64 \frac{\bar{l}^4 \bar{\rho}^2}{\frac{\bar{t}}{3}^6} \cdot \frac{200}{3}ms +
+        64 \frac{\bar{l}^2 \bar{\rho}^2}{\frac{\bar{t}}{3}^4} \cdot \frac{173}{120}mm +
+        16 \frac{\bar{l}^4}{\frac{\bar{t}}{3}^4} \cdot u_{\rho}(\bar{\rho})^2
         }
     \end{align}
-    Mit dieser Formel, den Gleichungen (\ref{eql}) und (\ref{eqt}) und der Angabe in der Aufgabenstellung lassen
+    Mit dieser Formel und der Angabe in der Aufgabenstellung lassen
     sich die Unsicherheiten ausrechnen.
+
+    \subsection{Diskussion}
+    Wie Tabelle \ref{ex:mess1} zeigt, liegen der Literaturwert beim Messing und Aluminium inerhalb des Konfidenzintervalls.
+    Da Messing eine Legierung ist, ist in der Literatur nur eine Spanne angegeben. Nur wenn man die genaue Legierung kennt,
+    kann ein eindeutiger Literaturwert gefunden werden.
+    Auffällig ist, dass der Literaturwert von Kupfer außerhalb des Konfidenzintervalls liegt. Wir wissen nicht,
+    wo genau diese Diskrepanz herkommt, aber in Frage kommen würde, dass das Kupfer verunreinigt ist. Das erklärt auch 
+    die verschieden Literaturwerte, die wir gefunden haben. (Literaturwerte von $110-130\frac{kN}{mm^2}$)
+
+    \section{Schallgeschwindigkeit mittels Laufzeitdifferenz}
+
+    \subsection{Theorie und experiemteller Aufbau}
+    In Aufgabe 2 wird die Schallgeschwindigkeit in der Luft durch den Laufzeitunterschied der Schallwellen einer Schallquelle zu zwei unterschiedlich
+    weit entfernten Mikrofonen gemessen. Dadurch, dass dies bei verschieden Abständen gemessenen wird, kann ein systematischer
+    Fehler herausgerechnet werden.
+    \begin{align}
+        v \cdot \Delta t_n = s_n + d
+    \end{align}
+
+    \subsection{Ergebnisse}
+    Im Graph sieht man den Laufzeitunterschied $\Delta t$ auf der Y-Achse verglichen mit dem Abstand der Mikrophone
+    auf der Y-Achse. Man kann erkennen, dass die Ausgleichsgerade nicht durch den Ursprung geht, das liegt daran,
+    dass der Mikrofonabstand systematisch um eine Konstante (-1,88cm) abweicht, da die Mikrofone unterschiedlich gebaut und unterschiedlich in die 
+    Vorrischtung eingespannt waren. Die Steigung der Ausgleichsgeraden beträgt $28,75\frac{\mu s}{cm}$. Daraus folgt
+    dass die Schallgeschwindigkeit
+    \begin{align}
+        \nu = \frac{1}{28.75\frac{\mu s}{cm}} = 347.8\frac{m}{s}
+    \end{align}
+    beträgt.
 
     \section{Schallgeschwindigkeit mittels stehenden Wellen}
 
     \subsection{Theorie und experiemteller Aufbau}
-    In Aufgabe 2 wird die Phasengeschwindigkeit durch das Erzeugen und Messen 
+    In Aufgabe 3 wird die Phasengeschwindigkeit durch das Erzeugen und Messen 
     einer stehenden Welle in einem Rohr bestimmt, dessen Länge mit einem Stopfen verändert werden kann.
     In dieser überlagern sich die gegeneinander laufenden Wellen,
     die  am Ende vom Stopfen reflektiert werden. Stehende Wellen entstehen nur, wenn das Rohr eine bestimmte Länge hat
@@ -129,15 +163,9 @@
     Somit kann mit der Differenz der verschiedenen Rohrlängen, bei denen eine stehende Welle 
     entsteht, die Schallgeschwindigkeit ausgerechnet werden.
 
-    \section{Schallgeschwindigkeit mittels Laufzeitdifferenz}
+    \subsection{Ergebnisse}
 
-    \subsection{Theorie und experiemteller Aufbau}
-    In Aufgabe 3 wird die Schallgeschwindigkeit in der Luft durch den Laufzeitunterschied der Schallwellen einer Schallquelle zu zwei unterschiedlich
-    weit entfernten Mikrofonen gemessen. Dadurch, dass dies bei verschieden Abständen gemessenen wird, kann ein systematischer
-    Fehler herausgerechnet werden. jnsadöln
-    \begin{align}
-        v \cdot \Delta t_n = s_n + d
-    \end{align}
+
     
     \begin{figure}[h]
         
@@ -146,6 +174,14 @@
         \caption{Meine Grafik}
         \label{fig:meine-grafik}
     \end{figure}
+    \section{Anhang}
+    \subsection{Fehlerrechnung}
+    \paragraph{Lineare REgression}
+    Die Ausgleichsgeraden der Graphen wurde so gezeichnet dass
+    \begin{align}
+        S=\sum_{i=1}^n(y_i - (a_0 + a_1 x_i))
+    \end{align}
+    minimal ist. 
 
 
 \end{document}
