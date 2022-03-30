@@ -41,7 +41,7 @@ def getAxis(row1,collumn1,row2):
 
 x=getAxis(1,0,13)
 y=getAxis(1,1,13)
-
+#test
 
 plt.style.use("./AKU/AP1_style.mplstyle")
 
