@@ -1,0 +1,129 @@
+% Nach dem "%"- Zeichen folgt in LaTeX ein Kommentar. Will man das %-Zeichen selber darstellen, hilft \%
+
+
+%Schriftgröße, Layout, Papierformat, Art des Dokumentes, Zeichenkodierung
+\documentclass[11pt,a4paper]{article}
+%\usepackage[T1]{fontenc} % Westeuropäische ASCII-Codierung
+%\usepackage[utf8]{inputenc} % UTF8-Codierung
+
+%Einstellungen der Seitenränder und Ausschalten der Absatzeinrückung
+%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+\setlength{\parindent}{0ex} % Keine Einrückung der ersten Absatz-Zeile
+\setlength{\parskip}{\baselineskip} % Abstand zwischen den Absätzen 
+\renewcommand{\topfraction}{1} % Legt den Anteil oben auf der Seite fest, den Abbildungen und Tabellen einnehmen dürfen. 
+\renewcommand{\topfraction}{1} % Legt den Anteil unten auf der Seite fest, den Abbildungen und Tabellen einnehmen dürfen.
+
+%neue Rechtschreibung
+\usepackage[ngerman]{babel}
+
+
+
+%Weitere Packages
+\usepackage{amsmath} %Mathemodus
+\usepackage{amsfonts} %Matheschriften
+\usepackage{amssymb} %Mathesymbole
+\usepackage{mathptmx} % Einstellung für Schriften und Sonderzeichen in mathematischen Umgebungen
+\usepackage{wasysym} % Stellt diverse Sonderzeichen bereit
+
+\usepackage{graphicx} %Grafiken
+
+
+
+
+%Formatierung der Bildunterschriften und Tabellenüberschriften
+%\usepackage{caption}
+%\captionsetup{format=hang,labelfont=it,textfont=it} % Einrücken von Bildunterschriften, kursiver text
+
+% Hier beginnt dann das eigentliche Dokument.
+\begin{document}
+
+% Erzeugen des Titels mit Namen und Datum. Die erste Seite hat dann keine Kopf- und Fußzeile
+\title{Versuch 2: Pendel}
+\author{Jascha Fricker,
+        Benedict Brouwer}
+\date{\today}
+\maketitle
+
+% Erzeugen des Inhaltsverzeichnisses
+\tableofcontents
+
+
+% Neue Seite
+\clearpage
+\begin{abstract}
+    Den Quelltext dieses Dokuments können Sie als Vorlage für Ihre ersten Ausarbeitungen in LaTeX benutzen. Probieren Sie es einfach aus.
+\end{abstract}
+
+% Erster Abschnitt
+\section{Einleitung}
+Dies ist nur ein bedeutungsloser Beispieltext für die \LaTeX-Vorlage.
+Sie sollten entweder eine Zusammenfassung (Abstract) oder eine Einleitung schreiben, aber nicht beides.
+%Zweiter Abschnitt
+\section{Grundlagen}
+Auch dieser Text hat keine Aussage.
+% Unterabschnitt
+\subsection{Formeln}
+Einer der großen Vorteile von \LaTeX ist das setzten von Formeln. Wichtige Formeln, wie zum Beispiel
+\begin{equation}
+    E = m\cdot c^2,
+    \label{eq:enegrie}
+\end{equation}
+werden im Satz eingebaut, aber in eine eigene Zeile gesetzt. Auch nach Formeln stehen dabei Satzzeichen. Der Befehl \verb!\label{eq:enegrie}! im Quelltext erzeugt dabei eine Referenz, so dass später mit \verb!\ref{eq:enegrie}! auf die Gleichung~(\ref{eq:enegrie}) verwiesen werden kann. % Der Befehl \verb erzeugt dabei Text, der nicht interpretiert wird, so dass man auch LaTeX-Befehle darstellen kann. Falls Sie das mal brauchen sollten, suchen Sie die Beschreibung mit einer Suchmaschine Ihrer Wahl. Das erste Zeichen nach \verb dar im darzustellenden Text nicht vorkommen, sobald es wieder erscheint, ist die \verb-Umgebung beendet. Hier wurde "!" gewählt, es geht aber auch jedes andere Zeichen, z.B. auch das kommentarzeichen "%".
+
+Natürlich kann man auch kompliziertere Formeln setzen:
+\begin{equation}
+   f(v) = \left( \sqrt{\frac{m}{2\pi\ k_\mathrm{B}T}}\ \right)^3\ 4\pi\cdot v^2 \cdot \exp\left( \frac{\Delta m\cdot v^2}{2\ k_\mathrm{B}\cdot T}\right) 
+\end{equation}
+
+Fuktionsnamen wie $\sin{}$, $\cos{}$, $\tanh{}$ oder $\exp{}$ werden aufrecht gesetzt, wofür es eigene Befehle gibt.
+
+\subsection{Einheiten}
+Einheiten werden in wissenschaftlichen Texten \emph{nicht kursiv} gesetzt und haben einen Abstand zum Wert, z.B. $(1,23\pm 0,33)\ \mathrm{m}$. Der Befehl \verb!\mathrm{}! bewirkt dabei, dass in einer mathematischen Umgebung der Text aufrecht gesetzt wird. \glqq\verb!\ !\grqq\ Erzeugt den Abstand zwischen Leerzeichen und Einheit. 
+
+\verb!\mathrm{}! kann man auch verwenden, um beschreibende Indizes aufrecht zu setzten, zum Beispiel als $U_\mathrm{effektiv}$ oder in der Boltzmann-Konstante $k_\mathrm{B}$.
+
+Eine Alternative zum \verb!\mathrm{}! für die Einheiten ist das \LaTeX-Paket \emph{siunits} (https://ctan.org/pkg/siunits).
+
+\section{Abbildungen und Tabellen}
+Die Tabelle~\ref{tab:sinnlosetabelle} ist ein Beispiel für die Formatierung einer Tabelle. Sie hat eine Nummer und eine Beschreibung als Überschrift. Die Tabelle ist ein \emph{Floating Object}, d.h. sie ist nicht direkt an den Absatz gebunden, sondern steht oben oder unten auf der Seite, eventuell auch auf einer späteren Seite oder auf einer eigenen Seite.
+\begin{table}[tb] % Das [tb] bewirkt, dass die Abbildung oben oder unten auf der Seite steht, bei [t] würde Sie oben auf der Seite stehen, bei [b] unten.
+    \centering
+    \caption{Dies ist ein Beispiel für eine Tabelle. Der Inhalt hat aber keinerlei Bedeutung. Es zeigt aber, dass Tabellen eine Überschrift bekommen}
+    \begin{tabular}{c|c|c}
+        Zeit T & Position 1 & Position 2 \\
+         (s)   &   (m)      & (m)        \\ 
+         \hline
+          1    &   0        & 0 \\
+          2    &   -1,0       & 0,5 \\
+          3    &   -1,2       & 0,7
+        \end{tabular}
+    \label{tab:sinnlosetabelle}
+\end{table}
+
+Die Abbildung~\ref{fig:eineAbbildung} hat eine Nummer, auf die im Text verwiesen wird und eine Bildunterschrift. Dargestellt sind simulierte Daten, die einem Sinus entsprechen. Die Frequenz des Sinus ist 50~Hz, die Amplitude $U=325\ \mathrm{V}$ ist, was einem Effektivwert von $U_\mathrm{eff} = 230\ \mathrm{V}$ entspricht.
+\begin{figure}[b]
+    \centering
+    %\includegraphics[width=8cm]{./netzspannung.pdf}
+    \caption{Diese Abbildung zeigt eine simulierte Netzspannungskurve. Eingezeichnet ist auch die Effektivspannung von 230~V}
+    \label{fig:eineAbbildung}
+\end{figure}
+
+\section{Literaturangaben}
+Ein einfaches Literaturverzeichnis erstellen Sie mit der \verb!thebibliography!-Umgebung.
+
+Wollen Sie zum Beispiel auf Das Lehrbuch von Herrn Demtröder für Experimentalphysik 1\cite{demtr1} verweisen, so geht das ganz einfach mit dem \verb!\cite!-Befehl. Die einzelnen Einträge werden jeweils als \verb!\bibitem! aufgeführt. Die Bezeichnungen der Quellen im Text werden dabei in eckigen Klammern angegeben. Lässt man diese weg, werden die Quellen einfach durchnummeriert.
+
+Dieses Beispiel zeigt, wie man zum Beispiel auf das Skript zur Behandlung von Messunsicherheiten\cite{ABW} verweisen kann. Hier wurde keine Bezeichnung angegeben, die Quelle bekommt also einfach eine Nummer.
+
+Wenn Sie es etwas aufwändiger lieben, stellt die Universitätsbibliothek eine Anleitung zur Erstellung und Verwendung einer Literaturdatenbank\cite{mediatum} zur Verfügung. 
+
+\begin{thebibliography}{Ddddd} %Ddddd zeigt hier an, wie viel Platz im Literaturverzeichnis für die Bezeichnungen reserviert ist.
+\bibitem[Dem18]{demtr1}{Wolfgang Demtröder, \textit{Experimentalphysik 1 - Mechanik und Wärme}, 8te Auf\/lage, Springer-Spektrum, Berlin, 2018.}
+
+\bibitem{ABW}{Technische Universität München, Fakultät für Physik, Physikalisches Praktikum, Hrsg., \textit{Hinweise zur Beurteilung von Messungen, Messergebnissen und Messunsicherheiten},\\ \texttt{https://www.ph.tum.de/academics/org/labs/ap/org/ABW.pdf}, 2021, besucht am 05.05.2021.}
+
+\bibitem[ub18]{mediatum}{Technische Universität München, Universitätsbibliothek, Hrsg.,
+        \textit{Literaturverwaltung für \LaTeX-Neulinge}, \texttt{https://mediatum.ub.tum.de/download/1315979/1315979.pdf}, 2018, besucht am 10.05.2021.}
+\end{thebibliography}
+
+\end{document}
