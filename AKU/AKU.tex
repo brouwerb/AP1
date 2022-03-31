@@ -7,10 +7,13 @@
 
 \begin{document}
     \maketitle
+    \bibliographystyle{alphadin}
 
     \section{Abstract}
     In diesem Versuch wird die Schallgeschwindigkeit in verschiedenen elastischen Medien
-    duch verschieden Versuchsaufbauten bestimmt.
+    duch verschieden Versuchsaufbauten bestimmt. Die Schallgeschwindigkeit in Luft wird zum einen durch
+    Laufzeitdifferenz und zum Anderen durch eine stehende Welle bestimmt. Anschließend wird ein Verfahren 
+    vorgestellt wie Die Schallgeschwindigkeit in Festkörpern gemessen werden kann.
 
     \tableofcontents
 
@@ -59,7 +62,7 @@
             $ t $ für 4 Peaks & $ 2480(6)ms $ & $ 2360(6)ms $ & $ 1800(6)ms $ \\ \hline
             Länge $l$ des Stabs & $1407(14)mm$ & $1501(14)mm$ & $1502(14)mm$ \\ \hline
             Elastizitätsmodul & $99,7(3,3)\frac{kN}{mm^2}$ & $130,3(3,3)\frac{kN}{mm^2}$ & $67,7(3,3)\frac{kN}{mm^2}$ \\ \hline
-            Literaturwert & $78-123\frac{kN}{mm^2}$ & $120\frac{kN}{mm^2}$ & $70\frac{kN}{mm^2}$
+            Literaturwert (siehe chemie.de) & $78-123\frac{kN}{mm^2}$ & $120\frac{kN}{mm^2}$ & $70\frac{kN}{mm^2}$
         \end{tabular}
         \caption{Messwerte der Zeitdifferenz der Peaks und Länge der  Stäbe}
         \label{ex:mess1}
@@ -134,19 +137,19 @@
     \subsection{Ergebnisse}
     \begin{figure}[!h]
         \centering
-        \includegraphics{./2Mikros.pdf}
+        \includegraphics[width=120mm]{./2Mikros.pdf}
 
         \caption{Laufzeitunterschied der Schallwellen}
         \label{fig:graph2}
     \end{figure}
     Im Graph \ref{fig:graph2} sieht man anhand der Steigung die Schallgeschwindigkeit. Man kann erkennen, dass die Ausgleichsgerade nicht durch den Ursprung geht. Das liegt daran,
     dass der Mikrofonabstand systematisch um eine Konstante ($-1,88cm$) abweicht, da die Mikrofone unterschiedlich gebaut und unterschiedlich in die 
-    Vorrischtung eingespannt waren. Die Steigung der Ausgleichsgeraden beträgt $28,75\frac{\mu s}{cm}$. Daraus folgt
+    Vorrichtung eingespannt waren. Die Steigung der Ausgleichsgeraden beträgt $28,75\frac{\mu s}{cm}$. Daraus folgt
     dass die Schallgeschwindigkeit
     \begin{align} \label{sch1}
         \nu = \frac{1}{28.75\frac{\mu s}{cm}} = 347.8\frac{m}{s}
     \end{align}
-    beträgt. Auch mit dem Literaturwert und der Raumtemeratur von $295,3K$ kann man die Schallgeschwindigkeit
+    beträgt. Auch mit dem Literaturwert und der Raumtemeratur von $295,3K$ kann die Schallgeschwindigkeit
     \begin{align} \label{sch2}
         \nu_T\frac{T}{T_0} = 331,5 \sqrt{\frac{285,3}{273,15}} = 344,8\frac{m}{s}
     \end{align}
@@ -170,7 +173,7 @@
     \end{align}
     gilt. Wenn also die Lautstärke im Mikrofon am Rohranfang maximal wird, entsteht dort ein Bauch und die Gleichung
     (\ref{stehwelle}) gilt. Es gilt: 
-    \begin{align}
+    \begin{align} \label{sch3}
         \Delta l = l_n+1 - l_n &= \frac{2n+3}{4} \lambda - \frac{2n+1}{4} \lambda \nonumber \\
         &= \frac{\nu}{2f} \nonumber \\
          \Rightarrow \nu &= 2f \cdot \Delta l
@@ -181,15 +184,15 @@
     \subsection{Ergebnisse}
     \begin{figure}[h]
         \begin{center}
-            \includegraphics{./Test.pdf}
+            \includegraphics[width=120mm]{./Test.pdf}
         \end{center}
         
 
-        \caption{Röhrenlänge bei unterschiedlichen Frequenzen}
+        \caption{Rohrlänge bei unterschiedlichen Frequenzen}
         \label{fig:graph3}
     \end{figure}
-    Der Graph stellt die Positionen des Stopfen für die Maxima dar. Mit der Steigung kann die Schallgeschwindigkeit
-    ausgerechnet werden (Steigung $= \Delta t$ ). Die Unsicherheit der Ausgleichsgeraden wird mithilfe der Formeln im Anhang bestimmt.
+    Der Graph \ref{fig:graph3} stellt die Positionen des Stopfen für die Maxima dar. Mit der Steigung $\Delta t$ und der Formel (\ref{sch3}) kann die Schallgeschwindigkeit
+    ausgerechnet werden. Die Unsicherheit der Ausgleichsgeraden wird mithilfe der Formeln im Anhang bestimmt.
     Beim Oszilloskop wurde bei 1kHz eine Schwankung von $\pm 2Hz$, bei $ 2kHz \ \pm 30Hz$ und bei $0.5kHz \ \pm 2Hz $ beobachtet.
   
 
@@ -204,12 +207,16 @@
 
     Der gewichtete Mittelwert (Formel siehe Anhang) ist $\bar{x} = 344,03 \frac{m}{s}$. Er hat eine 
     interne Unsicherheit $u_{int} = 0,16\frac{m}{s}$ und eine größere externe und somit Gesamtunsicherheit (Siehe ABW-Skript) $u_{ext} = 0,95\frac{m}{s}$.
-    Damit stimmt diese Schallgeschwindigkeit mit der in (\ref{sch1}) und der in (\ref{sch2}) überein.
+    Damit stimmt die Schallgeschwindigkeit mit der in (\ref{sch1}) und der in (\ref{sch2}) überein.
 
 
     \section{Zusammenfassung}
-    Die Schallgeschwindigkeit lässt sich mit verschiedenen Methoden messen. Wahrscheinlich war die Laufzeitmessung die genaueste,
-    da bei den stehenden Wellen
+    Die Schallgeschwindigkeit lässt sich mit verschiedenen Methoden messen. Beide Messungen waren sehr genau,
+    da bei den stehenden Wellen nur etwa 0.3\% Unsicherheit bleibt und die Laufzeitmessung nur minimale Fehlerbalken hat.
+    Bei beiden Messarten liegt der 
+    Literaturwert innerhalb der Unsicherheit. Bis auf Kupfer, wo eine größere Abweichung gemessen wurde, kann auch 
+    bei Festkörpern die Phasengeschwindigkeit relativ genau bestimmt werden. Das lässt unter anderem auch Rückschlüsse auf die
+    Materialbeschaffenheit zu. So könnte  wahrscheinlich bei Messing mit dem Elastizitätsmodul die Legierung bestimmt werden.
    
     \section{Anhang}
     \subsection{Fehlerrechnung}
