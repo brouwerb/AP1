@@ -74,7 +74,8 @@ ax.grid()
 ax.errorbar(x, y, yerr = Y_ERROR,fmt='x', ecolor = 'black',color="C0",
     capsize=4,
     capthick=0.5)
-ax.set(xlabel=X_LABEL, ylabel=Y_LABEL,title=TITEL)
+ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+
 #makeErrorBoxes(x,y,X_ERROR,Y_ERROR)
 #ax.scatter(x,y,marker='x',color="C0")
 ax.plot([X_START,X_END],[intercept,intercept+X_END*slope],color="red",linewidth=0.8)

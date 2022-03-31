@@ -1,10 +1,10 @@
 
-font.family: sans-serif
-font.sans-serif: Arial, sans-serif
+font.family: serif
+font.sans-serif: Computer Modern
 font.size: 10
 
 
-axes.titlesize:16
+axes.titlesize:14
 
 grid.linewidth: 0.6
 lines.linewidth: 1.4
