@@ -1,0 +1,20 @@
+
+font.family: serif
+font.sans-serif: Computer Modern
+font.size: 10
+
+
+axes.titlesize:14
+
+grid.linewidth: 0.6
+lines.linewidth: 1.4
+patch.linewidth: 0.24
+lines.markersize: 5.6
+lines.markeredgewidth: 0
+
+xtick.major.width: 0.8
+ytick.major.width: 0.8
+xtick.minor.width: 0.4
+ytick.minor.width: 0.4
+xtick.major.pad: 5.6
+ytick.major.pad: 5.6
