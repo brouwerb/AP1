@@ -1,9 +1,11 @@
+from tkinter import W
 import xlrd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
 from scipy import stats
+from scipy import optimize
 import math
 
 Fits =[[[[2.25217312, 0.15    ,   3.31242126 ,0.08173956],[2.18692843 ,0.17566002, 3.53409045, 0.94868202],[2.15121613 ,0.1954903 , 3.86274606, 1.9238661 ]],
@@ -31,7 +33,7 @@ X_MINOR_TICK =1
 Y_MINOR_TICK = 0.01
 SAVE_AS = "AKU\Test.pdf"
 POINT_STYLE = ["o","^","x"]
-COLOR_STYLE =["C0","C1","C3"]
+COLOR_STYLE =["blue","red","C3"]
 
 workbook = xlrd.open_workbook('./AKU/Testergebnisse.xls')
 worksheet = workbook.sheet_by_name('stehende welle')
@@ -77,11 +79,50 @@ def sine(x,a,b,c,d):
     return a+b*np.sin(c*(x+d))
 
 
-def getErrorsOfFit(data):
-    popt, perr= optimize.curve_fit(sine,xy[0],xy[1],bounds=((-np.inf,0.3,3,-np.inf),(np.inf,np.inf,3.2,np.inf)))
+def getErrorsOfFit(xy,data):
+    v=0.001
+    popt, pconv=optimize.curve_fit(sine,xy[0],xy[1],bounds=((data[0]-v,data[1]-v,data[2]-v,data[3]-v),(data[0]+v,data[1]+v,data[2]+v,data[3]+v)))
+    return np.sqrt(np.diag(pconv))
+
+def partGeg(par):
+    return (2*par[0])/(par[0]**2+par[1]**2)-(par[0]**2-par[1]**2)/(par[0]**2+par[1]**2)**2 *2*par[0]
+def partGl(par):
+    return (-2*par[1])/(par[1]**2+par[0]**2)-2*par[1]*(par[0]**2-par[0]**2)/(par[1]**2+par[0]**2)**2
+
+def FehlerFort(part1,part2,err1,err2,val1,val2):
+    return np.sqrt(part1(val1)**2*err1**2+part2(val2)**2+err2**2)
+
 
 x=[[1,2,3],[1,2,3]]
 y=[getKData(0),getKData(1)]
+
+xy=[]
+errors=[]
+Typen=["gegn","gln"]
+
+for typ in range(2):
+    errors.append([])
+    for fed in range(2):
+        errors[typ].append([])
+        xy.append([])
+        for notch in range(3):
+            errors[typ][fed].append([])
+            xy[fed].append(getPlotable(getData(f"./PEN/Rawdata/f{fed+1}{Typen[typ]}{notch+1}#1.txt")))
+            errors[typ][fed][notch]=getErrorsOfFit(xy[fed][notch],Fits[typ][fed][notch])
+#print(errors)
+
+for fed in range(2):
+    for notch in range(3):
+        Wgeg = Fits[0][fed][notch][2]
+        Wgl = Fits[1][fed][notch][2]
+        WgegErr = errors[0][fed][notch][2]
+        WglErr = errors[0][fed][notch][2]
+        K = CalK(Wgeg,Wgl)
+        Kerr= FehlerFort(partGeg,partGl,WgegErr,WglErr,[Wgeg,Wgl],[Wgeg,Wgl])
+        print(f"{fed+1} & {notch+1} & {Wgeg} & {Wgl} & {K} // \n")
+
+        
+
 
 
 #test

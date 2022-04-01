@@ -102,7 +102,7 @@ arrowprops=dict(arrowstyle="->",linewidth=1))
 #     ax.plot(xp,yp,linewidth=0.8,color=COLOR_STYLE[i],linestyle="dotted")
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
-plt.title(TITEL,y=1.02)
+
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
 
