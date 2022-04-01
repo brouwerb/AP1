@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 
 \usepackage[ngerman]{babel}
@@ -27,7 +28,7 @@
     \begin{abstract}
         In diesen beiden Versuchsaufbauten werden verschiedene Pendel untersucht. Zum einen wird mit
         einem Reversionspendel die Erdbeschleunigung $g$ gemessen, zum anderen werden zwei mit einer Feder
-        gekoppelte Pendel untersucht und mit den Messwerten u.a. die Federkonstante berechnet.
+        gekoppelte Pendel untersucht und mit den Messwerten u.a. die Federkonstante berechnet. 
     \end{abstract}
 
     \tableofcontents
@@ -41,7 +42,8 @@
     Es gibt zwei Positionen des verschiebbaren Gewichts, an dem die Periode der Schwingung an beiden
     Aufhängepunkten gleich ist. Für ein Reversionspendel in dieser Konfiguration ist die Periode
     \begin{align}
-        \tau^2 = 4\pi^2 \cdot \frac{l_r}{g}
+         \tau^2 &= 4\pi^2 \cdot \frac{l_r}{g} \\
+        \Rightarrow \ \ g &= 4\pi^2 \cdot \frac{l_r}{\tau^2} \label{gformel}
     \end{align}
     (Herleitung siehe \cite[Abschitt 1.3]{pen}). Daraus ist ersichtlich, dass, wenn dieser Fall eintritt, die Periodendauer unabängig von der Masse und des
     Trägheitsmoments ist. So kann mit der Periodendauer und dem Abstand der beiden Aufhängungspunkte $l_r$
@@ -62,37 +64,39 @@
         \caption{Grobe Darstellung der Messdaten}
         \label{fig:revgrob}
     \end{figure}
-    \begin{figure}[ht]
+    \begin{figure}[htb]
         \centering
-        \includegraphics[width=120mm]{./Reversion_fein.pdf}
+        \includegraphics[width=\textwidth]{./Reversion_fein.pdf}
 
         \caption{Genauere Darstellung der Schnittpunkte}
         \label{fig:revfein1}
     \end{figure}
 
     Im Graphen \ref{fig:revgrob} wurde die Periodendauer abhängig vom Ort der zweiten Masse für beide Aufhängungspunkte dargestellt. 
-    In den Graphen \ref{fig:revfein1} und ? können die beiden Schnittpunkte der Periodendauer der verschiedenen
+    In dem Graphen \ref{fig:revfein1}  können die beiden Schnittpunkte der Periodendauer der verschiedenen
     Aufhängungen nochmal näher gesehen werden. Für den Fehler der Zeitmessung
-    wurden $2ms$ angenommen, da in den Messdaten eine maximale Abweichung von $1ms$ bei verschiedenen Messungen 
-    der gleichen Periodendauer vorkam und die Lichtchranke selber eauch eine Genauigkeit von $1ms$ hat.
+    wurden $2 \si{\milli\second}$ angenommen, da in den Messdaten eine maximale Abweichung von $1\si{\milli\second}$ bei verschiedenen Messungen 
+    der gleichen Periodendauer vorkam und die Lichtchranke selber auch eine Genauigkeit von $1\si{\milli\second}$ hat.
     Auf eine genaue Fehlerfortpflanzung wurde wegen der geringen Abweichung verzichtet, da wahrscheilich
     durch die Kleinwinkelnäherung viel größere Fehler entstehen.
-    Beachtenswert ist, dass das Pendel einge Zeit brauch bis es sich "eingependelt" hat und konsistente Messwerte
-    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,00(25)cm$
+    Beachtenswert ist, dass das Pendel einge Zeit braucht bis es sich eingependelt" hat und konsistente Messwerte
+    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,0(11)\si{\cent\metre}$.
 
     \begin{table}
         \centering
-        \begin{tabular}{c|c|c}
-            Schnittpunkt & 1 & 2 \\ \hline
-            Periodendauer & & \\ \hline
-            Erdbeschleunigung & &
+        \begin{tabular}{c c c}
+            & Schnittpunkt 1 & Schnittpunkt 2 \\ \hline
+            Periodendauer &  $1794,96(456)\si{\milli\second} $ & $1795,00(234)\si{\milli\second} $ \\
+            Erdbeschleunigung & $9,803(51)\si{\metre\per\second\squared}$ & $9,802(26)\si{\metre\per\second\squared}$ \\
+            gewichtetes Mittel & \multicolumn{2}{c}{$g = 9,802(23)\si{\metre\per\square\second}$}
         \end{tabular}
         \caption{Ergebisse}
         \label{ergrev}
     \end{table}
 
-    Die in Tabelle \ref{ergrev} gedruckten Ergebnisse sind ? nah am Literaturwert von $g$. Diese liegt ?
-    im Konfidenzintervall. Der gewichtete Mittelwert beträgt ?.
+    Der vom International Gravimetric Bureau in München gemesse Wert von $g = 9,807232\si{\metre\per\second\squared}$ \cite{glit} liegt
+    eindeutig im Konfidenzintervall unserer Messungen, die in Tabelle \ref{ergrev} dargestellt sind, und sogar relativ nahe am berechneten Wert.
+
 
     \section{Gekoppelte Pendel}
 
@@ -102,6 +106,42 @@
     zwei Pendel mit einer Feder auf einer veräanderbaren Höhe verbunden. 
 
     \subsection{Ergebnisse}
+
+    \section{Anhang}
+    \subsection{Fehlerberechung 1}
+    
+    \paragraph{Unsicherheit $l_r$:}
+    $l_r$ wurde mit einem Metalllineal gemessen werden. Deshalb kann mithilfe von \cite[Gleichung (40)]{ABW}
+    und \cite[Tabelle 5]{ABW} die Unsicherheit des Lineals (Länge L=1m)
+    \begin{align}
+        u(L) = 0.5\si{\milli\metre}
+    \end{align}
+    und mit \cite[Tabelle 1]{ABW} die Ablesegenauigkeit
+    \begin{align}
+        u_a = \frac{0.5\si{\milli\metre}}{2\sqrt{3}} = 0.15\si{\milli\metre}
+    \end{align}
+    berechnet werden. Das Metallineal hat jede 0.5mm ein Ablesestrich.
+    Die Unsicherheiten werden zur Gesamtunsicherheit
+    \begin{align}
+        u_l = \sqrt{u(L)^2 + u_a^2 } = 0.52\si{\milli\metre}
+    \end{align} 
+    zusammengefasst.
+    \paragraph{Unsicherheit $\tau$:}
+    Die Unsicherheiten wurden mithilfe von der Formel in der Aufgabenstellung \cite[Aufgabe 8]{pen} berechnet.
+
+    \paragraph{Unsicherheiten von $g_1$ und $g_2$:}
+    Mit der Formel \ref{gformel} kann die allgemeinen Formel für Fehlerfortpflanzung
+     \cite[Formel (20)]{ABW} für diesen Fall angepasst werden:
+     \begin{align}
+         u(\bar{g}) &= \sqrt{\left(\frac{\partial g}{\partial l_r}\right)^2 u(l_r)^2 +
+         \left(\frac{\partial g}{\partial \theta}\right)^2 u(\theta)^2} \nonumber \\
+         &= \sqrt{\frac{16\pi^4}{\theta^2} u(l_r)^2 + \frac{64\pi^4l_r^2}{\theta^3} u(\theta)^2}
+     \end{align}
+    \paragraph{Gewichteter Mittelwert:}
+    Der Gewichtete Mittelwert und seine Unsicherheit wurde mithilfe von
+    Formeln (29) bis (32) im ABW Skript\cite{ABW} berechnet. da $u_{int}$ mit $0.023\si{\metre\per\square\second}$
+    größer als $u_{ext} = 0.00019\si{\metre\per\square\second}$ ist, wird $u_{int}$ als Ungenauigkeit angenommen.
+
 
     \bibliographystyle{plain}
     \bibliography{literature}
