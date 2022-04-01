@@ -8,7 +8,7 @@ import math
 
 X_START =0
 Y_START =1600
-X_END = 25
+X_END = 60
 Y_END = 2300
 TITEL = "Reversionspendel"
 Y_LABEL = r"Periodendauer in $ms$"
@@ -83,15 +83,15 @@ for i in range(len(x)):
     xp,yp=genDataFromFunktion(100,X_START,X_END,popt[i])
     ax.plot(xp,yp,linewidth=0.8,color=COLOR_STYLE[i])
 
-plt.legend(("festes Gewicht oben", "Fit Polynom von Ordnung 6","festes Gewicht oben", "Fit Polynom von Ordnung 6"),loc=2)
+plt.legend(("festes Gewicht oben", "Fit Polynom von Ordnung 6","loses Gewicht oben", "Fit Polynom von Ordnung 6"),loc=2)
 def difPol(x):
     return differenceOfPolynoms(x,popt)
 s1=optimize.fsolve(difPol,10)
-s2=optimize.fsolve(difPol,20)
+s2=optimize.fsolve(difPol,45)
 plt.annotate(f"({round(s1[0],2)} , {round(polynomByArray(s1,popt[0])[0],2)})",[s1,polynomByArray(s1,popt[0])],xytext=[5,1940],
 arrowprops=dict(arrowstyle="->",linewidth=1))
 
-plt.annotate(f"({round(s2[0],2)} , {round(polynomByArray(s2,popt[0])[0],2)})",[s2,polynomByArray(s2,popt[0])],xytext=[15,1940],
+plt.annotate(f"({round(s2[0],2)} , {round(polynomByArray(s2,popt[0])[0],2)})",[s2,polynomByArray(s2,popt[0])],xytext=[35,1940],
 arrowprops=dict(arrowstyle="->",linewidth=1))
 #print(perr)
 
