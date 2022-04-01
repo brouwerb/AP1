@@ -22,6 +22,7 @@ Y_MINOR_TICK = 10
 SAVE_AS = "PEN\Reversion_grob.pdf"
 POINT_STYLE = ["o","^","x"]
 COLOR_STYLE =["red","blue","C3"]
+ANNOTATE_TEXT_PREV =["S1","S2"]
 
 workbook = xlrd.open_workbook('./PEN/Reversion.xls')
 worksheet = workbook.sheet_by_name('Reversionspendel')
@@ -88,10 +89,10 @@ def difPol(x):
     return differenceOfPolynoms(x,popt)
 s1=optimize.fsolve(difPol,10)
 s2=optimize.fsolve(difPol,45)
-plt.annotate(f"({round(s1[0],2)} , {round(polynomByArray(s1,popt[0])[0],2)})",[s1,polynomByArray(s1,popt[0])],xytext=[5,1940],
+plt.annotate(f"{ANNOTATE_TEXT_PREV[0]} = ({round(s1[0],2)} , {round(polynomByArray(s1,popt[0])[0],2)})",[s1,polynomByArray(s1,popt[0])],xytext=[5,1940],
 arrowprops=dict(arrowstyle="->",linewidth=1))
 
-plt.annotate(f"({round(s2[0],2)} , {round(polynomByArray(s2,popt[0])[0],2)})",[s2,polynomByArray(s2,popt[0])],xytext=[35,1940],
+plt.annotate(f"{ANNOTATE_TEXT_PREV[1]} = ({round(s2[0],2)} , {round(polynomByArray(s2,popt[0])[0],2)})",[s2,polynomByArray(s2,popt[0])],xytext=[35,1940],
 arrowprops=dict(arrowstyle="->",linewidth=1))
 #print(perr)
 
