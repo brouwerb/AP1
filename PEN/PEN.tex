@@ -61,7 +61,7 @@
         \centering
         \includegraphics[width=120mm]{./Reversion_grob.pdf}
 
-        \caption{Grobe Darstellung der Messdaten}
+        \caption{Grobe Darstellung der Messdaten (der Abstand ist nur relativ)}
         \label{fig:revgrob}
     \end{figure}
     \begin{figure}[htb]
@@ -74,13 +74,13 @@
 
     Im Graphen \ref{fig:revgrob} wurde die Periodendauer abhängig vom Ort der zweiten Masse für beide Aufhängungspunkte dargestellt. 
     In dem Graphen \ref{fig:revfein1}  können die beiden Schnittpunkte der Periodendauer der verschiedenen
-    Aufhängungen nochmal näher gesehen werden. Für den Fehler der Zeitmessung
+    Aufhängungen nochmal näher gesehen werden. Die Daten wurden mit ienem Polynom 6. Grades gefittet.
+    Leider ist dies aber noch nicht genau genug, sodass einige Punkte ausserhalb
+    der Konfidenzintervalls liegen. Dies ist uns aber erst nachher aufgefallen. Für den Fehler der Zeitmessung
     wurden $2 \si{\milli\second}$ angenommen, da in den Messdaten eine maximale Abweichung von $1\si{\milli\second}$ bei verschiedenen Messungen 
     der gleichen Periodendauer vorkam und die Lichtchranke selber auch eine Genauigkeit von $1\si{\milli\second}$ hat.
-    Auf eine genaue Fehlerfortpflanzung wurde wegen der geringen Abweichung verzichtet, da wahrscheilich
-    durch die Kleinwinkelnäherung viel größere Fehler entstehen.
     Beachtenswert ist, dass das Pendel einge Zeit braucht bis es sich eingependelt" hat und konsistente Messwerte
-    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,0(11)\si{\cent\metre}$.
+    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,0(11)\si{\centi\metre}$.
 
     \begin{table}
         \centering
@@ -94,7 +94,8 @@
         \label{ergrev}
     \end{table}
 
-    Der vom International Gravimetric Bureau in München gemesse Wert von $g = 9,807232\si{\metre\per\second\squared}$ \cite{glit} liegt
+    
+    Der in München vom International Gravimetric Bureau gemesse Wert von $g = 9,807232\si{\metre\per\second\squared}$ \cite{glit} liegt
     eindeutig im Konfidenzintervall unserer Messungen, die in Tabelle \ref{ergrev} dargestellt sind, und sogar relativ nahe am berechneten Wert.
 
 
@@ -102,9 +103,20 @@
 
     \subsection{Experimenteller Aufbau und Theorie}
 
-    Gekoppelte Pendel sind zwei Pendel, die mit irgendwie miteinander gekoppelt sind. In diesem Fall sind
-    zwei Pendel mit einer Feder auf einer veräanderbaren Höhe verbunden. 
-
+    In diesem Experiment wurden zwei Pendel beobachtet, die mit eier Feder auf einer einstellbaren Höhe
+    verbunden wurden. Solche Pendel haben zwei Fundamentalschwingungen. 
+    Die gleichphasige Winkelgeschwindigkeit 
+    \begin{align}
+        \omega_{gl} = \sqrt{\frac{mgl}{J}}
+    \end{align}
+    
+    der Schwingung
+    wird nur durch das Trägheitsmoments $J$, die Masse $m$ und dem Abstand $l$ des Schwerpunkts zur Aufhängung bestimmt.
+    Die gegenphasige Schwingung mit Winkelgeschwindigkeit. 
+    \begin{align}
+        \omega_{geg} = \sqrt{\frac{mgl+2\kappa r^2}{J}}
+    \end{align}
+    beeinflusst hingegegen auch die Feder $\kappa$ und der Befestigunsabstand $r$ letzterer.
     \subsection{Ergebnisse}
 
     \section{Anhang}
