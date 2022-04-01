@@ -15,5 +15,3 @@ def round_err(num, err,  sig=2):
     
 
     return(srnum + '(' + str(ceil(abrerr)) + ')')
-
-print(round_err(float(input()), float(input())))
