@@ -41,7 +41,8 @@
     Es gibt zwei Positionen des verschiebbaren Gewichts, an dem die Periode der Schwingung an beiden
     Aufhängepunkten gleich ist. Für ein Reversionspendel in dieser Konfiguration ist die Periode
     \begin{align}
-        \tau^2 = 4\pi^2 \cdot \frac{l_r}{g}
+         \tau^2 &= 4\pi^2 \cdot \frac{l_r}{g} \\
+        \Rightarrow \ \ g &= 4\pi^2 \cdot \frac{l_r}{\tau^2}
     \end{align}
     (Herleitung siehe \cite[Abschitt 1.3]{pen}). Daraus ist ersichtlich, dass, wenn dieser Fall eintritt, die Periodendauer unabängig von der Masse und des
     Trägheitsmoments ist. So kann mit der Periodendauer und dem Abstand der beiden Aufhängungspunkte $l_r$
@@ -62,9 +63,9 @@
         \caption{Grobe Darstellung der Messdaten}
         \label{fig:revgrob}
     \end{figure}
-    \begin{figure}[ht]
+    \begin{figure}[htb]
         \centering
-        \includegraphics[width=120mm]{./Reversion_fein.pdf}
+        \includegraphics[width=\textwidth]{./Reversion_fein.pdf}
 
         \caption{Genauere Darstellung der Schnittpunkte}
         \label{fig:revfein1}
@@ -73,18 +74,18 @@
     Im Graphen \ref{fig:revgrob} wurde die Periodendauer abhängig vom Ort der zweiten Masse für beide Aufhängungspunkte dargestellt. 
     In den Graphen \ref{fig:revfein1} und ? können die beiden Schnittpunkte der Periodendauer der verschiedenen
     Aufhängungen nochmal näher gesehen werden. Für den Fehler der Zeitmessung
-    wurden $2ms$ angenommen, da in den Messdaten eine maximale Abweichung von $1ms$ bei verschiedenen Messungen 
-    der gleichen Periodendauer vorkam und die Lichtchranke selber eauch eine Genauigkeit von $1ms$ hat.
+    wurden $2 \si{\milli\second}$ angenommen, da in den Messdaten eine maximale Abweichung von $1\si{\milli\second}$ bei verschiedenen Messungen 
+    der gleichen Periodendauer vorkam und die Lichtchranke selber auch eine Genauigkeit von $1\si{\milli\second}$ hat.
     Auf eine genaue Fehlerfortpflanzung wurde wegen der geringen Abweichung verzichtet, da wahrscheilich
     durch die Kleinwinkelnäherung viel größere Fehler entstehen.
-    Beachtenswert ist, dass das Pendel einge Zeit brauch bis es sich "eingependelt" hat und konsistente Messwerte
-    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,00(25)cm$
+    Beachtenswert ist, dass das Pendel einge Zeit braucht bis es sich "eingependelt" hat und konsistente Messwerte
+    gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,0(6)\si{\cent\metre}$.
 
     \begin{table}
         \centering
-        \begin{tabular}{c|c|c}
-            Schnittpunkt & 1 & 2 \\ \hline
-            Periodendauer & & \\ \hline
+        \begin{tabular}{c c c}
+            & Schnittpunkt 1 & Schnittpunkt 2 \\ \hline
+            Periodendauer &  $1794,96(456)\si{\milli\second} $ & $1795,09(234)\si{\milli\second} $ \\
             Erdbeschleunigung & &
         \end{tabular}
         \caption{Ergebisse}
