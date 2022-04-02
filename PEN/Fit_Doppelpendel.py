@@ -22,12 +22,9 @@ SchFits =[[[[0.21649635036496342,3.2628175485390445,1.3461548783367518,0.0476094
             [[0.1591292733109368,3.6519713202127058,0.6401773448791633,0.44172262773722637,31.022496111625767,2.120123885088057],[0.005180576723701646,0.031098500579630685,0.643607057747196,0.031451815986358364,2.120139252401137,0.005188249414532787]]]]
 
 
-Feder=2
-notch=3
-vonsch=0.04
-bissch=0.05
-vonamp=100
-bisamp=101
+Feder=1
+notch=1
+
 
 #"./PEN/Rawdata/f1gegn1#1.txt"
 def getData(path):
@@ -89,8 +86,9 @@ def arrToStrin(arr):
 
 
 
-xy=getPlotable(getData(f"./PEN/Rawdata/f{Feder}schn{notch}#1.txt"))
+xy=getPlotable(getData(f"./PEN/Rawdata/f{Feder}gln{notch}#1.txt"))
 fig, ax = plt.subplots()
+
 
 
 
