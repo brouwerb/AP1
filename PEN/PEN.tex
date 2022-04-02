@@ -119,7 +119,7 @@
     beeinflusst hingegegen auch die Feder $\kappa$ und der Befestigunsabstand $r$ letzterer.
     In diesem Versuch müssen drei Messreihen aufgenommen werden: Eine gleichphasige, eine gegenphasige und
     eine mit Schwebung. \\
-    In Aufgabe 11 soll der Koplungsgrad $K$ bestimmt werden. Diesen bestimmt man mithilfe der beide
+    In \textbf{Aufgabe 11} soll der Koplungsgrad $K$ bestimmt werden. Diesen bestimmt man mithilfe der beide
     Winkelgeschwindigkeiten
 
     \begin{align} \label{Kformel}
@@ -127,17 +127,66 @@
     \end{align}
     der gleichphasigen und gegenphasigen Schwingung. \\
 
-    In Aufgabe 12 sollen aus der Schwebung mithilfe der Schwebungskreisfrequenz $\omega_S$
+    In \textbf{Aufgabe 12} sollen aus der Schwebung mithilfe der Schwebungskreisfrequenz $\omega_S$
     und der mitteleren Kreisfrequenz  $\omega_M$ zuerst die Grundschwingungsfrequenzen
     \begin{align}
         \omega_{geg} &= \frac{\omega_{geg} + \omega_{gl}}{2} + \frac{\omega_{geg} - \omega_{gl}}{2} = \omega_M + \omega_S \\
         \omega_{gl} &= \frac{\omega_{geg} + \omega_{gl}}{2} - \frac{\omega_{geg} - \omega_{gl}}{2} = \omega_M - \omega_S
     \end{align}
     ausgerechnet werden (Siehe: \cite[Formel (34)]{pen}). Um dann wieder den Kopplungsgrad nach Formel (\ref{Kformel})
-    zu bestimmen.
+    zu bestimmen. \\
+    Mit den gegeben (Theorie-) Daten in \textbf{Aufgabe 13} \cite{pen} (Masse Pendelgewicht $M_P = 1,080(20)\si{\kilogram}$,
+    Masse Stange $M_S = 0,160(5)\si{\kilogram}$, Abstand Gewicht-Aufhängung $l = 0,968(10)\si{\metre}$ und Länge $l_0 0 1,030(20)\si{\metre}$
+    lassen sich Trägheitsmoment
+    \begin{align}
+        J = 1,202(52)\si{\kilogram\metre\squared} \label{J}
+    \end{align}
+    und Drehmomentkonstante
+    \begin{align}
+        D = 11,06(30)\si{\newton\metre} \label{D}
+    \end{align} 
+    ausrechnen (Fehlerberechnung siehe \cite[Formel (19)]{ABW}) und damit $\omega_{geg}$ und $K$
+    mithlife der Formeln \cite[(30)]{pen} und \cite[(35)]{pen}
+    berechnen:
+    
+    \begin{align}
+        K &= \frac{\kappa r^2}{D + \kappa r^2} \\
+        \omega_{geg} &= \sqrt{\frac{D+2\kappa r^2}{J}}
+    \end{align}
 
 
-\subsection{Ergebnisse}
+    \subsection{Ergebnisse}
+
+    Die verschieden Kreisfrequenzen wurden bestimmt, indem die jeweilligen Theoriekurven mit geeigneten
+    Bounds an die Daten gefittet wurden, sodass sowohl die Frequenz als auch die Unsicherheit ausgegeben
+    werden konnte.
+    \paragraph{Messreihe gleichphasige und gegenphasige Schwingung}
+    In Graphen \ref{mess1} wurden die anhand der in Aufgabe 5 bestimmten Messreihen
+    berechneten $\omega_{geg}$ und $\omega_{gl}$ mit ihren Fehlern aufgetragen (farbige Fehlerbalken). Der Theoriewert der gleichphasigen
+    Schwingung $\omega_{gl}^T = 3,033(52)$, der mithilfe von (\ref{D}) und (\ref{J}) berechnet wurde, 
+    unterscheidet sich leider sehr stark von unseren Messwerten. Wir vermuten, dass die angegeben Daten nicht
+    die Realbedingungen des Versuchs wiederspiegeln. Dieser Fehler führt auch zu Abweichungen des Theoriewerts
+    in der Graphen, sowei bei der Berechnung von $\kappa$.
+
+
+    
+    \begin{table}[H]
+        \label{mess1}
+        \centering
+        \begin{tabular}{c c c c c}
+            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{geg}$ in \si{\radian\per\second} &
+            $\omega_{gl}$ in \si{\radian\per\second} & $K$ \\ \hline
+            
+            \input{KdataTabel.txt}
+            %\endgroup%
+        \end{tabular}
+        \caption{gleichphasige und gegenphasige Kreisfrequenz mit Kopplungsgrad}
+    \end{table}
+
+    \paragraph{Messreihe Schwebung}
+    Auch mit den anhand von $\omega_M$ und $\omega_S$ der Schwebung (Siehe Tabelle ?)
+    berechneten $\omega_{geg}$ und $\omega_{gl}$ kann der Kopplungsgrad $K$ berechnen werden,
+    jedoch sind hier, wie im Graphen ? zu sehen ist (schwarze Fehlerbalken), großere Ungenauigheiten
 
     \section{Anhang}
     \subsection{Fehlerberechung 1}
