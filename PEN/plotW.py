@@ -1,3 +1,4 @@
+
 from matplotlib.markers import MarkerStyle
 import xlrd
 import numpy as np
@@ -23,23 +24,25 @@ SchFits =[[[[0.21649635036496342,3.2628175485390445,1.3461548783367518,0.0476094
 
 
 notchAbstand=[28.3,53.2,78.2]
+D = 11.06
+J = 1.069
 
 
 X_START =20
-Y_START =0
+Y_START =3
 X_END = 85
-Y_END = 0.30
+Y_END = 4.2
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"Kopplungsgrad K"
+Y_LABEL = r"Winkelgeschwindigkeit $\omega$ rad/s"
 X_LABEL = r"Kopplungsradius $r$ in cm"
 X_ERROR = 0.02
 Y_ERROR = 1
 X_MAJOR_TICK = 10
-Y_MAJOR_TICK =0.05
+Y_MAJOR_TICK =0.2
 X_MINOR_TICK =2
-Y_MINOR_TICK = 0.01
-SAVE_AS = "PEN\Kplot.pdf"
-POINT_STYLE = ["o","^","x","s"]
+Y_MINOR_TICK = 0.05
+SAVE_AS = "PEN\plotW.pdf"
+POINT_STYLE = [4,5,"x","s"]
 COLOR_STYLE =["blue","red"]
 
 workbook = xlrd.open_workbook('./AKU/Testergebnisse.xls')
@@ -97,6 +100,10 @@ def partGl(par):
 def FehlerFort(part1,part2,err1,err2,val1,val2):
     return np.sqrt(part1(val1)**2*err1**2+part2(val2)**2*err2**2)
 
+def Theoriekurve(r,k):
+    
+    return np.sqrt((D+2*k*r**2)/J)
+
 def genDataFromFunktion(amount,von,bis,params,func):
     x=[]
     y=[]
@@ -106,6 +113,7 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
+
 
 
 x=[[1,2,3],[1,2,3]]
@@ -192,31 +200,58 @@ for fed in range(2):
 file.close()
 
 
+# Kappa
+Kappa=[[],[]]
+KappaErr=[[],[]]
+for i in range(2):
+    Kappa[i], KappaErr[i]=optimize.curve_fit(Theoriekurve,np.array(notchAbstand)*0.01,Wgeg_[i][0])
+print(Kappa)
+print(KappaErr)
+
+
+
 
 
 #test
 
 plt.style.use("./AKU/AP1_style.mplstyle")
-
+xy1=[]
+for i in range(2):
+    xy1.append(genDataFromFunktion(100,X_START,X_END,Kappa[i][0],Theoriekurve))
+xy2=[]
+for i in range(2):
+    xy2.append(genDataFromFunktion(100,X_START*0.01,X_END*0.01,Kappa[i][0],Theoriekurve))
 
 #reg= [stats.linregress(x[0],y[0]),stats.linregress(x[1],y[1])]
-
+print(xy)
 #print(reg[0])
 fig, ax = plt.subplots()
 ax.grid()
 errorsOfSlope = []
 err1=[[],[]]
 sc=[[],[]]
+
+
 for i in range(2):
-    print(notchAbstand)
-    print(Kval_[i][1])
+    
+    
 
     
-    err2 =ax.errorbar(notchAbstand,Kval_[i][0],fmt="x",yerr=Kval_[i][1], ecolor = 'black',elinewidth=0.5,capsize=2,capthick=0.5)
+    err2 =ax.errorbar(notchAbstand,Wgeg_[i][0],fmt="x",yerr=Wgeg_[i][1], ecolor=COLOR_STYLE[i],elinewidth=0.7,capsize=3,capthick=0.7)
+    err2 =ax.errorbar(notchAbstand,Wgl_[i][0],fmt="x",yerr=Wgl_[i][1],ecolor=COLOR_STYLE[i],elinewidth=0.7,capsize=3,capthick=0.7)
     #ax.scatter(notchAbstand,Kval1_[i][0],marker=POINT_STYLE[i+2],color=COLOR_STYLE[i],s=10)
-    err1[i]=ax.errorbar(notchAbstand,Kval1_[i][0],fmt="x",yerr=Kval1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
+
+    #err1[i]=ax.errorbar(notchAbstand,Wgeg1_[i][0],fmt="x",yerr=Wgeg1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
+    #err1[i]=ax.errorbar(notchAbstand,Wgl1_[i][0],fmt="x",yerr=Wgl1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
+
+    sc[i]=ax.scatter(notchAbstand,Wgeg1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
+    sc[i]=ax.scatter(notchAbstand,Wgl1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
+
+    ax.plot([X_START-i,X_END],[3.2165,3.2165],color=COLOR_STYLE[i],linestyle ="dotted")
+    ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
-    sc[i]=ax.scatter(notchAbstand,Kval_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
+    #sc[i]=ax.scatter(notchAbstand,Wgeg_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
+    #sc[i]=ax.scatter(notchAbstand,Wgl_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
 plt.legend([sc[0],err1[0],sc[1],err1[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",
                                             r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler","Fehlerbalken der von K aus Schwebung"),loc=2)
 
