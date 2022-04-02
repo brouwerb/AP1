@@ -1,4 +1,3 @@
-from tkinter import W
 import xlrd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -91,7 +90,7 @@ def partGl(par):
     return (-2*par[1])/(par[1]**2+par[0]**2)-2*par[1]*(par[0]**2-par[0]**2)/(par[1]**2+par[0]**2)**2
 
 def FehlerFort(part1,part2,err1,err2,val1,val2):
-    return np.sqrt(part1(val1)**2*err1**2+part2(val2)**2+err2**2)
+    return np.sqrt(part1(val1)**2*err1**2+part2(val2)**2*err2**2)
 
 
 x=[[1,2,3],[1,2,3]]
@@ -121,7 +120,9 @@ for fed in range(2):
         K = CalK(Wgeg,Wgl)
         Kerr= FehlerFort(partGeg,partGl,WgegErr,WglErr,[Wgeg,Wgl],[Wgeg,Wgl])
         file.write(f"{fed+1} & {notch+1} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} // \n")
-
+        print(f"{fed+1} & {notch+1} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} //")
+        print(K)
+        print(Kerr)
 file.close()
 
 
