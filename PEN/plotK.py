@@ -7,6 +7,7 @@ import matplotlib as mpl
 from scipy import stats
 from scipy import optimize
 import math
+import roundwitherror
 
 Fits =[[[[2.25217312, 0.15    ,   3.31242126 ,0.08173956],[2.18692843 ,0.17566002, 3.53409045, 0.94868202],[2.15121613 ,0.1954903 , 3.86274606, 1.9238661 ]],
         [[2.22778397, 0.16340497 ,3.34592159 ,0.94466359],[2.15304351, 0.15956641, 3.64871821, 2.08355101],[2.12151143 ,0.1640976,  4.08609582 ,1.32476386]]],
@@ -110,7 +111,7 @@ for typ in range(2):
             xy[fed].append(getPlotable(getData(f"./PEN/Rawdata/f{fed+1}{Typen[typ]}{notch+1}#1.txt")))
             errors[typ][fed][notch]=getErrorsOfFit(xy[fed][notch],Fits[typ][fed][notch])
 #print(errors)
-
+file = open("./PEN/KdataTabel.txt","w")
 for fed in range(2):
     for notch in range(3):
         Wgeg = Fits[0][fed][notch][2]
@@ -119,9 +120,9 @@ for fed in range(2):
         WglErr = errors[0][fed][notch][2]
         K = CalK(Wgeg,Wgl)
         Kerr= FehlerFort(partGeg,partGl,WgegErr,WglErr,[Wgeg,Wgl],[Wgeg,Wgl])
-        print(f"{fed+1} & {notch+1} & {Wgeg} & {Wgl} & {K} // \n")
+        file.write(f"{fed+1} & {notch+1} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} // \n")
 
-        
+file.close()
 
 
 
