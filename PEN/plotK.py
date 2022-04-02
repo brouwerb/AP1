@@ -111,7 +111,7 @@ for typ in range(2):
             xy[fed].append(getPlotable(getData(f"./PEN/Rawdata/f{fed+1}{Typen[typ]}{notch+1}#1.txt")))
             errors[typ][fed][notch]=getErrorsOfFit(xy[fed][notch],Fits[typ][fed][notch])
 #print(errors)
-
+file = open("./PEN/KdataTabel.txt","w")
 for fed in range(2):
     for notch in range(3):
         Wgeg = Fits[0][fed][notch][2]
@@ -120,9 +120,9 @@ for fed in range(2):
         WglErr = errors[0][fed][notch][2]
         K = CalK(Wgeg,Wgl)
         Kerr= FehlerFort(partGeg,partGl,WgegErr,WglErr,[Wgeg,Wgl],[Wgeg,Wgl])
-        print(f"{fed+1} & {notch+1} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} // \n")
+        file.write(f"{fed+1} & {notch+1} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} // \n")
 
-        
+file.close()
 
 
 
