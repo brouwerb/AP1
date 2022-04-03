@@ -29,7 +29,7 @@ J = 1.069
 
 
 X_START =20
-Y_START =3
+Y_START =3.15
 X_END = 85
 Y_END = 4.2
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
@@ -41,7 +41,7 @@ X_MAJOR_TICK = 10
 Y_MAJOR_TICK =0.2
 X_MINOR_TICK =2
 Y_MINOR_TICK = 0.05
-SAVE_AS = "PEN\plotW.pdf"
+SAVE_AS = "./PEN/plotW.pdf"
 POINT_STYLE = [4,5,"x","s"]
 COLOR_STYLE =["blue","red","green","purple"]
 
@@ -189,7 +189,7 @@ for fed in range(2):
         arrCollector[4].append(Wgl)
         arrCollector[5].append(WglErr)
         
-        file.write(f"{fed+1} & {notchAbstand[notch]} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} \\\\ \n")
+        file.write(f"{fed+1} & {notchAbstand[notch]}  & {roundwitherror.round_err(Ws,WsErr)} & {roundwitherror.round_err(Wm,WmErr)} & {roundwitherror.round_err(K,Kerr)} \\\\ \n")
         print(f"{fed+1} & {notchAbstand[notch]}& {roundwitherror.round_err(Wm,WmErr)} & {roundwitherror.round_err(Ws,WsErr)} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)}\\\\ //")
     Kval_[fed].append(arrCollector[0])
     Kval_[fed].append(arrCollector[1])
@@ -275,6 +275,9 @@ ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
+
+print(roundwitherror.round_err(Kappa[0][0], KappaErr[0][0]))
+print(roundwitherror.round_err(Kappa[1][0], KappaErr[1][0]))
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.subplots_adjust(right=0.6)

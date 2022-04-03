@@ -23,11 +23,7 @@ SchFits =[[[[0.21649635036496342,3.2628175485390445,1.3461548783367518,0.0476094
 
 
 notchAbstand=[28.3,53.2,78.2]
-D = 11.06
-J = 1.069
 
-D = 11.06
-J = 1.069
 
 X_START =20
 Y_START =0
@@ -110,10 +106,6 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
-
-def Theoriekurve(r,k):
-    
-    return ((k*r**2)/(D+k*r**2))
 
 
 x=[[1,2,3],[1,2,3]]
@@ -201,22 +193,9 @@ for fed in range(2):
 file.close()
 
 
-# Kappa
-Kappa=[[],[]]
-KappaErr=[[],[]]
-for i in range(2):
-    Kappa[i], KappaErr[i]=optimize.curve_fit(Theoriekurve,np.array(notchAbstand)*0.01,Kval_[i][0])
-print(Kappa)
-print(KappaErr)
+
 
 #test
-
-xy1=[]
-for i in range(2):
-    xy1.append(genDataFromFunktion(100,X_START,X_END,Kappa[i][0],Theoriekurve))
-xy2=[]
-for i in range(2):
-    xy2.append(genDataFromFunktion(100,X_START*0.01,X_END*0.01,Kappa[i][0],Theoriekurve))
 
 plt.style.use("./AKU/AP1_style.mplstyle")
 
@@ -239,9 +218,8 @@ for i in range(2):
     err1[i]=ax.errorbar(notchAbstand,Kval1_[i][0],fmt="x",yerr=Kval1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
     sc[i]=ax.scatter(notchAbstand,Kval_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
-    ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
 plt.legend([sc[0],err1[0],sc[1],err1[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",
-                                            r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler","Fehlerbalken aus Auf.12"),loc=2)
+                                            r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler","Fehlerbalken der von K aus Schwebung"),loc=2)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #plt.title(TITEL,y=1.02)
@@ -258,10 +236,6 @@ ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
-
-print(roundwitherror.round_err(Kappa[0][0], KappaErr[0][0]))
-print(roundwitherror.round_err(Kappa[1][0], KappaErr[1][0]))
-
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()

@@ -11,6 +11,8 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[section]{placeins}
 
 
 \usepackage[ngerman]{babel}
@@ -33,12 +35,14 @@
 
     \tableofcontents
 
+    \newpage
+
     \section{Reversionspendel}
 
     \subsection{Experimenteller Aufbau und Theorie}
 
     Ein Reversionspendel hat zwei Aufhängepunkte und zwei Massen, die alle auf einer Geraden liegen.
-    Dabei kann ein Masse verschoben werden.
+    Dabei kann eine Masse verschoben werden.
     Es gibt zwei Positionen des verschiebbaren Gewichts, an dem die Periode der Schwingung an beiden
     Aufhängepunkten gleich ist. Für ein Reversionspendel in dieser Konfiguration ist die Periode
     \begin{align}
@@ -57,14 +61,14 @@
 
     \subsection{Ergebnisse}
 
-    \begin{figure}[ht]
+    \begin{figure}[!h]
         \centering
         \includegraphics[width=120mm]{./Reversion_grob.pdf}
 
         \caption{Grobe Darstellung der Messdaten (der Abstand ist nur relativ)}
         \label{fig:revgrob}
     \end{figure}
-    \begin{figure}[htb]
+    \begin{figure}[!h]
         \centering
         \includegraphics[width=\textwidth]{./Reversion_fein.pdf}
 
@@ -74,15 +78,16 @@
 
     Im Graphen \ref{fig:revgrob} wurde die Periodendauer abhängig vom Ort der zweiten Masse für beide Aufhängungspunkte dargestellt. 
     In dem Graphen \ref{fig:revfein1}  können die beiden Schnittpunkte der Periodendauer der verschiedenen
-    Aufhängungen nochmal näher gesehen werden. Die Daten wurden mit ienem Polynom 6. Grades gefittet.
+    Aufhängungen nochmal näher gesehen werden. Die Daten wurden mit einem Polynom 6. Grades gefittet.
     Leider ist dies aber noch nicht genau genug, sodass einige Punkte ausserhalb
     der Konfidenzintervalls liegen. Dies ist uns aber erst nachher aufgefallen. Für den Fehler der Zeitmessung
     wurden $2 \si{\milli\second}$ angenommen, da in den Messdaten eine maximale Abweichung von $1\si{\milli\second}$ bei verschiedenen Messungen 
     der gleichen Periodendauer vorkam und die Lichtchranke selber auch eine Genauigkeit von $1\si{\milli\second}$ hat.
     Beachtenswert ist, dass das Pendel einge Zeit braucht bis es sich eingependelt" hat und konsistente Messwerte
     gemessen werden können. Der Abstand der beiden Aufhängungspunkte $l_r$ beträgt $800,0(11)\si{\centi\metre}$.
+    In Tabelle \ref{ergrev} sind die Messdaten und berechneten Werte dargestellt. 
 
-    \begin{table}
+    \begin{table}[H]
         \centering
         \begin{tabular}{c c c}
             & Schnittpunkt 1 & Schnittpunkt 2 \\ \hline
@@ -90,20 +95,21 @@
             Erdbeschleunigung & $9,803(51)\si{\metre\per\second\squared}$ & $9,802(26)\si{\metre\per\second\squared}$ \\
             gewichtetes Mittel & \multicolumn{2}{c}{$g = 9,802(23)\si{\metre\per\square\second}$}
         \end{tabular}
-        \caption{Ergebisse}
+        \caption{Ergebnisse Reversionspendel}
         \label{ergrev}
     \end{table}
 
-    
+    \subsection{Diskussion}
+    Beide berechneten Periodendauern und Erdbeschleunigungen liegen sehr nahe bei einander.
     Der in München vom International Gravimetric Bureau gemesse Wert von $g = 9,807232\si{\metre\per\second\squared}$ \cite{glit} liegt
-    eindeutig im Konfidenzintervall unserer Messungen, die in Tabelle \ref{ergrev} dargestellt sind, und sogar relativ nahe am berechneten Wert.
+    eindeutig im Konfidenzintervall unserer Messungen und sogar relativ nahe am berechneten Wert.
 
 
     \section{Gekoppelte Pendel}
 
     \subsection{Experimenteller Aufbau und Theorie}
 
-    In diesem Experiment wurden zwei Pendel beobachtet, die mit eier Feder auf einer einstellbaren Höhe
+    In diesem Experiment wurden zwei Pendel beobachtet, die mit einer Feder auf einer einstellbaren Höhe
     verbunden wurden. Solche Pendel haben zwei Fundamentalschwingungen. 
     Die gleichphasige Winkelgeschwindigkeit 
     \begin{align}
@@ -116,18 +122,19 @@
     \begin{align}
         \omega_{geg} = \sqrt{\frac{mgl+2\kappa r^2}{J}}
     \end{align}
-    beeinflusst hingegegen auch die Feder $\kappa$ und der Befestigunsabstand $r$ letzterer.
-    In diesem Versuch müssen drei Messreihen aufgenommen werden: Eine gleichphasige, eine gegenphasige und
-    eine mit Schwebung. \\
-    In \textbf{Aufgabe 11} soll der Koplungsgrad $K$ bestimmt werden. Diesen bestimmt man mithilfe der beide
-    Winkelgeschwindigkeiten
+    beeinflusst hingegegen auch die Feder mit Federkonstante $\kappa$ und Befestigunsabstand $r$. \\
+    In diesem Versuch wurden drei Messreihen aufgenommen: Eine gleichphasige, eine gegenphasige und
+    eine mit Schwebung.\\
+    Für die Ausarbeitung müssen verschiedene charakterischtische Werte des Systems \textit{gekoppelte Pendel} bestimmt werden. \\
+
+    Den Koplungsgrad $K$
 
     \begin{align} \label{Kformel}
         K = \frac{\omega_{geg}^2 - \omega_{geg}^2}{\omega_{geg}^2 + \omega_{geg}^2} \ \ \ \text{Siehe: \cite[Formel (35)]{pen}}
     \end{align}
-    der gleichphasigen und gegenphasigen Schwingung. \\
+     bestimmt man mithilfe der beide Winkelgeschwindigkeiten der gleichphasigen und gegenphasigen Schwingung. \\
 
-    In \textbf{Aufgabe 12} sollen aus der Schwebung mithilfe der Schwebungskreisfrequenz $\omega_S$
+    Aus der Schwebung können mithilfe der Schwebungskreisfrequenz $\omega_S$
     und der mitteleren Kreisfrequenz  $\omega_M$ zuerst die Grundschwingungsfrequenzen
     \begin{align}
         \omega_{geg} &= \frac{\omega_{geg} + \omega_{gl}}{2} + \frac{\omega_{geg} - \omega_{gl}}{2} = \omega_M + \omega_S \\
@@ -135,8 +142,10 @@
     \end{align}
     ausgerechnet werden (Siehe: \cite[Formel (34)]{pen}). Um dann wieder den Kopplungsgrad nach Formel (\ref{Kformel})
     zu bestimmen. \\
+
     Mit den gegeben (Theorie-) Daten in \textbf{Aufgabe 13} \cite{pen} (Masse Pendelgewicht $M_P = 1,080(20)\si{\kilogram}$,
     Masse Stange $M_S = 0,160(5)\si{\kilogram}$, Abstand Gewicht-Aufhängung $l = 0,968(10)\si{\metre}$ und Länge $l_0 0 1,030(20)\si{\metre}$
+    und den Formeln der Modellbildung \cite{modell}
     lassen sich Trägheitsmoment
     \begin{align}
         J = 1,202(52)\si{\kilogram\metre\squared} \label{J}
@@ -145,48 +154,74 @@
     \begin{align}
         D = 11,06(30)\si{\newton\metre} \label{D}
     \end{align} 
-    ausrechnen (Fehlerberechnung siehe \cite[Formel (19)]{ABW}) und damit $\omega_{geg}$ und $K$
+    ausrechnen (Fehlerberechnung siehe \cite[Formel (19)]{ABW}) und damit die Modellkurven
     mithlife der Formeln \cite[(30)]{pen} und \cite[(35)]{pen}
-    berechnen:
+    aufstellen
     
     \begin{align}
-        K &= \frac{\kappa r^2}{D + \kappa r^2} \\
-        \omega_{geg} &= \sqrt{\frac{D+2\kappa r^2}{J}}
+        K &= \frac{\kappa r^2}{D + \kappa r^2} \label{Kkappa} \\
+        \omega_{geg} &= \sqrt{\frac{D+2\kappa r^2}{J}} \label{Okappa}
     \end{align}
+    um letzendlich durch einen Fit  $\kappa$ zu bestimmen
 
+    \subsection{Ergebnisse und Diskussion}
 
-    \subsection{Ergebnisse}
+    
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{./plotW.pdf}
+
+        \caption{Kreisfrequenzen der beiden Fundamentalschwingungen}
+        \label{fig:plotW}
+    \end{figure}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{./Kplot.pdf}
+
+        \caption{Kopplungsgrad der beiden Federn}
+        \label{fig:plotK}
+    \end{figure}
 
     Die verschieden Kreisfrequenzen wurden bestimmt, indem die jeweilligen Theoriekurven mit geeigneten
     Bounds an die Daten gefittet wurden, sodass sowohl die Frequenz als auch die Unsicherheit ausgegeben
-    werden konnte.
-    \paragraph{Messreihe gleichphasige und gegenphasige Schwingung}
-    In Graphen \ref{mess1} wurden die anhand der in Aufgabe 5 bestimmten Messreihen
-    berechneten $\omega_{geg}$ und $\omega_{gl}$ mit ihren Fehlern aufgetragen (farbige Fehlerbalken). Der Theoriewert der gleichphasigen
-    Schwingung $\omega_{gl}^T = 3,033(52)$, der mithilfe von (\ref{D}) und (\ref{J}) berechnet wurde, 
-    unterscheidet sich leider sehr stark von unseren Messwerten. Wir vermuten, dass die angegeben Daten nicht
-    die Realbedingungen des Versuchs wiederspiegeln. Dieser Fehler führt auch zu Abweichungen des Theoriewerts
-    in der Graphen, sowei bei der Berechnung von $\kappa$.
+    werden konnte. Die gesammten Messwerte sind im Anhang \ref{kmess} zu finden.
 
 
+    In Graphen \ref{fig:plotW} sind die anhand der zwei verschieden Messreihen
+    berechneten $\omega_{geg}$ und $\omega_{gl}$ dargestellt. Die Ungenauigkeiten der 1. und 2. Messreihe (Aufgabe 5) sind so klein,
+    dass sie nicht aufgetragen werden konnten. Bei den anhand der Schwebung berechneten Frequenzen (Messreihe 3)
+    sind zwar die Ungenauigkeiten größer, aber die Punkte aus der 1. und 2. Messreihe liegen im Konfidenzintervall.
+    Die Fehler wurden durch die Genauigkeit der gefitteten Funktionen bestimmt. Systematische Fehler z. B. wurden
+    nicht berücksicht, da diese nur minimal sind. Auch die Fehler der Längenmessung von $r$ wurden vernachlässigt.
+    Der Theoriewert der gleichphasigen Schwingung $\omega_{gl}^T = 3,217(57)$,
+    der mithilfe von (\ref{D}) und (\ref{J}) berechnet wurde,
+    liegt im Konfidenzintervall beider Messreihen. \\
     
+    Im Graphen \ref{fig:plotK} werden die aus Messreihe 2 und 3 bestimmten Kopplungskonstanten gezeigt.
+
+    Mit diesen Graphen können durch durch gefitteten Funktionen (\ref{Kkappa}) bzw (\ref{Okappa}) die beiden
+    Federkonstanten bestimmt werden.
     \begin{table}[H]
-        \label{mess1}
         \centering
-        \begin{tabular}{c c c c c}
-            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{geg}$ in \si{\radian\per\second} &
-            $\omega_{gl}$ in \si{\radian\per\second} & $K$ \\ \hline
+        \begin{tabular}{c c c}
+            Federkonstante & \textcolor{blue}{Feder 1} & \textcolor{red}{Feder 2} \\ \hline
+            mit $\omega_{geg}$ & $4.00 \si{\newton\per\metre}$ & $5.90\si{\newton\per\metre}$\\
+            mit $K$ & $4.01 \si{\newton\per\metre}$ & $5.65\si{\newton\per\metre}$\\
             
-            \input{KdataTabel.txt}
-            %\endgroup%
         \end{tabular}
-        \caption{gleichphasige und gegenphasige Kreisfrequenz mit Kopplungsgrad}
+        \caption{Berechnete Federkonstanten}
     \end{table}
 
-    \paragraph{Messreihe Schwebung}
-    Auch mit den anhand von $\omega_M$ und $\omega_S$ der Schwebung (Siehe Tabelle ?)
-    berechneten $\omega_{geg}$ und $\omega_{gl}$ kann der Kopplungsgrad $K$ berechnen werden,
-    jedoch sind hier, wie im Graphen ? zu sehen ist (schwarze Fehlerbalken), großere Ungenauigheiten
+
+    \subsection{Zusammenfassung}
+    Insgesamt sind die Ergebnisse in sich stimmig und mit den Theoriewerten vereinbar. Wie zu erwarten, gab
+    je nach Komplexität des fittens größer oder kleinere Fehler. Durch die automatisierte Datenaufnahme
+    wahr zwar deim zweiten Versuch die Durchführung einfacher, aber die Auswertung durchaus schwerer.
+    Es ist erstaunlich, mit was für komplizierten
+    Versuchsaufbauten so einfache Eigenschaften wie die Federkonstante gemessen werden können.
+
+
+
 
     \section{Anhang}
     \subsection{Fehlerberechung 1}
@@ -222,6 +257,31 @@
     Der Gewichtete Mittelwert und seine Unsicherheit wurde mithilfe von
     Formeln (29) bis (32) im ABW Skript\cite{ABW} berechnet. da $u_{int}$ mit $0.023\si{\metre\per\square\second}$
     größer als $u_{ext} = 0.00019\si{\metre\per\square\second}$ ist, wird $u_{int}$ als Ungenauigkeit angenommen.
+
+    \subsection{Messwerte gekoppelte Pendel} \label{kmess}
+
+    \begin{table}[H]
+        \label{mess1}
+        \centering
+        \begin{tabular}{c c c c c}
+            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{geg}$ in \si{\radian\per\second} &
+            $\omega_{gl}$ in \si{\radian\per\second} & $K$ \\ \hline
+            
+            \input{KdataTabel.txt}
+        \end{tabular}
+        \caption{Übersicht der Daten der 1. und 2. Messreihe}
+    \end{table}
+
+    \begin{table}[H]
+        \label{mess2}
+        \centering
+        \begin{tabular}{c c c c c c c}
+            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{M}$ in \si{\radian\per\second} & $\omega_{S}$ in \si{\radian\per\second} & $K$ \\ \hline
+            
+            \input{SChwdataTabel.txt}
+        \end{tabular}
+        \caption{Übersicht der Daten der 3. Messreihe}
+    \end{table}
 
 
     \bibliographystyle{plain}
