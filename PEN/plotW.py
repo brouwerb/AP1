@@ -29,7 +29,7 @@ J = 1.069
 
 
 X_START =20
-Y_START =3
+Y_START =3.15
 X_END = 85
 Y_END = 4.2
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
@@ -41,7 +41,7 @@ X_MAJOR_TICK = 10
 Y_MAJOR_TICK =0.2
 X_MINOR_TICK =2
 Y_MINOR_TICK = 0.05
-SAVE_AS = "PEN\plotW.pdf"
+SAVE_AS = "./PEN/plotW.pdf"
 POINT_STYLE = [4,5,"x","s"]
 COLOR_STYLE =["blue","red"]
 
