@@ -241,8 +241,8 @@ for i in range(2):
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
     sc[i]=ax.scatter(notchAbstand,Kval_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
     theo[i],=ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
-plt.legend([sc[0],err1[0],theo[0],sc[1],err1[1],theo[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",f"Theoriekurve mit {roundwitherror.round_err(Kappa[0][0], KappaErr[0][0])}",
-                                            r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler",f"Theoriekurve mit {roundwitherror.round_err(Kappa[1][0], KappaErr[1][0])}","Fehlerbalken aus Auf.12"),loc=2)
+plt.legend([sc[0],err1[0],theo[0],sc[1],err1[1],theo[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",f"Theoriekurve mit $\kappa =$ {roundwitherror.round_err(Kappa[0][0], KappaErr[0][0])}",
+                                            r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler",f"Theoriekurve mit $\kappa =$ {roundwitherror.round_err(Kappa[1][0], KappaErr[1][0])}","Fehlerbalken aus Auf.12"),loc=2)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #plt.title(TITEL,y=1.02)
