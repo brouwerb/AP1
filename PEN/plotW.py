@@ -43,7 +43,7 @@ X_MINOR_TICK =2
 Y_MINOR_TICK = 0.05
 SAVE_AS = "PEN\plotW.pdf"
 POINT_STYLE = [4,5,"x","s"]
-COLOR_STYLE =["blue","red"]
+COLOR_STYLE =["blue","red","green","purple"]
 
 workbook = xlrd.open_workbook('./AKU/Testergebnisse.xls')
 worksheet = workbook.sheet_by_name('stehende welle')
@@ -223,13 +223,14 @@ for i in range(2):
     xy2.append(genDataFromFunktion(100,X_START*0.01,X_END*0.01,Kappa[i][0],Theoriekurve))
 
 #reg= [stats.linregress(x[0],y[0]),stats.linregress(x[1],y[1])]
-print(xy)
+
 #print(reg[0])
 fig, ax = plt.subplots()
 ax.grid()
 errorsOfSlope = []
-err1=[[],[]]
-sc=[[],[]]
+err2=[[[],[]],[[],[]]]
+sc=[[[],[]],[[],[]]]
+pl=[[[],[]],[[],[]]]
 
 
 for i in range(2):
@@ -237,23 +238,27 @@ for i in range(2):
     
 
     
-    err2 =ax.errorbar(notchAbstand,Wgeg_[i][0],fmt="x",yerr=Wgeg_[i][1], ecolor=COLOR_STYLE[i],elinewidth=0.7,capsize=3,capthick=0.7)
-    err2 =ax.errorbar(notchAbstand,Wgl_[i][0],fmt="x",yerr=Wgl_[i][1],ecolor=COLOR_STYLE[i],elinewidth=0.7,capsize=3,capthick=0.7)
+    err2[i][0] =ax.errorbar(notchAbstand,Wgeg_[i][0],fmt="x",yerr=Wgeg_[i][1], ecolor=COLOR_STYLE[i],elinewidth=0.7,capsize=3,capthick=0.7)
+    err2[i][1] =ax.errorbar(notchAbstand,Wgl_[i][0],fmt="x",yerr=Wgl_[i][1],ecolor=COLOR_STYLE[i+2],elinewidth=0.7,capsize=3,capthick=0.7)
     #ax.scatter(notchAbstand,Kval1_[i][0],marker=POINT_STYLE[i+2],color=COLOR_STYLE[i],s=10)
 
     #err1[i]=ax.errorbar(notchAbstand,Wgeg1_[i][0],fmt="x",yerr=Wgeg1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
     #err1[i]=ax.errorbar(notchAbstand,Wgl1_[i][0],fmt="x",yerr=Wgl1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
 
-    sc[i]=ax.scatter(notchAbstand,Wgeg1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
-    sc[i]=ax.scatter(notchAbstand,Wgl1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
+    sc[i][0]=ax.scatter(notchAbstand,Wgeg1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
+    sc[i][1]=ax.scatter(notchAbstand,Wgl1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i+2],s=15,linewidths=1,zorder=10)
 
-    ax.plot([X_START-i,X_END],[3.2165,3.2165],color=COLOR_STYLE[i],linestyle ="dotted")
-    ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
+    pl[i][0],=ax.plot([X_START-i,X_END],[3.2165,3.2165],color=COLOR_STYLE[i+2],linestyle ="dotted")
+    pl[i][1],=ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
     #sc[i]=ax.scatter(notchAbstand,Wgeg_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
     #sc[i]=ax.scatter(notchAbstand,Wgl_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
-plt.legend([sc[0],err1[0],sc[1],err1[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",
-                                            r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler","Fehlerbalken der von K aus Schwebung"),loc=2)
+plt.legend([sc[0][0],err2[0][0],pl[0][1],sc[0][1],err2[0][1],pl[0][0],     sc[1][0],err2[1][0],pl[1][1],sc[1][1],err2[1][1],pl[1][0]],
+(r"$\omega_{geg}$ Feder1 aus Auf.11 ",r"$\omega_{geg}$ Feder1 aus Auf.12 mit Fehler",r"Theoriekurve mit $\kappa$ = 4.004437(14)",r"$\omega_{gl}$ Feder1 aus Auf.11 ",
+r"$\omega_{gl}$ Feder1 aus Auf.12 mit Fehler",r"Theoriekurve von $\omega_{gl}$",
+r"$\omega_{geg}$ Feder2 aus Auf.11 ",r"$\omega_{geg}$ Feder2 aus Auf.12 mit Fehler",r"Theoriekurve mit $\kappa$ = 5.5995(10)",r"$\omega_{gl}$ Feder2 aus Auf.11 ",
+r"$\omega_{gl}$ Feder2 aus Auf.12 mit Fehler",r"Theoriekurve von $\omega_{gl}$"),loc='upper center', bbox_to_anchor=(1.41, 1),
+          ncol=1, fancybox=True, shadow=True)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #plt.title(TITEL,y=1.02)
@@ -272,6 +277,8 @@ ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
 #print(f"der Fehler des Slopes ist: {std_err}")
+plt.subplots_adjust(right=0.6)
+fig.set_size_inches(8,4)
 plt.show()
 fig.savefig(SAVE_AS)
 
