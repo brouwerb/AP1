@@ -248,7 +248,7 @@ for i in range(2):
     sc[i][0]=ax.scatter(notchAbstand,Wgeg1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,zorder=10)
     sc[i][1]=ax.scatter(notchAbstand,Wgl1_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i+2],s=15,linewidths=1,zorder=10)
 
-    pl[i][0],=ax.plot([X_START-i,X_END],[3.2165,3.2165],color=COLOR_STYLE[i+2],linestyle ="dotted")
+    pl[i][0],=ax.plot([X_START-i*5,X_END],[3.2165,3.2165],color=COLOR_STYLE[i+2],linestyle ="dotted")
     pl[i][1],=ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
     #sc[i]=ax.scatter(notchAbstand,Wgeg_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
@@ -281,7 +281,7 @@ print(roundwitherror.round_err(Kappa[1][0], KappaErr[1][0]))
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.subplots_adjust(right=0.6)
-fig.set_size_inches(8,4)
+fig.set_size_inches(8,4.5)
 plt.show()
 fig.savefig(SAVE_AS)
 
