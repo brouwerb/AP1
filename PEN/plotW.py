@@ -271,6 +271,9 @@ ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
+print(roundwitherror.round_err(Kappa[0][0], KappaErr[0][0]))
+print(roundwitherror.round_err(Kappa[1][0], KappaErr[1][0]))
+
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)

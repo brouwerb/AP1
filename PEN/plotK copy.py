@@ -23,8 +23,6 @@ SchFits =[[[[0.21649635036496342,3.2628175485390445,1.3461548783367518,0.0476094
 
 
 notchAbstand=[28.3,53.2,78.2]
-D = 11.06
-J = 1.069
 
 
 X_START =20
@@ -108,10 +106,6 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
-
-def Theoriekurve(r,k):
-    
-    return ((k*r**2)/(D+k*r**2))
 
 
 x=[[1,2,3],[1,2,3]]
@@ -199,22 +193,9 @@ for fed in range(2):
 file.close()
 
 
-# Kappa
-Kappa=[[],[]]
-KappaErr=[[],[]]
-for i in range(2):
-    Kappa[i], KappaErr[i]=optimize.curve_fit(Theoriekurve,np.array(notchAbstand)*0.01,Kval_[i][0])
-print(Kappa)
-print(KappaErr)
+
 
 #test
-
-xy1=[]
-for i in range(2):
-    xy1.append(genDataFromFunktion(100,X_START,X_END,Kappa[i][0],Theoriekurve))
-xy2=[]
-for i in range(2):
-    xy2.append(genDataFromFunktion(100,X_START*0.01,X_END*0.01,Kappa[i][0],Theoriekurve))
 
 plt.style.use("./AKU/AP1_style.mplstyle")
 
