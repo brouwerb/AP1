@@ -189,7 +189,7 @@ for fed in range(2):
         arrCollector[4].append(Wgl)
         arrCollector[5].append(WglErr)
         
-        file.write(f"{fed+1} & {notchAbstand[notch]} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)} \\\\ \n")
+        file.write(f"{fed+1} & {notchAbstand[notch]}  & {roundwitherror.round_err(Ws,WsErr)} & {roundwitherror.round_err(Wm,WmErr)} & {roundwitherror.round_err(K,Kerr)} \\\\ \n")
         print(f"{fed+1} & {notchAbstand[notch]}& {roundwitherror.round_err(Wm,WmErr)} & {roundwitherror.round_err(Ws,WsErr)} & {roundwitherror.round_err(Wgeg,WgegErr)} & {roundwitherror.round_err(Wgl,WglErr)} & {roundwitherror.round_err(K,Kerr)}\\\\ //")
     Kval_[fed].append(arrCollector[0])
     Kval_[fed].append(arrCollector[1])

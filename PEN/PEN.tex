@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage[section]{placeins}
 
 
 \usepackage[ngerman]{babel}
@@ -165,10 +166,7 @@
 
     \subsection{Ergebnisse und Diskussion}
 
-    Die verschieden Kreisfrequenzen wurden bestimmt, indem die jeweilligen Theoriekurven mit geeigneten
-    Bounds an die Daten gefittet wurden, sodass sowohl die Frequenz als auch die Unsicherheit ausgegeben
-    werden konnte. Die gesammten Messwerte sind im Anhang \ref{kmess} zu finden.
-
+    
     \begin{figure}[!h]
         \centering
         \includegraphics[width=\textwidth]{./plotW.pdf}
@@ -183,6 +181,10 @@
         \caption{Kopplungsgrad der beiden Federn}
         \label{fig:plotK}
     \end{figure}
+
+    Die verschieden Kreisfrequenzen wurden bestimmt, indem die jeweilligen Theoriekurven mit geeigneten
+    Bounds an die Daten gefittet wurden, sodass sowohl die Frequenz als auch die Unsicherheit ausgegeben
+    werden konnte. Die gesammten Messwerte sind im Anhang \ref{kmess} zu finden.
 
 
     In Graphen \ref{fig:plotW} sind die anhand der zwei verschieden Messreihen
@@ -203,10 +205,11 @@
         \centering
         \begin{tabular}{c c c}
             Federkonstante & \textcolor{blue}{Feder 1} & \textcolor{red}{Feder 2} \\ \hline
-            mit $\omega_{geg}$ & $4.00444(15) \si{\newton\per\metre}$ & $5.5996(11)\si{\newton\per\metre}$\\
-            mit $K$ & 
+            mit $\omega_{geg}$ & $4.00 \si{\newton\per\metre}$ & $5.90\si{\newton\per\metre}$\\
+            mit $K$ & $4.01 \si{\newton\per\metre}$ & $5.65\si{\newton\per\metre}$\\
             
         \end{tabular}
+        \caption{Berechnete Federkonstanten}
     \end{table}
 
 
@@ -272,9 +275,8 @@
     \begin{table}[H]
         \label{mess2}
         \centering
-        \begin{tabular}{c c c c c}
-            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{geg}$ in \si{\radian\per\second} &
-            $\omega_{gl}$ in \si{\radian\per\second} & $K$ \\ \hline
+        \begin{tabular}{c c c c c c c}
+            Feder & Abstand $r$ in \si{\centi\metre} & $\omega_{M}$ in \si{\radian\per\second} & $\omega_{S}$ in \si{\radian\per\second} & $K$ \\ \hline
             
             \input{SChwdataTabel.txt}
         \end{tabular}

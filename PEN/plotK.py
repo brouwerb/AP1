@@ -237,6 +237,7 @@ for i in range(2):
     err1[i]=ax.errorbar(notchAbstand,Kval1_[i][0],fmt="x",yerr=Kval1_[i][1], ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
     #ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
     sc[i]=ax.scatter(notchAbstand,Kval_[i][0],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
+    ax.plot(xy1[i][0],xy2[i][1],color=COLOR_STYLE[i],linestyle ="dotted")
 plt.legend([sc[0],err1[0],sc[1],err1[1],err2],(r"$K$ Feder1 aus Auf.12 ",r"$K$ Feder1 aus Auf.11 mit Fehler",
                                             r"$K$ Feder2 aus Auf.12",r"$K$ Feder2 aus Auf.11 mit Fehler","Fehlerbalken der von K aus Schwebung"),loc=2)
 
@@ -255,6 +256,10 @@ ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
 ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
 ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
+
+print(roundwitherror.round_err(Kappa[0][0], KappaErr[0][0]))
+print(roundwitherror.round_err(Kappa[1][0], KappaErr[1][0]))
+
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
