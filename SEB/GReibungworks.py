@@ -27,7 +27,7 @@ SAVE_AS = "./SEB/plotW.pdf"
 POINT_STYLE = [4,5,"x","s"]
 COLOR_STYLE =["blue","red","green","purple"]
 
-
+path1 = './SEB/Raw_data/1#1.txt'
 
 def getData(path):
     content=""
@@ -53,8 +53,12 @@ def getPlotable(rData):
         data[1].append(I[1])
     return data
 
+colors = np.random.rand(2)
 
-
+fig, ax = plt.subplots()
+line, = ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
+# plt.show()
+selectedpoints = []
 
 def onpick1(event):
         if isinstance(event.artist, Line2D):
@@ -67,21 +71,14 @@ def onpick1(event):
             else:
                 selectedpoints.append(ind)
             selectedpoints.sort()
-            
+            buff = [[], []]
             for i in selectedpoints:
                 buff[0].append(getPlotable(getData(path1))[0][ind[0]])
                 buff[1].append(getPlotable(getData(path1))[1][ind[0]])
-
-            
-            ax.clear() #Funktioniert noch nicht soll eigendlich durch nochmal clicken wieder löschen
-            ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
-            ax.scatter(buff[0], buff[1], color=COLOR_STYLE[0])
+            points = ax.scatter(buff[0], buff[1], color=COLOR_STYLE[0])
             print('onpick1 line:', np.column_stack([xdata[ind], ydata[ind]]), ind, buff)
-            if len(buff[0]) >= 2:
-                pass     
             plt.draw()
 
-fig, ax = plt.subplots()
 fig.canvas.mpl_connect('pick_event', onpick1)
 
 
@@ -95,17 +92,37 @@ def on_pick(event):
     print('selected point is:',np.array([xdata[ind], ydata[ind]]).T)
 
 # cid = fig.canvas.mpl_connect('pick_event', on_pick)
-#Schleife Funzt nicht, ka wie plt.show() funktioniert, jedenfalls nicht wie ich will
-for i in range(4):
-    for j in range(3):
 
-        buff = [[], []]
 
-        path1 = f'./SEB/Raw_data/{i+1}#{j+1}.txt'
-        ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
-        # plt.show()
-        selectedpoints = []
-        fig.canvas.mpl_connect('pick_event', onpick1)
-        #plt.ioff()
-        plt.show()
+def pick_simple():
+    # simple picking, lines, rectangles and text
+    fig, (ax1, ax2) = plt.subplots(2, 1)
+    ax1.set_title('click on points, rectangles or text', picker=True)
+    ax1.set_ylabel('ylabel', picker=True, bbox=dict(facecolor='red'))
+    line, = ax1.plot(rand(100), 'o', picker=True, pickradius=5)
 
+    # pick the rectangle
+    ax2.bar(range(10), rand(10), picker=True)
+    for label in ax2.get_xticklabels():  # make the xtick labels pickable
+        label.set_picker(True)
+
+    def onpick1(event):
+        if isinstance(event.artist, Line2D):
+            thisline = event.artist
+            xdata = thisline.get_xdata()
+            ydata = thisline.get_ydata()
+            ind = event.ind
+            print('onpick1 line:', np.column_stack([xdata[ind], ydata[ind]]))
+        elif isinstance(event.artist, Rectangle):
+            patch = event.artist
+            print('onpick1 patch:', patch.get_path())
+        elif isinstance(event.artist, Text):
+            text = event.artist
+            print('onpick1 text:', text.get_text())
+
+    fig.canvas.mpl_connect('pick_event', onpick1)
+
+
+plt.show()
+
+print('end')
