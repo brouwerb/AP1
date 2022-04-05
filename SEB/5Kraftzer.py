@@ -56,7 +56,7 @@ def partUnten(vals):
     return -1*vals[0]/vals[1]**2
 
 def FehlerFort(part1,part2,err1,err2,vals):
-    return np.sqrt(part1(vals)**2*err1**2+part2(vals)**2*err2**2)
+    return np.sqrt(float(part1(vals)**2*err1**2+part2(vals)**2*err2**2))
 
 def sine(x,buf):
     return np.sin(np.deg2rad(x))
@@ -82,13 +82,16 @@ Normal = getAxis(1,7,5)
 Hangab = getAxis(1,8,5)
 NormalF = getAxis(1,9,5)
 HangabF = getAxis(1,10,5)
-Gewichts = getAxis(1,15,5)
-GewichtsF= getAxis(1,16,5)
-
+Gewichts = getAxis(1,17,5)
+GewichtsF= getAxis(1,18,5)
+print(Hangab)
+print(Gewichts)
+print(HangabF)
+print(GewichtsF)
 
 x=[Winkel,Winkel,Winkel]
 y =[quotientArray(Hangab,Gewichts),quotientArray(Normal,Gewichts),quotientArray(Hangab,Normal)]
-errorsY =[FehlerFort(partOben,partUnten,HangabF,GewichtsF,[Hangab,Gewichts]),FehlerFort(partOben,partUnten,NormalF,GewichtsF,[Normal,Gewichts]),FehlerFort(partOben,partUnten,HangabF,NormalF,[Hangab,Normal])]
+errorsY =[FehlerFort(partOben,partUnten,HangabF[i],GewichtsF[i],[Hangab[i],Gewichts[i]])for i in range(3)]
 theoXY = [genDataFromFunktion(100,X_START,X_END,[],sine),genDataFromFunktion(100,X_START,X_END,[],cos),genDataFromFunktion(100,X_START,X_END,[],tan)]
 print(tan(10,[]))
 

@@ -19,7 +19,7 @@ X_MAJOR_TICK = 2
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.5
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./SEB/5Kraftzer.pdf"
+SAVE_AS = "./SEB/6Haftreib.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
