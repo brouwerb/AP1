@@ -70,9 +70,15 @@ Gewichtsfehler = 0.01
 KraftmesserF= getRow(1,20,4)
 # print(KraftmesserF)
 x=[]
+errr = []
 for i, I in enumerate(Gewicht):
     for j in getAxis(2,i,16):
         x.append(I)
+
+for i, I in enumerate(KraftmesserF):
+    for j in getAxis(2,i,16):
+        errr.append(I)
+
 print(getAxis(2,1,16),  getAxis(2,2,16), getAxis(2,3,16))
 
 y = getAxis(2,1,16) + getAxis(2,2,16) + getAxis(2,3,16)
@@ -86,7 +92,8 @@ y = getAxis(2,1,16) + getAxis(2,2,16) + getAxis(2,3,16)
 plt.style.use("./AKU/AP1_style.mplstyle")
 print("x= ", x , y)
 
-reg, err= optimize.curve_fit(linreg, x ,y)
+
+reg, err= optimize.curve_fit(linreg, x ,y, sigma = errr, absolute_sigma = True)
 err= np.sqrt(np.diag(err))
 
 
