@@ -93,8 +93,8 @@ plt.style.use("./AKU/AP1_style.mplstyle")
 print("x= ", x , y)
 
 
-reg, err= optimize.curve_fit(linreg, x ,y, sigma = errr, absolute_sigma = True)
-err= np.sqrt(np.diag(err))
+reg, err = optimize.curve_fit(linreg, x ,y, sigma = errr)
+err = np.sqrt(np.diag(err))
 
 
 fig, ax = plt.subplots()
@@ -102,8 +102,11 @@ ax.grid()
 
 
 sc = ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=10,linewidths=1,edgecolors="black",zorder=10)
-theo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[1],linestyle="dotted")
+theo, = ax.plot([0,X_END],[0,X_END*0.155],color= COLOR_STYLE[1],linestyle="dotted")
+heo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[2],linestyle="dotted")
 ax.legend([sc,theo],[r"$F_{H}/F_{g}$",f"fit $f(x) = ax$ mit \na= {round_err(reg[0],err[0])}"])
+ax.fill_between([0,X_END], [0,X_END*(reg[0] + err[0])], [0,X_END*(reg[0] - err[0])], alpha=0.2)
+ax.fill_between([0,X_END], [0,X_END*0.068], [0,X_END*0.242], alpha=0.2, color='C1')
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
