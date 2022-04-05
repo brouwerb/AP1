@@ -94,8 +94,9 @@ fig, ax = plt.subplots()
 
 ax.grid()
 def change(von,bis,von2,bis2,ampvon,ampbis,phasevon,phasebis):
-    popt, perr= optimize.curve_fit(dualSine,xy[0],xy[1],bounds=((ampvon,von,-np.inf,von2,phasevon,-np.inf),(ampbis,bis,np.inf,bis2,phasebis,np.inf)))
+    popt,perr= optimize.curve_fit(dualSine,xy[0],xy[1],bounds=((ampvon,von,-np.inf,von2,phasevon,-np.inf),(ampbis,bis,np.inf,bis2,phasebis,np.inf)))
     print("["+arrToStrin(popt)+","+arrToStrin( np.sqrt(np.diag(pconv)) )+"]")
+    print(np.sqrt(np.diag(perr)))
     xs,ys=genDataFromFunktion(1000,0,100,popt,dualSineArr)
     return ys
 
