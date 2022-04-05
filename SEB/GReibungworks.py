@@ -29,6 +29,10 @@ COLOR_STYLE =["blue","red","green","purple"]
 
 path1 = './SEB/Raw_data/1#1.txt'
 
+indizes = [[[10, 44], [18, 54], [16, 47]], [[12, 36], [16, 41], [19, 36]], [[5, 23], [6, 24], [6, 24]], [[5, 29], [10, 30], 
+[5, 25]]]
+
+
 def getData(path):
     content=""
     with open (path) as f:
@@ -55,11 +59,7 @@ def getPlotable(rData):
 
 colors = np.random.rand(2)
 
-fig, ax = plt.subplots()
-line, = ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
-# plt.show()
 selectedpoints = []
-
 def onpick1(event):
         if isinstance(event.artist, Line2D):
             thisline = event.artist
@@ -78,9 +78,42 @@ def onpick1(event):
             points = ax.scatter(buff[0], buff[1], color=COLOR_STYLE[0])
             print('onpick1 line:', np.column_stack([xdata[ind], ydata[ind]]), ind, buff)
             plt.draw()
+for angle in range(4):
+    selectedpoints.append([])
+    for durch in range(3):
+        selectedpoints[angle].append([])
+        def onpick1(event):
+            if isinstance(event.artist, Line2D):
+                thisline = event.artist
+                xdata = thisline.get_xdata()
+                ydata = thisline.get_ydata()
+                ind = event.ind
+                
+                if ind[0] in selectedpoints[angle][durch]:
+                    selectedpoints[angle][durch].remove(ind) # 
+                else:
+                    selectedpoints[angle][durch].append(ind[0])
+                selectedpoints[angle][durch].sort()
+                buff = [[], []]
+                for i in selectedpoints[angle][durch]:
+                    buff[0].append(getPlotable(getData(path1))[0][ind[0]])
+                    buff[1].append(getPlotable(getData(path1))[1][ind[0]])
+                points = ax.scatter(buff[0], buff[1], color=COLOR_STYLE[0])
+                print('onpick1 line:', np.column_stack([xdata[ind], ydata[ind]]), ind, buff)
+                plt.draw()
+        path1 = f'./SEB/Raw_data/{angle+1}#{durch+1}.txt'
+        while True:
+            fig, ax = plt.subplots()
+            line, = ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
+            # plt.show()
+            
 
-fig.canvas.mpl_connect('pick_event', onpick1)
-
+            fig.canvas.mpl_connect('pick_event', onpick1)
+            plt.show()
+            print(selectedpoints)
+            if len(selectedpoints[angle][durch])==2:
+                plt.close()
+                break
 
 # 3, for example, is tolerance for picker i.e, how far a mouse click from
 # the plotted point can be registered to select nearby data point/points.
@@ -123,6 +156,6 @@ def pick_simple():
     fig.canvas.mpl_connect('pick_event', onpick1)
 
 
-plt.show()
+
 
 print('end')
