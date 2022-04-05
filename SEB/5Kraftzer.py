@@ -76,6 +76,7 @@ def genDataFromFunktion(amount,von,bis,params,func):
     return x,y
 
 
+
 Winkel= getAxis(1,0,5)
 Normal = getAxis(1,7,5)
 Hangab = getAxis(1,8,5)

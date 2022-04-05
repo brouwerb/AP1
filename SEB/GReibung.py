@@ -8,6 +8,7 @@ from scipy import stats
 from scipy import optimize
 import math
 import roundwitherror
+from matplotlib.lines import Line2D
 
 X_START =20
 Y_START =3.15
@@ -26,7 +27,7 @@ SAVE_AS = "./SEB/plotW.pdf"
 POINT_STYLE = [4,5,"x","s"]
 COLOR_STYLE =["blue","red","green","purple"]
 
-path1 = './SEB/Raw_data/1#1.txt'
+
 
 def getData(path):
     content=""
@@ -53,9 +54,35 @@ def getPlotable(rData):
     return data
 
 
+
+
+def onpick1(event):
+        if isinstance(event.artist, Line2D):
+            thisline = event.artist
+            xdata = thisline.get_xdata()
+            ydata = thisline.get_ydata()
+            ind = event.ind
+            if ind in selectedpoints:
+                selectedpoints.remove(ind)
+            else:
+                selectedpoints.append(ind)
+            selectedpoints.sort()
+            
+            for i in selectedpoints:
+                buff[0].append(getPlotable(getData(path1))[0][ind[0]])
+                buff[1].append(getPlotable(getData(path1))[1][ind[0]])
+
+            
+            ax.clear() #Funktioniert noch nicht soll eigendlich durch nochmal clicken wieder löschen
+            ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
+            ax.scatter(buff[0], buff[1], color=COLOR_STYLE[0])
+            print('onpick1 line:', np.column_stack([xdata[ind], ydata[ind]]), ind, buff)
+            if len(buff[0]) >= 2:
+                pass     
+            plt.draw()
+
 fig, ax = plt.subplots()
-ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=3)
-# plt.show()
+fig.canvas.mpl_connect('pick_event', onpick1)
 
 
 # 3, for example, is tolerance for picker i.e, how far a mouse click from
@@ -67,6 +94,18 @@ def on_pick(event):
     xdata, ydata = line.get_data()
     print('selected point is:',np.array([xdata[ind], ydata[ind]]).T)
 
-cid = fig.canvas.mpl_connect('pick_event', on_pick)
+# cid = fig.canvas.mpl_connect('pick_event', on_pick)
+#Schleife Funzt nicht, ka wie plt.show() funktioniert, jedenfalls nicht wie ich will
+for i in range(4):
+    for j in range(3):
 
-plt.show()
+        buff = [[], []]
+
+        path1 = f'./SEB/Raw_data/{i+1}#{j+1}.txt'
+        ax.plot(getPlotable(getData(path1))[0], getPlotable(getData(path1))[1], picker=True, pickradius=5)
+        # plt.show()
+        selectedpoints = []
+        fig.canvas.mpl_connect('pick_event', onpick1)
+        #plt.ioff()
+        plt.show()
+
