@@ -35,7 +35,7 @@ def getAxis(row1,collumn1,row2):
     data = []
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
-    return np.array(data)
+    return data
 
 def getRow(collumn1,row1,collumn2):
     data = []
@@ -65,7 +65,7 @@ def linreg(x, b):
     return b*x
 
 
-Gewicht = np.array(getRow(1,1,4)) * 0.01
+Gewicht = np.array(getRow(1,1,4)) * 0.009807
 Gewichtsfehler = 0.01
 KraftmesserF= getRow(1,20,4)
 # print(KraftmesserF)
@@ -73,8 +73,9 @@ x=[]
 for i, I in enumerate(Gewicht):
     for j in getAxis(2,i,16):
         x.append(I)
-    
-y = [getAxis(2,1,16) + getAxis(2,2,16) + getAxis(2,3,16)]
+print(getAxis(2,1,16),  getAxis(2,2,16), getAxis(2,3,16))
+
+y = getAxis(2,1,16) + getAxis(2,2,16) + getAxis(2,3,16)
 #yErr=[[studentT(1.05,15,Dreiecksvert(KraftmesserF[0])),studentT(1.05,15,Dreiecksvert(KraftmesserF[1])),studentT(1.05,15,Dreiecksvert(KraftmesserF[2]))]]
 #valsmu = [y[0][i]/x[0][i] for i in range(len(y[0]))]
 #errsmu = [FehlerFort(partOben,partUnten,yErr[0][i],Gewichtsfehler,[y[0][i],x[0][i]]) for i in range(len (y[0]))]
@@ -85,18 +86,17 @@ y = [getAxis(2,1,16) + getAxis(2,2,16) + getAxis(2,3,16)]
 plt.style.use("./AKU/AP1_style.mplstyle")
 print("x= ", x , y)
 
-#reg, err= optimize.curve_fit(linreg, x ,y)
-#err= np.sqrt(np.diag(err))
+reg, err= optimize.curve_fit(linreg, x ,y)
+err= np.sqrt(np.diag(err))
 
 
 fig, ax = plt.subplots()
 ax.grid()
-sc=[[],[],[]]
-theo =[[],[],[]]
 
-ax.scatter(x,y,marker=POINT_STYLE[i],color=COLOR_STYLE[0],s=10,linewidths=1,edgecolors="black",zorder=10)
-#theo[i],=ax.plot([X_START,X_END],[reg[0],X_END*reg[1]+reg[0]],color= COLOR_STYLE[i],linestyle="dotted")
-#ax.legend([sc[0],theo[0]],[r"$F_{H}/F_{g}$",f"fit (a+bx) mit \na= {round_err(reg[0],err[0])} und b= {round_err(reg[1],err[1])}"])
+
+sc = ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=10,linewidths=1,edgecolors="black",zorder=10)
+theo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[1],linestyle="dotted")
+ax.legend([sc,theo],[r"$F_{H}/F_{g}$",f"fit $f(x) = ax$ mit \na= {round_err(reg[0],err[0])}"])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
