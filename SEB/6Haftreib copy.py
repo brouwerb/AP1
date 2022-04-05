@@ -93,8 +93,8 @@ plt.style.use("./AKU/AP1_style.mplstyle")
 print("x= ", x , y)
 
 
-reg, err= optimize.curve_fit(linreg, x ,y, sigma = errr, absolute_sigma = True)
-err= np.sqrt(np.diag(err))
+reg, err = optimize.curve_fit(linreg, x ,y, sigma = errr, absolute_sigma = True)
+err = np.sqrt(np.diag(err))
 
 
 fig, ax = plt.subplots()
