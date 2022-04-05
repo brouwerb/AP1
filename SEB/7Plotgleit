@@ -1,0 +1,117 @@
+
+from decimal import Inexact
+import xlrd
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+import matplotlib as mpl
+from scipy import optimize
+from roundwitherror import round_err
+
+X_START =0
+Y_START =0
+X_END = 16
+Y_END = 3
+TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
+Y_LABEL = r"$F_{Haft}$ in $N$"
+X_LABEL = r"$F_{N}$ in $N$"
+X_ERROR = 4
+Y_ERROR = 1
+X_MAJOR_TICK = 2
+Y_MAJOR_TICK =0.5
+X_MINOR_TICK =0.5
+Y_MINOR_TICK = 0.1
+SAVE_AS = "./SEB/7Plotgleit.pdf"
+POINT_STYLE = ["o","^","s"]
+COLOR_STYLE =["blue","red","green"]
+
+
+indizes = [[[10, 44], [18, 54], [16, 47]], [[12, 36], [16, 41], [19, 36]], [[5, 23], [6, 24], [6, 24]], [[5, 29], [10, 30], 
+[5, 25]]]
+
+def getData(path):
+    content=""
+    with open (path)as f:
+        content = f.read().replace(",",".")
+        
+    buf = content.split("\n")
+    content=[]
+    for i,I in enumerate(buf):
+        if(i!=0 and i!=len(buf)-1):
+            buffer=I.split("\t")
+            buffer2=[]
+            for N in buffer:
+                
+                buffer2.append(float(N))
+            content.append(buffer2)
+    return content
+
+def getPlotable(rData):
+    data=[[],[]]
+    for i,I in enumerate(rData):
+        data[0].append(I[0])
+        data[1].append(I[1])
+    return data
+
+def getDataVonBis(path,von,bis):
+    content=""
+    with open (path)as f:
+        content = f.read().replace(",",".")
+        
+    buf = content.split("\n")
+    content=[]
+    for i,I in enumerate(buf):
+        if(von<=i and i<bis):
+            buffer=I.split("\t")
+            buffer2=[]
+            for N in buffer:
+                
+                buffer2.append(float(N))
+            content.append(buffer2)
+    return content
+
+def parabel(x,a,b,c):
+    return 0.5*a*(x+b)**2+c
+
+def wichtungsFaktor(err):
+    return 1/err**2
+def gewichteterMittelwert(vals,errs):
+    buf =0
+    for i in range(len(vals)):
+        buf+= vals[i]*wichtungsFaktor(errs[i])
+    buf2 =0 
+    for i in range(len(vals)):
+        buf2+= wichtungsFaktor(errs[i])
+    return buf/buf2
+def internerFehler(errs):
+    buf=0
+    for i in range(len(errs)):
+        buf+=wichtungsFaktor(errs[i])
+    return np.sqrt(1/buf)
+def externerFehler(vals,errs):
+    buf1=0
+    gewAvg = gewichteterMittelwert(vals,errs)
+    for i in range(len(vals)):
+        buf1+=wichtungsFaktor(errs[i])*(vals[i]-gewAvg)**2
+    buf2 =0
+    for i in range(len(vals)):
+        buf2+= wichtungsFaktor(errs[i])
+    return np.sqrt(buf1/(len(vals)-1)*buf2)
+def intExtFehler(errs,vals):
+    return max([internerFehler(errs),externerFehler(vals,errs)])
+
+
+
+besch =[]
+for angle in range(4):
+    besch.append([])
+    for durch in range(3):
+        data = getDataVonBis(f"./SEB/{angle+1}#{durch+1}",indizes[angle][durch][0],indizes[angle][durch][1])
+        data = getPlotable(data)
+        params, errs = optimize.curve_fit(parabel,data[0],data[1])
+        besch[angle].append([params[]])
+
+
+
+
+
