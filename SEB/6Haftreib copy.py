@@ -62,8 +62,8 @@ def genDataFromFunktion(amount,von,bis,params,func):
     return x,y
 
 
-def linreg(x, b):
-    return b*x
+def linreg(x, a, b):
+    return (a+b*x)
 
 
 Gewicht = np.array(getRow(1,1,4)) * 0.009807
@@ -103,7 +103,7 @@ ax.grid()
 
 
 gmodel = Model(linreg)
-result = gmodel.fit(y, x=x, b=1)
+result = gmodel.fit(y, x=x, a=0, b=1)
 
 print(result.fit_report())
 
@@ -113,7 +113,7 @@ theo, = ax.plot([0,X_END],[0,X_END*0.155],color= COLOR_STYLE[1],linestyle="dotte
 heo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[2],linestyle="dotted")
 ax.legend([sc,theo],[r"$F_{H}/F_{g}$",f"fit $f(x) = ax$ mit \na= {round_err(reg[0],err[0])}"])
 ax.fill_between([0,X_END], [0,X_END*(reg[0] + err[0])], [0,X_END*(reg[0] - err[0])], alpha=0.2)
-ax.fill_between([0,X_END], [0,X_END*0.068], [0,X_END*0.242], alpha=0.2, color='C1')
+# ax.fill_between([0,X_END], [0,X_END*0.068], [0,X_END*0.242], alpha=0.2, color='C1')
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
