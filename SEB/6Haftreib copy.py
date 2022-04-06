@@ -5,6 +5,7 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
 from scipy import optimize
 from roundwitherror import round_err
+from lmfit import Model
 
 X_START =0
 Y_START =0
@@ -19,7 +20,7 @@ X_MAJOR_TICK = 2
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.5
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./SEB/6Haftreib.pdf"
+SAVE_AS = "./SEB/6Haftreibc.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
@@ -99,6 +100,12 @@ err = np.sqrt(np.diag(err))
 
 fig, ax = plt.subplots()
 ax.grid()
+
+
+gmodel = Model(linreg)
+result = gmodel.fit(y, x=x, b=1)
+
+print(result.fit_report())
 
 
 sc = ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=10,linewidths=1,edgecolors="black",zorder=10)
