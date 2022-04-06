@@ -78,16 +78,23 @@
     Sobald die Masse anfängt zu rutschen, wird die direkt vorher angelegt Kraft als Haftreibungskraft notiert.
 
     \subsection{Ergebnis \& Diskussion}
-    In Graph ? kann anhand der Steigung der Ursprungsgerade der Haftreibungskoeffizient
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./6Haftreibc.pdf}
+
+        \caption{Messung der Reibungskraft}
+        \label{fig:haftr}
+    \end{figure}
+    In Graph \ref{fig:haftr} kann anhand der Steigung der Ursprungsgeraden der Haftreibungskoeffizient
     \begin{align}
-        \mu_H = 0,155(87)
+        \mu_H = 0,1582(26)
     \end{align} 
     bestimmt werden.
     Die große Abweichung der einzelnen Messungen liegt wahrscheinlich an der Inhomogenität der Haftreibung
     abhängig vom Ort, an dem gemessen wurde. Auch beim 3. Versuch haben wir diesen Effekt
-    bei der Gleitreibung bei kleinen Winkeln bemerkt. Der Fehler wurde durch programmatisches Ausrechnen von
-    $\mu_H$ für jeden einzelnen Punkt und anschließendem bestimmmen der gewichteten Mittelwerts mit
-    Ungenauigkeit \cite[(29)]{ABW} berechnet. 
+    bei der Gleitreibung bei kleinen Winkeln bemerkt. Der Fehler wurde durch das fitten der Gerade im Plot 
+    an alle Messwerte berechnet. Durch die große Anzahl an Messungen konnte die Unsicherheit eines einzelnen
+    Fehlers vernachlässigt werden.
 
     \section{Gleitreibung}
 
@@ -107,16 +114,24 @@
     berechnet werden
 
     \subsection{Ergebnis \& Diskussion}
-    Im Graph ? wurden die Verhältnisse $\frac{a}{g}$ zu $\alpha$ aufgetragen. Anhand der Ausgleichkurve kann die Gleitreibung
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./7Plotgleit.pdf}
+
+        \caption{Messung der Gleitreibung}
+        \label{fig:Gleitr}
+    \end{figure}
+    Im Graph \ref{fig:Grleitr} wurden die Verhältnisse $\frac{a}{g}$ zu $\alpha$ aufgetragen. Anhand der Ausgleichkurve kann die Gleitreibung
     \begin{align}
-        \mu_G = 0,17
+        \mu_G = 0,17(13)
     \end{align}
     berechnet werden. Für diesen Versuch wurden die Fehler der Winkelmessung nicht berücksichtigt, da sie viel kleiner als
     die Abweichungen der Ultraschallmessung sind. Letztere ist sehr ungenau, es entstehen manchmal Abweichungen von bis zu 20cm.
      Für die Fehlerberechnugn wurde zuerst von den Beschleunigungen der
     Fehler der Fits bestimmt und ein gewichtetes Mittel der 3 verschiedenen Messreihen mit gleichem Winkel gebildet.
     Aus diesen Werten wurden die einzelnen $\mu_G$ der 4 verschiedenen Winkel bestimmt, bevor diese dann wieder
-    mit einem gewichteten Mittel in einem Gesamtwert für $\mu_G$ zusammengefasst wurden.
+    mit einem gewichteten Mittel in einem Gesamtwert für $\mu_G$ zusammengefasst wurden. Durch die großen Abweichungen
+    im Fit entsteht eine sehr große Unsicherheit.
 
     \section{Zusammenfassung}
 

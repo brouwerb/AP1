@@ -62,8 +62,8 @@ def genDataFromFunktion(amount,von,bis,params,func):
     return x,y
 
 
-def linreg(x, a, b):
-    return (a+b*x)
+def linreg(x, b):
+    return (b*x)
 
 
 Gewicht = np.array(getRow(1,1,4)) * 0.009807
@@ -102,17 +102,18 @@ fig, ax = plt.subplots()
 ax.grid()
 
 
-gmodel = Model(linreg)
-result = gmodel.fit(y, x=x, a=0, b=1)
+#gmodel = Model(linreg)
+#result = gmodel.fit(y, x=x, a=0, b=1)
 
-print(result.fit_report())
+#print(result.fit_report())
+
 
 
 sc = ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=10,linewidths=1,edgecolors="black",zorder=10)
-theo, = ax.plot([0,X_END],[0,X_END*0.155],color= COLOR_STYLE[1],linestyle="dotted")
-heo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[2],linestyle="dotted")
+#theo, = ax.plot([0,X_END],[0,X_END*0.155],color= COLOR_STYLE[1],linestyle="dotted")
+theo, = ax.plot([0,X_END],[0,X_END*reg[0]],color= COLOR_STYLE[2],linestyle="dotted")
 ax.legend([sc,theo],[r"$F_{H}/F_{g}$",f"fit $f(x) = ax$ mit \na= {round_err(reg[0],err[0])}"])
-ax.fill_between([0,X_END], [0,X_END*(reg[0] + err[0])], [0,X_END*(reg[0] - err[0])], alpha=0.2)
+#ax.fill_between([0,X_END], [0,X_END*(reg[0] + err[0])], [0,X_END*(reg[0] - err[0])], alpha=0.2)
 # ax.fill_between([0,X_END], [0,X_END*0.068], [0,X_END*0.242], alpha=0.2, color='C1')
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
@@ -131,7 +132,7 @@ ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
-#fig.savefig(SAVE_AS)
+fig.savefig(SAVE_AS)
 
 # worksheet.cell(0, 0).value  
 
