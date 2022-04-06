@@ -16,8 +16,8 @@
 
 
 \usepackage[ngerman]{babel}
-%\addto\captionsngerman{%
-% \renewcommand{\abstractname}{Abstract}}
+\addto\captionsngerman{%
+ \renewcommand{\abstractname}{Einleitung}}
 
 \title{Versuch 3: Schiefe Ebene}
 \author{Jascha Fricker, Benedict Brouwer}
@@ -62,7 +62,7 @@
     sowie die Unsicherheiten der Winkelmessung(Schrittweite $1 \si{\milli\metre}$) berücksichtigt.
     Durch den Versuchsaufbau konnte nicht verifiziert werden, dass die Normalkraft genau senkrecht anliegt.
     Anhand der Daten lässt sich ein Unsicherheitintervall von etwa $3,5^{\circ}$ ableiten, welches auch zu
-    Beobachtungen bei der Versuchsdurchführung passt. Für die Unsicherheiten wurde erst der Mittelwert \cite[(29)]{ABW} mit
+    Beobachtungen bei der Versuchsdurchführung passt. Für die Unsicherheiten wurde erst der Mittelwert \cite[(29)]{ABW}
     und die Standardabweichung mithilfe der Student-t-Verteilung \cite[(15)]{ABW} der beiden Kräfte berechnet, um dann mithilfe der Gausschen
     Gausschen Fehlerfortpflanzung \cite[(19)]{ABW} die Unsicherheit der Quotienen zu berechnen.
 
@@ -92,16 +92,16 @@
     bestimmt werden.
     Die große Abweichung der einzelnen Messungen liegt wahrscheinlich an der Inhomogenität der Haftreibung
     abhängig vom Ort, an dem gemessen wurde. Auch beim 3. Versuch haben wir diesen Effekt
-    bei der Gleitreibung bei kleinen Winkeln bemerkt. Der Fehler wurde durch das fitten der Gerade im Plot 
+    bei der Gleitreibung bei kleinen Winkeln bemerkt. Der Fehler wurde durch das fitten der Gerade
     an alle Messwerte berechnet. Durch die große Anzahl an Messungen konnte die Unsicherheit eines einzelnen
     Fehlers vernachlässigt werden.
 
     \section{Gleitreibung}
 
-    \subsection{Theorie \& Experiemteller Aufbau}
+    \subsection{Theorie \& Experimenteller Aufbau}
 
-    Die Gleitreibung ist im Gegensatz zur Haftreibung die Reibung, die entsteht, während der Körper gleitet.
-    Wenn ein Körper eine schiefe Ebene hinuntergleitet, hat er folgende Bewergungsgleichung:
+    Die Gleitreibung ist, im Gegensatz zur Haftreibung, die Reibung, die entsteht, während der Körper gleitet.
+    Wenn ein Körper eine schiefe Ebene hinuntergleitet, hat er folgende Bewegungsgleichung:
     \begin{align}
         \text{ohne Reibung:} \ \  s(t) &= \frac{g \cdot sin(\alpha)}{2} \cdot t^2 +v_0 \cdot t + x_0 \\
         \text{mit Reibung:} \ \  s(t) &= g \cdot \frac{sin(\alpha) -\mu_G cos(\alpha)}{2} \cdot t^2 +v_0 \cdot t + x_0
@@ -111,7 +111,9 @@
         &a = g \cdot (sin(\alpha) - \mu_G cos(\alpha)) \\
         &\Rightarrow \ \ \mu_G = tan(\alpha) - \frac{a}{g \cdot cos(\alpha)}
     \end{align} 
-    berechnet werden
+    berechnet werden (Siehe \cite[(7)]{SEB}).
+    In diesem Versuch wurde mithlife eines Ultrachallmessers die Bewegungsgleichung des ``Rutschers'' auf
+    einer schiefen Ebende bestimmt und ausgewertet, um die Gleitreibung zu bestimmen.
 
     \subsection{Ergebnis \& Diskussion}
     \begin{figure}
