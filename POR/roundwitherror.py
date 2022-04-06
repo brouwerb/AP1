@@ -1,4 +1,22 @@
 from math import *
+from xlrd import *
+
+def getData(path):
+    content=""
+    with open (path)as f:
+        content = f.read().replace(",",".")
+        
+    buf = content.split("\n")
+    content=[]
+    for i,I in enumerate(buf):
+        if(i!=0 and i!=len(buf)-1):
+            buffer=I.split("\t")
+            buffer2=[]
+            for N in buffer:
+                
+                buffer2.append(float(N))
+            content.append(buffer2)
+    return content
 
 def round_err(num, err,  sig=2):
     posof1digit = floor(log10(abs(err)))
@@ -96,3 +114,15 @@ def externerFehler(vals,errs):
     
 def intExtFehler(errs,vals):
     return max(internerFehler(errs),externerFehler(vals,errs))
+
+def cut(xy):
+    for i, I in enumerate(xy[1]):
+        if xy[1][i] <= 0 and xy[1][i+1] >=0:
+            ind = i
+            break
+    for i in range(ind):
+        now = xy[1][i]
+        if -100 < now < -70 and xy[1][i+1] >  -70:
+            n = i
+            break
+    return(n)
