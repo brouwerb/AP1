@@ -128,7 +128,8 @@ for angle in range(4):
     mu.append((np.tan(np.deg2rad(angles))*beschGew[angle])[0])
     muErr.append(np.sqrt(np.tan(np.deg2rad(angles[angle]))**2 * beschGewErr[angle]**2))
 mures = gewichteterMittelwert(mu,muErr)
-
+print(mu)
+print(muErr)
 muresErr = intExtFehler(mu,muErr)
 print(mures)
 print(muresErr)
