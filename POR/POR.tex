@@ -17,9 +17,9 @@
 
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{%
- \renewcommand{\abstractname}{Abstract}}
+ \renewcommand{\abstractname}{Einleitung}}
 
-\title{Versuch 3: Pohlsches Rad}
+\title{Versuch 4: Pohlsches Rad}
 \author{Jascha Fricker, Benedict Brouwer}
 
 \begin{document}
@@ -39,22 +39,42 @@
 
     \newpage
 
-    \section{Theorie}
-
+    \section{Stromsbhängigkeit der Dämpfungskonstanten}
+    \subsection{Theorie}
+    Je nachdem wie stark ein harmonischer Oszillator gedämft wird, ändert sich seine Schwingfrequenz.
     Ein gedämpfter harmonischer Oszillator hat die Bewegungsgleichung
     \begin{align}
-        \phi(t) = C \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta),
+        \phi(t) = \phi_0 \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta), \label{theo5}
     \end{align}
     mit Kreisfrequenz $\omega_d = \sqrt{\frac{k}{\Theta} - \lambda^2}$ (Drehmoment $\Theta$ und Federkonstante $k$)
-    und $\beta$ als Phasenverschiebung (Herleitung siehe Aufgabenblatt \cite{POR}). Bei der in diesem Experiement benutzten Wirbelstrombremse ist die
-    Dämpfungskonstante proportional zum Quadrat des Stroms 
+    und $\beta$ als Phasenverschiebun. Diese kann aus der Differtialgleichung der Kräfte 
+    hergeleitet werden (siehe Aufgabenblatt \cite[(5)]{POR}).
+    Bei der in diesem Experiement benutzten Wirbelstrombremse ist die
+    Dämpfungskonstante $\lambda$ proportional zum Quadrat des Stroms $I$ durch die Bremse.
     \begin{align}
         \lambda \propto I^2.
     \end{align}
+
+    \subsection{Experimenteller Aufbau}
+    Die Stromstärke der Wirbelstrombremse wurde mit einem Labornetzteil eingestellt und
+    mit einem VC130 Multieter gemessen. Nachdem das Phlsche Rad fast maximal ausgelenkt worden war, 
+    wurde der Winkel des Pohlschen Rades abhängig von der Zeit
+    mit einem Hall Sensor gemessen und direkt digital aufgenommen.
+
+    \subsection{Auswertung}
+    Um die Eingenfrequenz und Dämpfungskonsante abhängig von der Stromstärke zu bestimmen,
+    wurde auf jede Messreihe einzeln mit
+    der Funkion \textsf{optimize.curve\_fit} der Pythonbibliothek scipy die Theoriekurve \ref{theo5}
+    gefittet und auch die Unsicherheit ausgerechnet. Mit diesen 2x15 Datenpunkten können jetzt die Zusammenhänge
+    zwischen $\omega_d, \lambda$ und $I$ untersucht werden.
+
+
     Die Eigenfrequenz lässt sich auch mithilfe der Schwingungsperiode $T$ berechnen
     \begin{align}
         \omega_d = \frac{2\pi}{T}
     \end{align}
+
+
     Bei einem gezwungenen Oszillator mit Drehmoment $M_0 sin(\omega t)$ kommt noch die partikuläre Lösung zur Bewegungsgleichung
     \begin{align}
         \phi(t) &= A(\omega) \cdot sin(\omega t - \Phi) + C \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta) \\
