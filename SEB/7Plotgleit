@@ -7,10 +7,11 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
 from scipy import optimize
 from roundwitherror import round_err
+import math
 
 X_START =0
 Y_START =0
-X_END = 3
+X_END = 45
 Y_END = 0.5
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
 Y_LABEL = r"$F_{Haft}$ in $N$"
@@ -28,7 +29,7 @@ COLOR_STYLE =["blue","red","green"]
 
 indizes = [[[10, 44], [18, 54], [16, 47]], [[12, 36], [16, 41], [19, 36]], [[5, 23], [6, 24], [6, 24]], [[5, 29], [10, 30], 
 [5, 25]]]
-Hyp =1200
+Hyp =120.0
 g=9.807
 
 def getData(path):
@@ -102,6 +103,8 @@ def externerFehler(vals,errs):
 def intExtFehler(errs,vals):
     return max(internerFehler(errs),externerFehler(vals,errs))
 
+def theorieFunk():
+    
 
 
 angles=[27.5,37.4,48.4,44.4]
@@ -125,8 +128,10 @@ for angle in range(4):
         beschErrs[angle].append(np.sqrt(np.diag(errs))[0])
     beschGew.append(gewichteterMittelwert(besch[angle],beschErrs[angle])/g)
     beschGewErr.append(np.sqrt(intExtFehler(besch[angle],beschErrs[angle])**2/g**2))
-    mu.append((np.tan(np.deg2rad(angles))*beschGew[angle])[0])
-    muErr.append(np.sqrt(np.tan(np.deg2rad(angles[angle]))**2 * beschGewErr[angle]**2))
+    mu.append((math.tan(np.deg2rad(angles[angle]))-beschGew[angle]/math.cos(np.deg2rad(angles[angle]))))
+    
+    muErr.append(np.sqrt(1/np.cos(angles[angle])**2 * beschGewErr[angle]**2))
+print(beschGew)
 mures = gewichteterMittelwert(mu,muErr)
 print(mu)
 print(muErr)
@@ -140,7 +145,7 @@ errorsOfSlope = []
 err1=[[],[]]
 sc=[[],[]]
 theo = [[],[]]
-   
+print(angles)
 
 i=0
 ax.errorbar(angles,beschGew,fmt="x",yerr=beschGewErr, ecolor=COLOR_STYLE[i],elinewidth=1,capsize=5,capthick=1)
