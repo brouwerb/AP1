@@ -1,5 +1,3 @@
-
-from decimal import Inexact
 import xlrd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,20 +9,20 @@ import math
 
 X_START =0
 Y_START =0
-X_END = 45
-Y_END = 0.5
+X_END = 2
+Y_END = 1
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
 Y_LABEL = r"$a/g$"
 X_LABEL = r"Winkel der schiefen Ebene in $°$"
 X_ERROR = 4
 Y_ERROR = 1
-X_MAJOR_TICK = 5
-Y_MAJOR_TICK =0.1
-X_MINOR_TICK =1
+X_MAJOR_TICK = 0.5
+Y_MAJOR_TICK =0.2
+X_MINOR_TICK =0.1
 Y_MINOR_TICK = 0.02
-SAVE_AS = "./SEB/7Plotgleit.pdf"
+SAVE_AS = "./SEB/multiple.pdf"
 POINT_STYLE = ["o","^","s"]
-COLOR_STYLE =["blue","red","green"]
+COLOR_STYLE =["blue","red","green","black"]
 
 
 indizes = [[[10, 44], [18, 54], [16, 47]], [[12, 36], [16, 41], [19, 36]], [[5, 23], [6, 24], [6, 24]], [[5, 29], [10, 30], 
@@ -75,6 +73,8 @@ def getDataVonBis(path,von,bis):
 
 def parabel(x,a,b,c):
     return 0.5*a*(x+b)**2+c
+def parabelFromArr(x,vals):
+    return parabel(x,vals[0],vals[1],vals[2])
 
 def wichtungsFaktor(err):
     return 1/err**2
@@ -114,6 +114,11 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
+def average(arr,ind):
+    buf=0
+    for i in range(len(arr)):
+        buf+=arr[i][ind]
+    return buf/len(arr)
 
 angles=[27.5,37.4,48.4,44.4]
 for i in range(len(angles)):
@@ -125,14 +130,19 @@ beschGew =[]
 beschGewErr =[]
 mu =[]
 muErr=[]
+data=[]
+params=[]
 for angle in range(4):
+    data.append([])
     besch.append([])
     beschErrs.append([])
+    params.append([])
     for durch in range(3):
-        data = getDataVonBis(f"./SEB/Raw_data/{angle+1}#{durch+1}.txt",indizes[angle][durch][0],indizes[angle][durch][1])
-        data = getPlotable(data)
-        params, errs = optimize.curve_fit(parabel,data[0],data[1])
-        besch[angle].append(params[0])
+        params[angle].append([])
+        dat = getDataVonBis(f"./SEB/Raw_data/{angle+1}#{durch+1}.txt",indizes[angle][durch][0],indizes[angle][durch][1])
+        data[angle].append(getPlotable(dat))
+        params[angle][durch], errs = optimize.curve_fit(parabel,data[angle][durch][0],data[angle][durch][1])
+        besch[angle].append(params[angle][durch][0])
         beschErrs[angle].append(np.sqrt(np.diag(errs))[0])
         print(besch[angle])
         print(beschErrs[angle])
@@ -154,20 +164,26 @@ errorsOfSlope = []
 err1=[[],[]]
 sc=[[],[]]
 theo = [[],[]]
-print(angles)
 
-xy = genDataFromFunktion(100,X_START,X_END,mures,theorieFunk)
-xyErr1 = genDataFromFunktion(100,X_START,X_END,mures+muresErr,theorieFunk)
-xyErr2 = genDataFromFunktion(100,X_START,X_END,mures-muresErr,theorieFunk)
+
+xy =[]
+for i in range(len(angles)):
+    
+    params[i] = [average(params[i],0),average(params[i],1),average(params[i],2)]
+    
+    xy.append(genDataFromFunktion(100,X_START,X_END,params[i],parabelFromArr))
+    
+        
 
 
 i=0
-a=ax.errorbar(angles,beschGew,fmt=".",yerr=beschGewErr, ecolor="black",color="blue",elinewidth=1,capsize=5,capthick=1)
-#ax.plot([X_START,X_END],[reg[i].intercept,reg[i].intercept+X_END*reg[i].slope],linewidth=0.8,color=COLOR_STYLE[i])
-#ax.scatter(angles,beschGew,marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=15,linewidths=1,edgecolors="black",zorder=10)
-b,=ax.plot(xy[0],xy[1],color="red",linestyle ="dotted")
-c=ax.fill_between(xyErr1[0],xyErr1[1],xyErr2[1],color="orange",alpha=0.4)
-ax.legend([a,b,c],[r"Messdaten mit Fehler",r"Fit $sin(\alpha)-\mu_{G}*cos(\alpha)$  mit $\mu_{G}=0.17(13)$",r"Fehler des Fits"])
+b=[[],[],[],[]]
+for i in range(len(angles)):
+    b[i],=ax.plot(xy[i][0],xy[i][1],color=COLOR_STYLE[i])
+    for j in range(3):
+        a =ax.scatter(data[i][j][0],data[i][j][1],color=COLOR_STYLE[i],marker=POINT_STYLE[j],s=5,alpha=0.7)
+
+ax.legend([b[0],b[1],b[2],b[3]],[f"Winkel = {round(angles[0],2)}",f"Winkel = {round(angles[1],2)}",f"Winkel = {round(angles[2],2)}",f"Winkel = {round(angles[3],2)}"],loc=2)
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
