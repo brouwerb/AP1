@@ -7,7 +7,7 @@ import matplotlib as mpl
 from scipy import optimize, signal
 import math
 import roundwitherror as re
-from sympy import *
+import sympy as sp
 
 X_START =0
 Y_START =0
@@ -55,20 +55,24 @@ def theoKurv(x,om0,lam,Mom):
     return Mom/np.sqrt((om0**2-x**2)**2+4*lam**2*x**2)
 def theoKurvArr(x,p):
     return theoKurv(x,p[0],p[1],p[2])
-
+def findExtremums(func, arg):
+  dy = func.diff(arg)
+  ddy = dy.diff(arg)
+  return sp.solve(dy, arg)
 
 
 
 x=re.getAxis(1,3,34,"./POR/Daten.xls","v4")
 y =re.getAxis(1,6,34,'./POR/Daten.xls',"v4")
-print(x,y)
+
 popt,perr = optimize.curve_fit(theoKurv,x,y)
 perr = np.sqrt(np.diag(perr))
-print(popt,perr)
+
 
 xy =genDataFromFunktion(1000,X_START,X_END,popt,theoKurvArr)
-
-
+var = sp.symbols("var")
+Extremum = findExtremums(popt[2]/sp.sqrt((popt[0]**2-var**2)**2+4*popt[1]**2*var**2),var)[2]
+print(Extremum)
 #test
 
 plt.style.use("./AKU/AP1_style.mplstyle")
@@ -80,7 +84,13 @@ ax.grid()
 sc=[[],[],[]]
 theo =[[],[],[]]
 
-    
+def annotate(x,y):
+    ax.annotate(f"({round(x,2)} , {round(y,2)})",[x,y],xytext=[x-4,y-4],
+    arrowprops=dict(arrowstyle="->",linewidth=1))
+    ax.scatter(x,y,s=40,facecolors="none",edgecolors="purple",linewidths=1.5)
+        
+print(popt)
+annotate(Extremum,theoKurvArr(Extremum,popt))
 
 sc=ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=8,linewidths=1,edgecolors="black",zorder=10)
 theo,=ax.plot(xy[0],xy[1],color= COLOR_STYLE[1])
