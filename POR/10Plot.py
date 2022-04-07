@@ -7,6 +7,7 @@ import matplotlib as mpl
 from scipy import optimize, signal
 import math
 import roundwitherror as re
+from sympy import *
 
 X_START =0
 Y_START =0
