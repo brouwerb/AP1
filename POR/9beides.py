@@ -13,8 +13,8 @@ Y_START =-20
 X_END = 100
 Y_END = 20
 TITEL = ""
-Y_LABEL = r"Auslenkung in Grad"
-X_LABEL = r"Z"
+Y_LABEL = r"Kraft Qutienten"
+X_LABEL = r"Winkel $\alpha$ in $°$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 5
@@ -119,7 +119,7 @@ exs,eys=genDataFromFunktion(1000,0,100,evar,ehochar)
 #     sc[i]=ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=10,linewidths=1,edgecolors="black",zorder=10)
 #     theo[i],=ax.plot(theoXY[i][0],theoXY[i][1],color= COLOR_STYLE[i],linestyle="dotted")
 
-ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
+# ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 
 #ax.scatter(xpeak,ypeak,marker='o',color="green", s=100)
 #ax.scatter(xy[0][cut(xy)],xy[1][cut(xy)],marker='x',color="orange", s=100)
@@ -129,8 +129,8 @@ expf, = ax.plot(exs,eys,color="purple",linewidth=0.8)
 ax.legend([dat,theo, expf],[r"Messdaten",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])} $", f"einhüllende Expontentialfunktion $ \\varphi = {round_err(evar[0], eerr[0])} \cdot exp({round_err(evar[1], eerr[1])} \cdot x)$"])
 
 ax.set_xlim(xyn[0][0],xyn[0][-1])
-ax.set_ylim(-ehochar(xyn[0][0], evar), ehochar(xyn[0][0], evar))
-
+ax.set_ylim(0.1,100)
+ax.set_yscale('log')
 
 
 # For the minor ticks, use no labels; default NullFormatter.
@@ -152,7 +152,22 @@ ax.set_ylim(-ehochar(xyn[0][0], evar), ehochar(xyn[0][0], evar))
 
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
-fig.savefig(SAVE_AS)
+#fig.savefig(SAVE_AS)
 
+# worksheet.cell(0, 0).value  
+# For the minor ticks, use no labels; default NullFormatter.
+# ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
+# ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))
+# ax.yaxis.set_major_locator(MultipleLocator(Y_MAJOR_TICK))
+# ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 
+#print(f"der Fehler des Slopes ist: {std_err}")
+plt.show()
+#fig.savefig(SAVE_AS)
+
+# worksheet.cell(0, 0).value  
+plt.show()
+#fig.savefig(SAVE_AS)
+
+# worksheet.cell(0, 0).value  
 
