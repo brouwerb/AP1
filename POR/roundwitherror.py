@@ -1,5 +1,5 @@
 from math import *
-from xlrd import *
+import xlrd
 import numpy as np
 
 def getData(path):
@@ -35,14 +35,18 @@ def round_err(num, err,  sig=2):
 
     return(srnum + '(' + str(ceil(abrerr)) + ')')
 
-def getAxis(row1,collumn1,row2):
+def getAxis(row1,collumn1,row2,path,sheet):
     data = []
+    workbook = xlrd.open_workbook(path)
+    worksheet = workbook.sheet_by_name(sheet)
     for i in range(row1,row2):
         data.append(worksheet.cell(i, collumn1).value)    
     return data
 
-def getRow(collumn1,row1,collumn2):
+def getRow(collumn1,row1,collumn2,path,sheet):
     data = []
+    workbook = xlrd.open_workbook(path)
+    worksheet = workbook.sheet_by_name(sheet)
     for i in range(collumn1,collumn2):
         data.append(worksheet.cell(row1, i).value)    
     return np.array(data)
