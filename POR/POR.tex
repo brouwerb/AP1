@@ -29,8 +29,8 @@
 
     \begin{abstract}
         In diesen Versuch wird ein gedämpfter harmonischer Oszillator untersucht. Harmonische Oszillatoren
-        sind ein wichtiges Modell in der Physik, da sie sehr viele systeme in der realen Welt beschreiben können.
-        Ein berühmtes Thema sind z. B. Resonanzkatastrophen, bei dehnen große Bauwerke in iherer Eingenschwingung
+        sind ein wichtiges Modell in der Physik, da sie sehr viele Systeme in der realen Welt beschreiben können.
+        Ein berühmtes Thema sind z. B. Resonanzkatastrophen, bei dehnen große Bauwerke in ihrer Eingenschwingung
         angeregt werden. Genau solche Schwingungen eines getriebenen Harmonischen Oszillators werden auch in diesem
         Versuch untersucht.
     \end{abstract}
@@ -101,7 +101,7 @@
     Die ausgelesenen Dämfungskonstanten wurden in Graph \ref{fig:daempf} gegen die Dämpfungsstromstärke geplottet und mit der
     Theoriekurve (\ref{dtheo}) gefittet. Für die Berechung wurden nur die Fehler der Fits berücksichtigt.
     Im Graph \ref{fig:wink} wurden die ausgelesenen Winkelgeschwindigkeiten gegen die Dämpfung geplottet und mit der Theoriekurve
-    (\ref{otheo}) gefittet. Insgesamt wurude ein Proportionalitätsfaktor $\kappa  = 0.89653(30)$ zwischen Dämpfungskonstante und
+    (\ref{otheo}) gefittet. Insgesamt wurde ein Proportionalitätsfaktor $\kappa  = 0.89653(30)$ zwischen Dämpfungskonstante und
     Dämpfungsstromstärke und ein Quotien $ \frac{k}{\Theta} = 9.7216(24)$ ermittelt.
    
     \section{Schwingungsverhalten bei gegebener Dämpfung}
@@ -138,7 +138,7 @@
     Um die Eingenfrequenz händisch zu Messen, wurde 5 Mal die Zeit für 10 Schwingungen gemessen.
     Für die maximale Amplitude wurde händisch jede Schwingung bestimmt, was sehr schnelles Aufschreiben erfordert.
     Außerdem wurde eine Messreihe digital aufgenommen, um die Eigenfrequenz und Dämpfungskonstante mit dem Computer zu bestimmen.
-    Um die REsonanzkurve zu  messen, wurde das Pohlsche Rad mit einem SChrittmotor angetrieben. Die maximale Amplitude wurde
+    Um die Resonanzkurve zu  messen, wurde das Pohlsche Rad mit einem Schrittmotor angetrieben. Die maximale Amplitude wurde
     wurde digital bestimmt.
 
     \subsection{Auswertung}
@@ -146,7 +146,6 @@
     wird wie im ersten Versuch die Theoriekurve gefittet. Auch für die Dämpfungskonstante und für die
     Resonanzkurve wird programmatisch eine Theoriekurve angelegt, um die Ergebnisse mit Unsicherheit
     zu bestimmen. Die Dämpfungskonstante wird aus der einhülleden Exponentialfunktion bestimmt.
-n
     \subsection{Ergebnis}
     \subsubsection{Eigenfrequenz und Dämpfungskonstante}
     \begin{figure}
@@ -167,8 +166,8 @@ n
     Funktion gesehen werden. Die gleiche einhüllende Exponentialfunktion sowie die Daten der händischen Amplitudenmessung
     wurden im Graphen \ref{fig:daempfung} halblogarithmisch dargestellt.
     
-    Als Fehler wurden bei der händischen Messung der Eigenfrequenz berücksichtigt, die Ungenauigkeit der Stuppuhr hingegen
-    wurde vernachlässigt, da sie um größenordnungen kleiner ist. Bei der Amplitudenmessung wird eine Unsicherheit von ca 2 Strichen
+    Als Fehler wurden bei der händischen Messung der Eigenfrequenz berücksichtigt, die Ungenauigkeit der Stoppuhr hingegen
+    wurde vernachlässigt, da sie um Größenordnungen kleiner ist. Bei der Amplitudenmessung wird eine Unsicherheit von ca. 2 Strichen
     oder $3^{\circ}$ angenommen, da die Daten schnell abgelesen werden müssen.
     In Tabelle \ref{Tab:tableeig} wird die händisch gemessene Dämpfungskonstante und Eigenfrequenz (Herleitung siehe Anhang ?) sowie die
     digital gemessene Dämpfungskonstante und Eigenfrequenz angegeben. 
@@ -184,7 +183,17 @@ n
         \caption{Eigenfrequenz im Vergleich}
         \label{Tab:tableeig}
     \end{table}
+	\subsubsection{Resonanzkurve}
+	\begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./10Plot.pdf}
 
+        \caption{Resonanzkurve}
+        \label{fig:Resonanzkurve}
+    \end{figure}
+    In \ref{fig:Resonanzkurve} werden die Amplituden in Bezug zu ihrer Anregungsfrequenz aufgetragen und die Messdaten sind
+    mit der Theoriekurve \ref{?} gefittet. Dabei sind Die Fehler der einzelnen Messdaten zu klein um sie in \ref{fig:Resonanzkurve} sinnvoll darstellen zu können. Aus dem Fit ergibt sich eine Eigenfrequenz von $\omega_0=3.1030(15)$, eine Dämpfungskonstante von $\lambda=0.0877(18)$. Durch Berechnung der Extremstellen an der gefitteten Funktion\ref{?} konnte eine Resonanzfrequenz von $\omega_R=3.10054$ bestimmt werden und somit eine Maximale Amplitude von $A(\omega_R)=69.287°$. Die Halbwertsbreite beträg $2\lambda=0.175$ und liegt somit im Fehlerintervall vom $\lambda$ 
+	
     \section{Diskussion}
 
     Man merkt bei den Fits, dass das Pohlsche Rad nicht genau der Theoriekurve folgt, sondern das bei kleinen Anplituden
