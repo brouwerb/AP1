@@ -114,11 +114,14 @@ hdatax = [[], [], []]
 
 for j, J in enumerate(hdata):
     for i, I in enumerate(J):
-        hdatax[j].append(xpeak[0] + i*popt[2])
+        hdatax[j].append(xpeak[0] + i*(2*3.1415)/popt[2])
 
+errs = []
 
+for i in hdatax[0] + hdatax[1] + hdatax[2]:
+    errs.append(2)
 
-hvar, herr = optimize.curve_fit(ehoch, hdatax[0] + hdatax[1] + hdatax[2], hdata[0] + hdata[1] + hdata[2])
+hvar, herr = optimize.curve_fit(ehoch, hdatax[0] + hdatax[1] + hdatax[2], hdata[0] + hdata[1] + hdata[2], sigma = errs, absolute_sigma=True)
 
 
 err = np.sqrt(np.diag(pconv))
@@ -160,7 +163,7 @@ dat, = ax.plot(xyn[0],xyn[1],color="blue",linewidth=0.8)
 theo, = ax.plot(xs,ys,color="red",linewidth=0.8)
 expf, = ax.plot(exs,eys,color="purple",linewidth=0.8)
 htheo, = ax.plot(hxs,hys,color="orange",linewidth=0.8)
-ax.legend([dat,theo, expf, mess1, errorbar, mess2, mess3, htheo],[r"Messdaten Computer",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])} $",
+ax.legend([dat,theo, expf, mess1, errorbar, mess2, mess3, htheo],[r"Messdaten Computer",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])}$ und $\lambda = {round_err(popt[1], err[1])}$",
     f"einhüllende Expontentialfunktion Computer $ \\varphi = {round_err(evar[0], eerr[0])} \cdot exp({round_err(evar[1], eerr[1])} \cdot x)$",
     r"händische Messreihe 1", r"Unsicherheit händische Messreihe 1", r"händische Messreihe 2", r"händische Messreihe 3",
     f"einhüllende Expontentialfunktion händisch $ \\varphi = {round_err(hvar[0], herr[0])} \cdot exp({round_err(hvar[1], herr[1])} \cdot x)$"])

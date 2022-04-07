@@ -114,7 +114,7 @@ hdatax = [[], [], []]
 
 for j, J in enumerate(hdata):
     for i, I in enumerate(J):
-        hdatax[j].append(xpeak[0] + i*popt[2])
+        hdatax[j].append(xpeak[0] + i*(2*math.pi)/popt[2])
 
 
 

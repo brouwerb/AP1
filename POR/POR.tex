@@ -68,6 +68,14 @@
     gefittet und auch die Unsicherheit ausgerechnet. Mit diesen 2x15 Datenpunkten können jetzt die Zusammenhänge
     zwischen $\omega_d, \lambda$ und $I$ untersucht werden.
 
+    \subsection{Ergebnis}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./8comp.pdf}
+
+        \caption{Messung der Eigenfrequenz}
+        \label{fig:eigenfrequenz}
+    \end{figure}
 
 
     \section{Schwingungsverhalten bei gegebener Dämpfung}
@@ -109,10 +117,10 @@
 
     \subsection{Auswertung}
     Die von Hand gemessen Periodendauern können direkt ausgewertet werden, an die Computerdaten
-    wird wie im ersten Versuch die Theoriekurve gefittet. Auch für die Dämpfungsfrequenz und für die
+    wird wie im ersten Versuch die Theoriekurve gefittet. Auch für die Dämpfungskonstante und für die
     Resonanzkurve wird programmatisch eine Theoriekurve angelegt, um die Ergebnisse mit Unsicherheit
-    zu bestimmen.
-    
+    zu bestimmen. Die Dämpfungskonstante wird aus der einhülleden Exponentialfunktion bestimmt.
+n
     \subsection{Ergebnis}
     \subsubsection{Eigenfrequenz und Dämpfungskonstante}
     \begin{figure}
@@ -122,22 +130,34 @@
         \caption{Messung der Eigenfrequenz}
         \label{fig:eigenfrequenz}
     \end{figure}
-    In Tabelle \ref{Tab:tableeig} wird die händisch gemessene Dämpfungskonstante und Eigenfrequenz (Herleitung siehe Anhang ?) sowie die
-    digital gemessene Dämpfungskonstante und Eigenfrequenz angegeben. In Graph \ref{fig:eigenfrequenz} kann die digitale Messung und die gefittete
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./9all.pdf}
+
+        \caption{Messung der Dämpfungskonstante}
+        \label{fig:daempfung}
+    \end{figure}
+    In Graph \ref{fig:eigenfrequenz} kann die digitale Messung und die gefittete
     Funktion gesehen werden. Die gleiche einhüllende Exponentialfunktion sowie die Daten der händischen Amplitudenmessung
-    wurden im Graphen ? dargestellt.
+    wurden im Graphen \ref{fig:daempfung} halblogarithmisch dargestellt.
+    
+    Als Fehler wurden bei der händischen Messung der Eigenfrequenz berücksichtigt, die Ungenauigkeit der Stuppuhr hingegen
+    wurde vernachlässigt, da sie um größenordnungen kleiner ist. Bei der Amplitudenmessung wird eine Unsicherheit von ca 2 Strichen
+    oder $3^{\circ}$ angenommen, da die Daten schnell abgelesen werden müssen.
+    In Tabelle \ref{Tab:tableeig} wird die händisch gemessene Dämpfungskonstante und Eigenfrequenz (Herleitung siehe Anhang ?) sowie die
+    digital gemessene Dämpfungskonstante und Eigenfrequenz angegeben. 
     \begin{table}[H]
         \centering
         \begin{tabular}{c c c} 
             & Hand & Computer \\ \hline
-            Eigenfrequenz $\omega$ & $3,118(24) \si{\radian\per\second}$ & $3.11913(74) \si{\radian\per\second}$
+            Eigenfrequenz $\omega$ & $3,118(24) \si{\radian\per\second}$ & $3.11913(74) \si{\radian\per\second}$ \\
+            Dämpfungskonstante $\lambda$ & $0,0935(11)$ & $0.0962(16)$
 
             
         \end{tabular}
         \caption{Eigenfrequenz im Vergleich}
         \label{Tab:tableeig}
     \end{table}
-    
 
     \bibliographystyle{plain}
     \bibliography{literature}
