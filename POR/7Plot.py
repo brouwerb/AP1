@@ -8,7 +8,7 @@ from scipy import optimize
 import math
 
 X_START =0
-Y_START =0
+Y_START =2
 X_END = 2.2
 Y_END = 3.5
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
@@ -80,11 +80,14 @@ x =[Fits[i][0][1] for i in range(len(Fits))]
 errorsY =[Fits[i][1][2] for i in range(len(Fits))]
 errorsX = [Fits[i][1][1] for i in range(len(Fits))]
 print(x,y)
-popt,perr = optimize.curve_fit(theoKurv,x,y,bounds=[2.5**2,np.inf])
+popt,perr = optimize.curve_fit(theoKurv,x,y,bounds=[2.5**2,np.inf],absolute_sigma=True,sigma=errorsY)
+perr=np.sqrt(np.diag(perr))
 print(popt,perr)
-
+real =(0.51*(2.0*np.pi))**2.0
+print(real)
 xy =genDataFromFunktion(1000,X_START,X_END,popt[0],theoKurv)
-
+xyErr1 = genDataFromFunktion(100,X_START,X_END,popt[0]+perr[0],theoKurv)
+xyErr2 = genDataFromFunktion(100,X_START,X_END,popt[0]-perr[0],theoKurv)
 
 #test
 
@@ -102,7 +105,8 @@ sc = ax.errorbar(x, y,fmt=".",yerr = errorsY,xerr=errorsX, ecolor = 'black',elin
     color=COLOR_STYLE[0])
 #sc=ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=8,linewidths=1,edgecolors="black",zorder=10)
 theo,=ax.plot(xy[0],xy[1],color= COLOR_STYLE[1],linestyle="dotted")
-ax.legend([sc, theo],[r"Dämpfungskonstante $\lambda$ mit Fehler",r"Theoriekurve $\lambda=k*I^2$ mit $k=$0.89653(30)"])
+ax.legend([sc, theo],[r"Messdaten",r"Theoriekurve $\omega_d=\sqrt{\frac{k}{\Theta}-\lambda^2}$ mit $\frac{k}{\Theta}=9.7216(24)$"])
+c=ax.fill_between(xyErr1[0],xyErr1[1],xyErr2[1],color="orange",alpha=0.4)
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)

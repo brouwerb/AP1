@@ -30,7 +30,7 @@ indizes = [[90, 1445], [111, 941], [80, 628], [81, 474], [110, 385], [76, 301], 
 add = -0.7
 faktor =  19/76.96*90/12
 print(faktor)
-index=8
+index=6
 Fits = [[[154.73762436048682,0.054849598148885875,3.1244232702381853,1.1237581053180126],[1.1906612521705262,0.000592763399204044,0.0006032663507882536,0.007959084129265772]],
         [[154.06736169609215,0.0976611030188857,3.1189030986975985,1.6705252524059255],[0.9030079316745859,0.0007720520228019844,0.000769605919820482,0.005809387722812539]],
         [[170.13702766589137,0.15730574337486858,3.1132535829739156,6.512355833013279],[0.8674664779521798,0.000976957584033556,0.0009789145848029602,0.005092613100903107]],
@@ -164,6 +164,7 @@ popt, pconv= optimize.curve_fit(expSin,xy[0],xy[1], bounds=((evar[0]*0.8,evar[1]
 
 
 err = np.sqrt(np.diag(pconv))
+eerr = np.sqrt(np.diag(eerr))
 print(popt, err)
 popts.append([popt, err])
 
@@ -174,49 +175,49 @@ theo =[[],[],[]]
 xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
 exs,eys=genDataFromFunktion(1000,0,100,evar,ehochar)
 
-def change(lamvon,lambis,omvon,ombis,phivon,phibis,bevon,bebis):
-    popt,perr= optimize.curve_fit(expSin,xy[0],xy[1],bounds=((phivon,lamvon,omvon,bevon),(phibis,lambis,ombis,bebis)))
-    print("["+arrToStrin(popt)+","+arrToStrin( np.sqrt(np.diag(perr)) )+"]")
+# def change(lamvon,lambis,omvon,ombis,phivon,phibis,bevon,bebis):
+#     popt,perr= optimize.curve_fit(expSin,xy[0],xy[1],bounds=((phivon,lamvon,omvon,bevon),(phibis,lambis,ombis,bebis)))
+#     print("["+arrToStrin(popt)+","+arrToStrin( np.sqrt(np.diag(perr)) )+"]")
 
-    xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
-    return ys
+#     xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
+#     return ys
 
 
 
 xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
-ax.scatter(xy[0],xy[1],marker=".")
+dat=ax.scatter(xy[0],xy[1],marker=".")
 [line] =ax.plot(xs,ys,color ="r")
 
-von_ax1  = fig.add_axes([0.25, 0.175, 0.5, 0.03])
-vonSl1 = Slider(von_ax1, 'lam von', 0.01, 10,evar[1]*0.9)
-bis_ax1  = fig.add_axes([0.25, 0.15, 0.5, 0.03])
-bisSl1 = Slider(bis_ax1, 'lam bis', 0.01, 10,evar[1]*1.1)
+# von_ax1  = fig.add_axes([0.25, 0.175, 0.5, 0.03])
+# vonSl1 = Slider(von_ax1, 'lam von', 0.01, 10,evar[1]*0.9)
+# bis_ax1  = fig.add_axes([0.25, 0.15, 0.5, 0.03])
+# bisSl1 = Slider(bis_ax1, 'lam bis', 0.01, 10,evar[1]*1.1)
 
-von_ax2  = fig.add_axes([0.25, 0.125, 0.5, 0.03])
-vonSl2 = Slider(von_ax2, 'f von', 0.001,10,valinit=omega*0.8)
-bis_ax2  = fig.add_axes([0.25, 0.1, 0.5, 0.03])
-bisSl2 = Slider(bis_ax2, 'f bis ', 0.001, 10,valinit=omega*1.2)
+# von_ax2  = fig.add_axes([0.25, 0.125, 0.5, 0.03])
+# vonSl2 = Slider(von_ax2, 'f von', 0.001,10,valinit=omega*0.8)
+# bis_ax2  = fig.add_axes([0.25, 0.1, 0.5, 0.03])
+# bisSl2 = Slider(bis_ax2, 'f bis ', 0.001, 10,valinit=omega*1.2)
 
-von_ax3  = fig.add_axes([0.25, 0.075, 0.5, 0.03])
-vonSl3 = Slider(von_ax3, 'Phi von', 0.001, 1000,evar[0]*0.8)
-bis_ax3  = fig.add_axes([0.25, 0.05, 0.5, 0.03])
-bisSl3 = Slider(bis_ax3, 'Phi bis', 0.1, 1000,evar[0]*1.2)
+# von_ax3  = fig.add_axes([0.25, 0.075, 0.5, 0.03])
+# vonSl3 = Slider(von_ax3, 'Phi von', 0.001, 1000,evar[0]*0.8)
+# bis_ax3  = fig.add_axes([0.25, 0.05, 0.5, 0.03])
+# bisSl3 = Slider(bis_ax3, 'Phi bis', 0.1, 1000,evar[0]*1.2)
 
-von_ax4  = fig.add_axes([0.25, 0.025, 0.5, 0.03])
-vonSl4 = Slider(von_ax4, 'be von', 0.1, 10,valinit=0)
-bis_ax4  = fig.add_axes([0.25, 0, 0.5, 0.03])
-bisSl4 = Slider(bis_ax4, 'be bis', 0.1, 10,valinit=7)
-def sliders_on_changed(val):
-    line.set_ydata(change(vonSl1.val,bisSl1.val,vonSl2.val,bisSl2.val,vonSl3.val,bisSl3.val,vonSl4.val,bisSl4.val))
-    fig.canvas.draw_idle()
-vonSl1.on_changed(sliders_on_changed)
-bisSl1.on_changed(sliders_on_changed)
-vonSl2.on_changed(sliders_on_changed)
-bisSl2.on_changed(sliders_on_changed)
-vonSl3.on_changed(sliders_on_changed)
-bisSl3.on_changed(sliders_on_changed)
-vonSl4.on_changed(sliders_on_changed)
-bisSl4.on_changed(sliders_on_changed)
+# von_ax4  = fig.add_axes([0.25, 0.025, 0.5, 0.03])
+# vonSl4 = Slider(von_ax4, 'be von', 0.1, 10,valinit=0)
+# bis_ax4  = fig.add_axes([0.25, 0, 0.5, 0.03])
+# bisSl4 = Slider(bis_ax4, 'be bis', 0.1, 10,valinit=7)
+# def sliders_on_changed(val):
+#     line.set_ydata(change(vonSl1.val,bisSl1.val,vonSl2.val,bisSl2.val,vonSl3.val,bisSl3.val,vonSl4.val,bisSl4.val))
+#     fig.canvas.draw_idle()
+# vonSl1.on_changed(sliders_on_changed)
+# bisSl1.on_changed(sliders_on_changed)
+# vonSl2.on_changed(sliders_on_changed)
+# bisSl2.on_changed(sliders_on_changed)
+# vonSl3.on_changed(sliders_on_changed)
+# bisSl3.on_changed(sliders_on_changed)
+# vonSl4.on_changed(sliders_on_changed)
+# bisSl4.on_changed(sliders_on_changed)
 
 
 
@@ -226,10 +227,11 @@ ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 
 #ax.scatter(xpeak,ypeak,marker='o',color="green", s=100)
 #ax.scatter(xy[0][cut(xy)],xy[1][cut(xy)],marker='x',color="orange", s=100)
-dat, = ax.plot(xy[0],xy[1],color="blue",linewidth=0.8)
-#theo, = ax.plot(xs,ys,color="red",linewidth=0.8)
+#dat, = ax.plot(xy[0],xy[1],color="blue",linewidth=0.8)
+theo, = ax.plot(xs,ys,color="red",linewidth=0.8)
 expf, = ax.plot(exs,eys,color="purple",linewidth=0.8)
-#ax.legend([dat,theo, expf],[r"Messdaten",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])} $", f"einhüllende Expontentialfunktion $ \\varphi = {round_err(evar[0], eerr[0])} \cdot exp({round_err(evar[1], eerr[1])} \cdot x)$"])
+
+ax.legend([dat,theo, expf],[r"Messdaten",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])} $", f"einhüllende Expontentialfunktion $ \\varphi = {round_err(evar[0], eerr[0])} \cdot exp({round_err(evar[1], eerr[1])} \cdot x)$"])
 
 ax.set_xlim(xy[0][0],xy[0][-1])
 ax.set_ylim(-ehochar(xy[0][0], evar), ehochar(xy[0][0], evar))
@@ -240,8 +242,9 @@ ax.set_ylim(-ehochar(xy[0][0], evar), ehochar(xy[0][0], evar))
 
 
 
-fig.set_size_inches(15,6)
-plt.subplots_adjust(bottom=0.2)
+fig.set_size_inches(10,6)
+plt.savefig(SAVE_AS)
 plt.show()
+
 
 
