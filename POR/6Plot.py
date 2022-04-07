@@ -100,7 +100,7 @@ sc = ax.errorbar(x, y,fmt=".",yerr = errorsY,xerr=errorsX, ecolor = 'black',elin
     color=COLOR_STYLE[0])
 #sc=ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=8,linewidths=1,edgecolors="black",zorder=10)
 theo,=ax.plot(xy[0],xy[1],color= COLOR_STYLE[1],linestyle="dotted")
-ax.legend([sc, theo],[r"Dämpfungskonstante $\lambda$ mit Fehler",r"Theoriekurve $\lambda=k*I^2$ mit $k=$0.89653(30)"])
+ax.legend([sc, theo],[r"Dämpfungskonstante $\lambda$ mit Fehler",r"Theoriekurve $\lambda=\kappa*I^2$ mit $\kappa=$0.89653(30)"])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
