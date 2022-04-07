@@ -9,18 +9,18 @@ import math
 
 X_START =0
 Y_START =0
-X_END = 1.7
-Y_END = 2.5
+X_END = 2.2
+Y_END = 3.5
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"Dämpfungskonstante $\lambda$"
-X_LABEL = r"Stromstäre in Wirbelstrombremse in $A$"
+Y_LABEL = r"Winkelgeschwindigkeit in $\omega_d$ in $Rad/s$"
+X_LABEL = r"Dämpfungskonstante $\lambda$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 0.5
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.1
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./POR/6Plot.pdf"
+SAVE_AS = "./POR/7Plot.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
@@ -67,21 +67,23 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
-def Parabel(x,k):
-    return k* x**2
+def theoKurv(x,k_träg):
+    
+    return np.sqrt(k_träg-x**2)
 
 
 
 
 
-x=[(i+2)*0.1 for i in range(len(Fits))]
-y =[Fits[i][0][1] for i in range(len(Fits))]
-errorsY =[Fits[i][1][1] for i in range(len(Fits))]
-errorsX = [xErr(x[i]) for i in range(len(x))]
-popt,perr = optimize.curve_fit(Parabel,x,y,sigma=errorsY)
+y =[Fits[i][0][2] for i in range(len(Fits))]
+x =[Fits[i][0][1] for i in range(len(Fits))]
+errorsY =[Fits[i][1][2] for i in range(len(Fits))]
+errorsX = [Fits[i][1][1] for i in range(len(Fits))]
+print(x,y)
+popt,perr = optimize.curve_fit(theoKurv,x,y,bounds=[2.5**2,np.inf])
 print(popt,perr)
 
-xy =genDataFromFunktion(1000,X_START,X_END,popt[0],Parabel)
+xy =genDataFromFunktion(1000,X_START,X_END,popt[0],theoKurv)
 
 
 #test
