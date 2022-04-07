@@ -70,10 +70,9 @@ for i in range(14):
             ydata = thisline.get_ydata()
             ind = event.ind
             
-            if ind[0] in selectedpoints[i]:
-                selectedpoints[i].remove(ind) # 
-            else:
-                selectedpoints[i].append(ind[0])
+            
+            
+            selectedpoints[i].append(ind[0])
             selectedpoints[i].sort()
             buff = [[], []]
             for j in selectedpoints[i]:

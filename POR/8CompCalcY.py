@@ -25,6 +25,10 @@ SAVE_AS = "./POR/8comp.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
+add = -0.7
+faktor =  19/76.96*90/12
+
+
 workbook = xlrd.open_workbook('./POR/Daten.xls')
 worksheet = workbook.sheet_by_name('v1')
 
@@ -40,7 +44,29 @@ def getRow(collumn1,row1,collumn2):
         data.append(worksheet.cell(row1, i).value)    
     return np.array(data)
 
-xy = getPlotable(getData("./POR/Raw_data/A3#1.txt"))
+
+def getDataCalcY(path,factor,add):
+    content=""
+    with open (path)as f:
+        content = f.read().replace(",",".")
+        
+    buf = content.split("\n")
+    content=[]
+   
+    for i,I in enumerate(buf):
+        if(1<=i and i<len(buf)-1):
+            buffer=I.split("\t")
+            buffer2=[]
+            for n,N in enumerate(buffer): 
+                
+                if n ==1:       
+                    buffer2.append((float(N)-add)*factor)
+                else:
+                    buffer2.append(float(N))
+            content.append(buffer2)
+    return content
+
+xy = getPlotable(getDataCalcY("./POR/Raw_data/A3#1.txt",faktor,add))
 
 
 # Frequez
@@ -66,6 +92,7 @@ def getomega(xyn):
 
 def expSinArr(x,params):
     return expSin(x,params[0],params[1],params[2],params[3])
+
 
 def ehoch(x,phi,lam):
     return phi*np.exp(-1*lam*x)
