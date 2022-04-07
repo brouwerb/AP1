@@ -69,11 +69,26 @@
     zwischen $\omega_d, \lambda$ und $I$ untersucht werden.
 
 
-    Die Eigenfrequenz lässt sich auch mithilfe der Schwingungsperiode $T$ berechnen
+
+    \section{Schwingungsverhalten bei gegebener Dämpfung}
+
+    Bei gegebener Dämpfung hat der Oszillator eine Charakteristische Eigenfrequenz
+    Die Eigenfrequenz eines Oszilltaors lässt sich mithilfe der Schwingungsperiode $T$ berechnen
     \begin{align}
         \omega_d = \frac{2\pi}{T}
     \end{align}
 
+    Bei einer gedämpften Schwingung liegen alle Maxima der Ausschläge des Pohlscehn Rades auf der Kurve
+    \begin{align}
+        \phi(t_n) &= \phi_0 \cdot exp(-\lambda t_n) \\
+        \text{mit} \ \ t_n &= n \cdot T + \beta \\
+        \text{da} \ \ cos(\omega \cdot t_n + \beta) &= 1. \\
+    \end{align}
+    Die Abklingzeit
+    \begin{align}
+        \tau = \frac{1}{\lambda}
+    \end{align}
+    ist der Kehrwert der Dämpfungskonstante.
 
     Bei einem gezwungenen Oszillator mit Drehmoment $M_0 sin(\omega t)$ kommt noch die partikuläre Lösung zur Bewegungsgleichung
     \begin{align}
@@ -81,6 +96,8 @@
         \text{mit Amplitude}  \ \ A(\omega) &= \frac{M_o}{\Phi \sqrt{}}
     \end{align}
 
+    \subsection{Auswertung}
+    Die von Hand
 
     \bibliographystyle{plain}
     \bibliography{literature}
