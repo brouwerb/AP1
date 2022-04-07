@@ -46,12 +46,16 @@
     \begin{align}
         \varphi(t) = \varphi_0 \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta), \label{theo5}
     \end{align}
-    mit Kreisfrequenz $\omega_d = \sqrt{\frac{k}{\Theta} - \lambda^2}$ (Drehmoment $\Theta$ und Federkonstante $k$)
+    mit Kreisfrequenz 
+    \begin{align} \label{otheo}
+        \omega_d = \sqrt{\frac{k}{\Theta} - \lambda^2}
+    \end{align} 
+    (Drehmoment $\Theta$ und Federkonstante $k$)
     und $\beta$ als Phasenverschiebung. Diese kann aus der Differentialgleichung der Kräfte 
     hergeleitet werden (siehe Aufgabenblatt \cite[(5)]{POR}).
     Bei der in diesem Experiment benutzten Wirbelstrombremse ist die
     Dämpfungskonstante $\lambda$ proportional zum Quadrat des Stroms $I$ durch die Bremse.
-    \begin{align}
+    \begin{align} \label{dtheo}
         \lambda \propto I^2.
     \end{align}
 
@@ -63,18 +67,41 @@
 
     \subsection{Auswertung}
     Um die Eingenfrequenz und Dämpfungskonsante abhängig von der Stromstärke zu bestimmen,
-    wurde auf jede Messreihe einzeln mit
-    der Funkion \textsf{optimize.curve\_fit} der Pythonbibliothek scipy die Theoriekurve \ref{theo5}
+    wurde auf jede Messreihe einzeln die Theoriekurve \ref{theo5} mit
+    der Funkion \textsf{optimize.curve\_fit} der Pythonbibliothek scipy
     gefittet und auch die Unsicherheit ausgerechnet. Mit diesen 2x15 Datenpunkten können jetzt die Zusammenhänge
     zwischen $\omega_d, \lambda$ und $I$ untersucht werden.
 
+
+    \subsection{Ergebnisse}
+    In Graph ? ist beispielhaft gezeigt, wie die Messdaten und die gefittete Theoriekurve aussehen.
+    Die ausgelesenen Dämfungskonstanten wurden in Graph ? gegen die Dämpfungsstromstärke geplottet und mit der
+    Theoriekurve (\ref{dtheo}) gefittet.
+    Im Graph ? wurden die ausgelesenen Winkelgeschwindigkeiten gegen die Dämpfung geplottet und mit der Theoriekurve
+    (\ref{otheo}) gefittet.
+
     \subsection{Ergebnis}
+   
+    begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./6Plot.pdf}
+
+        \caption{Beispielmessung}
+        \label{fig:daempf}
+    \end{figure}
     \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{./8comp.pdf}
+        \includegraphics[width=\textwidth]{./6Plot.pdf}
 
-        \caption{Messung der Eigenfrequenz}
-        \label{fig:eigenfrequenz}
+        \caption{Berechung der Dämpfungskonstanten}
+        \label{fig:daempf}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./7Plot.pdf}
+
+        \caption{Verhältnis Dämpfung und Winkelgeschwindigkeit}
+        \label{fig:wink}
     \end{figure}
 
 
@@ -158,6 +185,12 @@ n
         \caption{Eigenfrequenz im Vergleich}
         \label{Tab:tableeig}
     \end{table}
+
+    \section{Diskussion}
+
+    Man merkt bei den Fits, dass das Pohlsche Rad nicht genau der Theoriekurve folgt, sondern das bei kleinen Anplituden
+    weitere Reibungseffekte, die nicht durch die gedämpft harmonische Schwingung beschrieben können, beachtet werden müssen.
+    So gibt es immer Abweichungen bei kleineren Amplituden, die den Fehler des Fits vergrößern. 
 
     \bibliographystyle{plain}
     \bibliography{literature}
