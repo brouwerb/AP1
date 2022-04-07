@@ -56,8 +56,9 @@
     Bei der in diesem Experiment benutzten Wirbelstrombremse ist die
     Dämpfungskonstante $\lambda$ proportional zum Quadrat des Stroms $I$ durch die Bremse.
     \begin{align} \label{dtheo}
-        \lambda \propto I^2.
+        \lambda = \kappa \cdot I^2.
     \end{align}
+    mit $\kappa$ als Proportionalitätsfaktor.
 
     \subsection{Experimenteller Aufbau}
     Die Stromstärke der Wirbelstrombremse wurde mit einem Labornetzteil eingestellt und
@@ -74,20 +75,12 @@
 
 
     \subsection{Ergebnisse}
-    In Graph ? ist beispielhaft gezeigt, wie die Messdaten und die gefittete Theoriekurve aussehen.
-    Die ausgelesenen Dämfungskonstanten wurden in Graph ? gegen die Dämpfungsstromstärke geplottet und mit der
-    Theoriekurve (\ref{dtheo}) gefittet.
-    Im Graph ? wurden die ausgelesenen Winkelgeschwindigkeiten gegen die Dämpfung geplottet und mit der Theoriekurve
-    (\ref{otheo}) gefittet.
-
-    \subsection{Ergebnis}
-   
-    begin{figure}
+    \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{./6Plot.pdf}
+        \includegraphics[width=\textwidth]{./6fits.pdf}
 
         \caption{Beispielmessung}
-        \label{fig:daempf}
+        \label{fig:beis}
     \end{figure}
     \begin{figure}
         \centering
@@ -104,7 +97,13 @@
         \label{fig:wink}
     \end{figure}
 
-
+    In Graph \ref{fig:beis} ist beispielhaft gezeigt, wie die Messdaten und die gefittete Theoriekurve aussehen.
+    Die ausgelesenen Dämfungskonstanten wurden in Graph \ref{fig:daempf} gegen die Dämpfungsstromstärke geplottet und mit der
+    Theoriekurve (\ref{dtheo}) gefittet. Für die Berechung wurden nur die Fehler der Fits berücksichtigt.
+    Im Graph \ref{fig:wink} wurden die ausgelesenen Winkelgeschwindigkeiten gegen die Dämpfung geplottet und mit der Theoriekurve
+    (\ref{otheo}) gefittet. Insgesamt wurude ein Proportionalitätsfaktor $\kappa  = 0.89653(30)$ zwischen Dämpfungskonstante und
+    Dämpfungsstromstärke und ein Quotien $ \frac{k}{\Theta} = 9.7216(24)$ ermittelt.
+   
     \section{Schwingungsverhalten bei gegebener Dämpfung}
     \subsection{Theorie}
 
@@ -137,7 +136,7 @@
     \subsection{Experimenteller Aufbau}
     Für das ganze Experiment wurde ein Dämpfungsstrom von $0,3 \si{\ampere}$ gewählt.
     Um die Eingenfrequenz händisch zu Messen, wurde 5 Mal die Zeit für 10 Schwingungen gemessen.
-    Die maximale Amplitude wurde händisch jede SChwingung bestimmt, was sehr schnelles Aufschreiben erfordert.
+    Für die maximale Amplitude wurde händisch jede Schwingung bestimmt, was sehr schnelles Aufschreiben erfordert.
     Außerdem wurde eine Messreihe digital aufgenommen, um die Eigenfrequenz und Dämpfungskonstante mit dem Computer zu bestimmen.
     Um die REsonanzkurve zu  messen, wurde das Pohlsche Rad mit einem SChrittmotor angetrieben. Die maximale Amplitude wurde
     wurde digital bestimmt.
@@ -189,8 +188,46 @@ n
     \section{Diskussion}
 
     Man merkt bei den Fits, dass das Pohlsche Rad nicht genau der Theoriekurve folgt, sondern das bei kleinen Anplituden
-    weitere Reibungseffekte, die nicht durch die gedämpft harmonische Schwingung beschrieben können, beachtet werden müssen.
-    So gibt es immer Abweichungen bei kleineren Amplituden, die den Fehler des Fits vergrößern. 
+    weitere Effekte, die wahrscheinlich nicht durch die gedämpft harmonische Schwingung beschrieben können, beobachtet werden können.
+    So gibt es immer Abweichungen bei kleineren Amplituden, die den Fehler des Fits vergrößern. Wahrscheinlich exixtieren noch weitere
+    Reibungskräfte im Lager des Pohlschen Rades. \\
+
+    Obwohl keine Literaturwerte vorhanden sind, kann davon ausgegangen werden, dass die bestimmten Werte realistisch sind.
+    Bei allen Kurven außer der Graph \ref{fig:wink} liegt die Theoriekurve in der Fehlertoleranz der einzelnen Messungen.
+    Bei der Berechnung der Dämpfungkonstante überschneiden sich die Unsicherheiten der Messungen von Computer und per Hand,
+    jedoch nur so  wenig, dass bei einer Messung wahrscheinlich das Konfidenzintervall zu klein gewählt wurde. Bei der
+    Berechnung der Eigenfrequenz hingegen, sind die Messungen sehr nahe bei einander. Auffällig ist, dass war wie zu
+    erwarten bei der Eigenfrequenz die Unsicherheit per Hand um eine Größenordnung größer als beim Computer ist,
+    aber bei der Dämpfungskonstanten die Unischerheit der Computermessung etwas größer ist. Dies liegt wahrsceinlich an der Anfangs
+    erwähnten Diskrepanz zwischen theorie und praxis.
+
+    \section{Anhang}
+
+    \subsection{Berechnung von $\omega_d$ und Fehlerfortpflanzung}
+    Zur Berechnung von $\omega_d$ wurden 5 Messungen von 10 Schwingungen duchgeführt.
+    \begin{table}
+        \centering
+        \begin{tabular}{c c}
+            Messung & Zeit in Sekunden \\ \hline
+            1 & 20,24 \\
+            2 & 20,30 \\
+            3 & 20,09 \\
+            4 & 20,08 \\
+            5 & 20,04
+        \end{tabular}
+        \caption{Messung Schwingungsdauer}
+        \label{Tab:messen}
+    \end{table}
+    von diesen wurde der Mittelwert berechnet. Um dann mit der Gauschen Fehlerfortpflanzung \cite[(19)]{ABW} $\omega_d$ zu berechnen.
+    \begin{align}
+        \bar{t} &= \frac{1}{5} \left(20,24 + 20,30 + 20,09 + 20,08 + 20,04 \right) \si{\second} = 20.15 \\
+        u(t_n) &= 0,3 \si{\second} \text{Reaktionszeit} \\
+        u(\bar{t}) &= \frac{{\it t}}{\sqrt{n}} u(t_n) = 0.153 \si{\second} \text{Student-t} \\
+        \text{Zeit für eine Schwingung: } \ \ T &= \frac{10}{\bar{t}} \\
+        u(\omega) &= \frac{2 \pi \cdot 10}{\bar{t}} \cdot u(\bar{t}) = 0,0237 \si{\radian\per\second} \\
+        \omega_d &= 2 \pi \cdot \frac{10}{\bar{t}} = 3.118(24) \si{\radian\per\second}
+    \end{align}
+
 
     \bibliographystyle{plain}
     \bibliography{literature}
