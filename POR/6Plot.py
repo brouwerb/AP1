@@ -1,24 +1,25 @@
+from pickletools import optimize
 import xlrd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
-from scipy import stats
+from scipy import optimize
 import math
 
 X_START =0
 Y_START =0
-X_END = 45
-Y_END = 1
+X_END = 1.7
+Y_END = 2.5
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"Kraft Qutienten"
-X_LABEL = r"Winkel $\alpha$ in $°$"
+Y_LABEL = r"Dämpfungskonstante $\lambda$"
+X_LABEL = r"Stromstäre in Wirbelstrombremse in $A$"
 X_ERROR = 4
 Y_ERROR = 1
-X_MAJOR_TICK = 5
-Y_MAJOR_TICK =0.1
-X_MINOR_TICK =1
-Y_MINOR_TICK = 0.02
+X_MAJOR_TICK = 0.5
+Y_MAJOR_TICK =0.5
+X_MINOR_TICK =0.1
+Y_MINOR_TICK = 0.1
 SAVE_AS = "./POR/6Plot.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
@@ -34,12 +35,14 @@ Fits = [[[154.73762436048682,0.054849598148885875,3.1244232702381853,1.123758105
         [[221.5315662413464,0.8611120207219007,2.9423666652131306,1.5778706251561552],[0.8765780226390761,0.003522411503545466,0.004654092488409345,0.0062600834021884315]],
         [[197.89592666934797,1.0302340126925784,2.8910017312650864,2.0784164695636957],[0.7250538117159945,0.005264451147023591,0.006889985553048954,0.006835843432172548]],
         [[455.61741683142964,1.2296041339111183,2.8215497259623334,0.2947010683673322],[3.5994598042781285,0.006726008302795229,0.008119454195382028,0.011919347124249545]],
-        [[652.7014,1.3694027802763802,2.713817111278816,6.16742048307402],[8.535021598285027,0.009877577245139579,0.011887524920247533,0.01945101473741015]],
-        [[182.70890203074813,1.5684399999999996,2.5406141698398894,2.453979660140629],[1.2389579930138899,0.0167642917393384,0.020605529835033234,0.015767572431613915]],
+        [[708.6957999999998,1.429859926596756,2.7531237629103837,6.097415340856622],[7.338739252343618,0.007825952680400577,0.00905219281605659,0.014637138131361664]],
+        [[191.73865182443848,1.7041179204817645,2.633596782770586,2.3745193959617974],[0.8521530387775128,0.01099087950372315,0.012157060578385998,0.008964106999388531]],
         [[400.000000000001,2.0635102673910115,2.4899514909277727,1.5282992734461642],[5.913181368979814,0.02167248635941091,0.012639088708100672,0.011877718035721031]],
         ]
 
 
+def xErr(x):
+    return np.sqrt(((0.025* x)/np.sqrt(3))**2 + 0.0101/3)
 def quotientArray(oben,unten):
     buf=[]
     for i in range(len(oben)):
@@ -64,15 +67,21 @@ def genDataFromFunktion(amount,von,bis,params,func):
         y.append(func(x[i],params))
 
     return x,y
+def Parabel(x,k):
+    return k* x**2
 
 
 
 
 
-x=[i+2 for i in range(len(Fits))]
+x=[(i+2)*0.1 for i in range(len(Fits))]
 y =[Fits[i][0][1] for i in range(len(Fits))]
 errorsY =[Fits[i][1][1] for i in range(len(Fits))]
+errorsX = [xErr(x[i]) for i in range(len(x))]
+popt,perr = optimize.curve_fit(Parabel,x,y,sigma=errorsY)
+print(popt,perr)
 
+xy =genDataFromFunktion(1000,X_START,X_END,popt[0],Parabel)
 
 
 #test
@@ -85,16 +94,13 @@ fig, ax = plt.subplots()
 ax.grid()
 sc=[[],[],[]]
 theo =[[],[],[]]
-for i in range(len(x)):
+
     
-    ax.errorbar(x[i], y[i],fmt="x",yerr = errorsY[i],xerr =X_ERROR, ecolor = 'black',
-        elinewidth=0.5,
-        capsize=2,
-        capthick=0.5
-        )
-    sc[i]=ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=10,linewidths=1,edgecolors="black",zorder=10)
-    #theo[i],=ax.plot(theoXY[i][0],theoXY[i][1],color= COLOR_STYLE[i],linestyle="dotted")
-ax.legend([sc[0],theo[0],sc[1],theo[1],sc[2],theo[2]],[r"$F_{H}/F_{g}$",r"$sin(\alpha)$",r"$F_{N}/F_{g}$",r"$cos(\alpha)$",r"$F_{H}/F_{N}$",r"$tan(\alpha)$"])
+sc = ax.errorbar(x, y,fmt=".",yerr = errorsY,xerr=errorsX, ecolor = 'black',elinewidth=0.8,capsize=2,capthick=0.8,
+    color=COLOR_STYLE[0])
+#sc=ax.scatter(x,y,marker=POINT_STYLE[0],color=COLOR_STYLE[0],s=8,linewidths=1,edgecolors="black",zorder=10)
+theo,=ax.plot(xy[0],xy[1],color= COLOR_STYLE[1],linestyle="dotted")
+ax.legend([sc, theo],[r"Dämpfungskonstante $\lambda$ mit Fehler",r"Theoriekurve $\lambda=k*I^2$ mit $k=$0.89653(30)"])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
