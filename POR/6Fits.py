@@ -7,7 +7,17 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
 import math
 
-index =1
+indizes = [[76, 1494], [97, 1025], [81, 607], [81, 471], [102, 392], [79, 289], [72, 264], [69, 215], [50, 171], [47, 145], [58, 155], [59, 139], [60, 146], [66, 123]]
+add = -0.7
+faktor =  19/76.96*90/12
+print(faktor)
+index=1
+
+Fits = [[[54.72540496383549,0.05258553863008918,3.126477548952039,4.308277911494734],[0.644181383654518,0.0007132373088162611,0.0007039334727951958,0.011460953227388965]],
+        ]
+
+
+
 
 #"./PEN/Rawdata/f1gegn1#1.txt"
 def getData(path):
@@ -26,6 +36,28 @@ def getData(path):
             for N in buffer:
                 
                 buffer2.append(float(N))
+            content.append(buffer2)
+    return content
+
+
+def getDataVonBisCalcY(path,von,bis,factor,add):
+    content=""
+    with open (path)as f:
+        content = f.read().replace(",",".")
+        
+    buf = content.split("\n")
+    content=[]
+    s = float(buf[von][0])
+    for i,I in enumerate(buf):
+        if(von<=i and i<bis):
+            buffer=I.split("\t")
+            buffer2=[]
+            for n,N in enumerate(buffer): 
+                
+                if n ==1:       
+                    buffer2.append((float(N)+add)*factor)
+                else:
+                    buffer2.append(float(N)-s)
             content.append(buffer2)
     return content
 
@@ -61,7 +93,7 @@ def expSinArr(x,params):
     return expSin(x,params[0],params[1],params[2],params[3])
 
 
-xy=getPlotable(getData(f"./POR/Raw_data/A5{index+1}#1.txt"))
+xy=getPlotable(getDataVonBisCalcY(f"./POR/Raw_data/A5#{index+1}#1.txt",indizes[index][0],indizes[index][1],faktor,add))
 fig, ax = plt.subplots()
 
 
@@ -69,28 +101,28 @@ fig, ax = plt.subplots()
 
 ax.grid()
 def change(von,bis,von2,bis2,ampvon,ampbis,phasevon,phasebis):
-    popt,perr= optimize.curve_fit(expSin,xy[0],xy[1],bounds=((ampvon,von,-np.inf,von2,phasevon,-np.inf),(ampbis,bis,np.inf,bis2,phasebis,np.inf)))
-    print("["+arrToStrin(popt)+","+arrToStrin( np.sqrt(np.diag(pconv)) )+"]")
-    print(np.sqrt(np.diag(perr)))
+    popt,perr= optimize.curve_fit(expSin,xy[0],xy[1])
+    print("["+arrToStrin(popt)+","+arrToStrin( np.sqrt(np.diag(perr)) )+"]")
+    
     xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
     return ys
 
 
-popt, pconv= optimize.curve_fit(expSin,xy[0],xy[1],bounds=((0,2,-np.inf,-np.inf,-np.inf,2),(0.1,np.inf,np.inf,np.inf,np.inf,np.inf)))
+popt, pconv= optimize.curve_fit(expSin,xy[0],xy[1])
 
 xs,ys=genDataFromFunktion(1000,0,100,popt,expSinArr)
 ax.scatter(xy[0],xy[1],marker=".")
 [line] =ax.plot(xs,ys,color ="r")
 
 von_ax1  = fig.add_axes([0.25, 0.175, 0.5, 0.03])
-vonSl1 = Slider(von_ax1, 'f von', 0.1, 5)
+vonSl1 = Slider(von_ax1, 'lam von', 0.1, 5)
 bis_ax1  = fig.add_axes([0.25, 0.15, 0.5, 0.03])
-bisSl1 = Slider(bis_ax1, 'f bis', 0.1, 5)
+bisSl1 = Slider(bis_ax1, 'lam bis', 0.1, 5)
 
 von_ax2  = fig.add_axes([0.25, 0.125, 0.5, 0.03])
-vonSl2 = Slider(von_ax2, 'f von Sch', 0.001,0.5)
+vonSl2 = Slider(von_ax2, 'f von', 0.001,0.5)
 bis_ax2  = fig.add_axes([0.25, 0.1, 0.5, 0.03])
-bisSl2 = Slider(bis_ax2, 'f bis Sch', 0.001, 0.5)
+bisSl2 = Slider(bis_ax2, 'f bis ', 0.001, 0.5)
 
 von_ax3  = fig.add_axes([0.25, 0.075, 0.5, 0.03])
 vonSl3 = Slider(von_ax3, 'amp von', 0.001, 1)
