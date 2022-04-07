@@ -160,10 +160,10 @@ dat, = ax.plot(xyn[0],xyn[1],color="blue",linewidth=0.8)
 theo, = ax.plot(xs,ys,color="red",linewidth=0.8)
 expf, = ax.plot(exs,eys,color="purple",linewidth=0.8)
 htheo, = ax.plot(hxs,hys,color="orange",linewidth=0.8)
-ax.legend([dat,theo, expf, mess1, errorbar, mess2, mess3, htheo],[r"Messdaten Computer", f"Theoriekurve mit $\\varphi = {round_err(popt[2], err[2])} rad \, s^{{-1}}$",
+ax.legend([dat,theo, expf, mess1, errorbar, htheo],[r"Messdaten Computer", f"Theoriekurve mit $\\varphi = {round_err(popt[2], err[2])} rad \, s^{{-1}}$",
     f"einhüllende Expontentialfunktion Computer $ \\varphi = \\varphi_0 \cdot exp(\lambda t)$" + "\n" + 
     f"mit $\\varphi_0 = {round_err(evar[0], eerr[0])}^{{\circ}}$ und $\lambda = {round_err(evar[1], eerr[1])} rad \, s^{{-1}}$",
-    r"händische Messreihe 1", r"Unsicherheit händische Messreihe 1", r"händische Messreihe 2", r"händische Messreihe 3",
+    r"händische Messreihe 1", r"Unsicherheit händische Messreihe 1",
     f"einhüllende Expontentialfunktion Hand mit" + "\n" + f"$ \\varphi_0 = {round_err(hvar[0], herr[0])}$ und $ \lambda = {round_err(hvar[1], herr[1])} rad \, s^{{-1}}$"])
 
 ax.set_xlim(xyn[0][0],xyn[0][-1])
