@@ -52,7 +52,14 @@ def getRow(collumn1,row1,collumn2):
 def FehlerFort(part1,part2,err1,err2,vals):
     return np.sqrt(part1(vals)**2*err1**2+part2(vals)**2*err2**2)
 
-
+def arrToString(arr):
+    string="["
+    for i,I in enumerate(arr):
+        if i !=len(arr)-1:
+            string+=str(I)+","
+        else:
+            string+=str(I) +"]"
+    return string
 
 def genDataFromFunktion(amount,von,bis,params,func):
     x=[]
