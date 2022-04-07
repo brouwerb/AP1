@@ -1,5 +1,6 @@
 from math import *
 from xlrd import *
+import numpy as np
 
 def getData(path):
     content=""
