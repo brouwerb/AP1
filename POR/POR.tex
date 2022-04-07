@@ -129,16 +129,18 @@
 
     Bei einem gezwungenen Oszillator mit Drehmoment $M_0 sin(\omega t)$ kommt noch die partikuläre Lösung zur Bewegungsgleichung
     \begin{align}
-        \varphi(t) &= A(\omega) \cdot sin(\omega t - \varphi) + C \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta) \\
-        \text{mit Amplitude}  \ \ A(\omega) &= \frac{M_o}{\varphi \sqrt{}}
+        \varphi(t) = A(\omega) \cdot sin(\omega t - \varphi) + C \cdot exp(-\lambda t) \cdot cos(\omega_d - \beta) \\
+        \text{mit Amplitude}  \ \ A(\omega) = \frac{\frac{M_0}{\Theta}}{\sqrt{\left( \omega_0^2 - \omega^2 \right)^2 + 4 \lambda^2 \cdot \omega^2}} \label{aomega}
     \end{align}
+    Eine wichtige Eigenschaft der Resonanzkurve $A(\omega)$ ist, dass sie auf Höhe $\frac{A_max}{sqrt{2}}$ eine Breite von $2\lambda$ hat.
+    Außerdem ist das Maximum genau die Eigenfrequenz des ungedämpften Oszillators.
 
     \subsection{Experimenteller Aufbau}
     Für das ganze Experiment wurde ein Dämpfungsstrom von $0,3 \si{\ampere}$ gewählt.
     Um die Eingenfrequenz händisch zu Messen, wurde 5 Mal die Zeit für 10 Schwingungen gemessen.
     Für die maximale Amplitude wurde händisch jede Schwingung bestimmt, was sehr schnelles Aufschreiben erfordert.
     Außerdem wurde eine Messreihe digital aufgenommen, um die Eigenfrequenz und Dämpfungskonstante mit dem Computer zu bestimmen.
-    Um die REsonanzkurve zu  messen, wurde das Pohlsche Rad mit einem SChrittmotor angetrieben. Die maximale Amplitude wurde
+    Um die Resonanzkurve zu  messen, wurde das Pohlsche Rad mit einem Schrittmotor angetrieben. Die maximale Amplitude wurde
     wurde digital bestimmt.
 
     \subsection{Auswertung}
@@ -170,14 +172,15 @@ n
     Als Fehler wurden bei der händischen Messung der Eigenfrequenz berücksichtigt, die Ungenauigkeit der Stuppuhr hingegen
     wurde vernachlässigt, da sie um größenordnungen kleiner ist. Bei der Amplitudenmessung wird eine Unsicherheit von ca 2 Strichen
     oder $3^{\circ}$ angenommen, da die Daten schnell abgelesen werden müssen.
-    In Tabelle \ref{Tab:tableeig} wird die händisch gemessene Dämpfungskonstante und Eigenfrequenz (Herleitung siehe Anhang ?) sowie die
+    In Tabelle \ref{Tab:tableeig} wird die händisch gemessene Dämpfungskonstante und Eigenfrequenz (Herleitung siehe Anhang \ref{sec:omega}) sowie die
     digital gemessene Dämpfungskonstante und Eigenfrequenz angegeben. 
     \begin{table}[H]
         \centering
         \begin{tabular}{c c c} 
             & Hand & Computer \\ \hline
             Eigenfrequenz $\omega$ & $3,118(24) \si{\radian\per\second}$ & $3.11913(74) \si{\radian\per\second}$ \\
-            Dämpfungskonstante $\lambda$ & $0,0935(11)$ & $0.0962(16)$
+            Dämpfungskonstante $\lambda$ & $0,0935(11) \si{\per\second}$ & $0.0962(16) \si{\per\second}$ \\
+            Abklingzeit $\tau$ & 10,70(13) \si{\second} & 10,40(17) \si{\second} \\
 
             
         \end{tabular}
@@ -203,7 +206,7 @@ n
 
     \section{Anhang}
 
-    \subsection{Berechnung von $\omega_d$ und Fehlerfortpflanzung}
+    \subsection{Berechnung von $\omega_d$ und Fehlerfortpflanzung} \label{sec:omega}
     Zur Berechnung von $\omega_d$ wurden 5 Messungen von 10 Schwingungen duchgeführt.
     \begin{table}
         \centering
@@ -226,6 +229,8 @@ n
         \text{Zeit für eine Schwingung: } \ \ T &= \frac{10}{\bar{t}} \\
         u(\omega) &= \frac{2 \pi \cdot 10}{\bar{t}} \cdot u(\bar{t}) = 0,0237 \si{\radian\per\second} \\
         \omega_d &= 2 \pi \cdot \frac{10}{\bar{t}} = 3.118(24) \si{\radian\per\second}
+        \tau &= frac{1}{\lambda} \\
+        u(\tau) &= \frac{1}{\lambda^2} \cdot u(\lambda)
     \end{align}
 
 

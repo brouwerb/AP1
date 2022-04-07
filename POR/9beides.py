@@ -163,10 +163,11 @@ dat, = ax.plot(xyn[0],xyn[1],color="blue",linewidth=0.8)
 theo, = ax.plot(xs,ys,color="red",linewidth=0.8)
 expf, = ax.plot(exs,eys,color="purple",linewidth=0.8)
 htheo, = ax.plot(hxs,hys,color="orange",linewidth=0.8)
-ax.legend([dat,theo, expf, mess1, errorbar, mess2, mess3, htheo],[r"Messdaten Computer",f"Theoriekurve mit $\omega = {round_err(popt[2], err[2])}$ und $\lambda = {round_err(popt[1], err[1])}$",
-    f"einhüllende Expontentialfunktion Computer $ \\varphi = {round_err(evar[0], eerr[0])} \cdot exp({round_err(evar[1], eerr[1])} \cdot x)$",
+ax.legend([dat,theo, expf, mess1, errorbar, mess2, mess3, htheo],[r"Messdaten Computer", f"Theoriekurve mit $\\varphi = {round_err(popt[2], err[2])} rad \, s^{{-1}}$",
+    f"einhüllende Expontentialfunktion Computer $ \\varphi = \\varphi_0 \cdot exp(\lambda t)$" + "\n" + 
+    f"mit $\\varphi_0 = {round_err(evar[0], eerr[0])}^{{\circ}}$ und $\lambda = {round_err(evar[1], eerr[1])} rad \, s^{{-1}}$",
     r"händische Messreihe 1", r"Unsicherheit händische Messreihe 1", r"händische Messreihe 2", r"händische Messreihe 3",
-    f"einhüllende Expontentialfunktion händisch $ \\varphi = {round_err(hvar[0], herr[0])} \cdot exp({round_err(hvar[1], herr[1])} \cdot x)$"])
+    f"einhüllende Expontentialfunktion Hand mit" + "\n" + f"$ \\varphi_0 = {round_err(hvar[0], herr[0])}$ und $ \lambda = {round_err(hvar[1], herr[1])} rad \, s^{{-1}}$"])
 
 ax.set_xlim(xyn[0][0],xyn[0][-1])
 ax.set_ylim(1, ehochar(xyn[0][0], evar))
