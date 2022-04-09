@@ -76,7 +76,7 @@
     \section{Anhang}
     \subsection{Kugelfallviskosimeter}
 
-    \paragraph{Berechnung der dynamischen Viskosität mit Fehler}
+    \subsubsection{Berechnung der dynamischen Viskosität mit Fehler}
     
     \begin{table}
        \begin{adjustwidth}{-5cm}{-5cm}
@@ -87,8 +87,8 @@
                 Radius Kugel $r$ & $u_r = 0,05 \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
                 Radius Zylinder $R$ & $u_R = 0,06 \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
                 Zeit $t$ & $u_t = \sqrt{2} 0,3\si{\second} = 0,425 \si{\second}$ & Reaktionszeit x2\\
-                Strecke $s$ & $u_s = \frac{1}{2\sqrt{6}} \si{\metre} = 0.21 \si{\metre}$ & Schrittweite $1 \si{\milli\metre}$ \\
-                Dichte Flüssigkeit $\rho_F$ & $u_{\rho_F} = \frac{0,01}{2\sqrt{6}} \si{\kilogram\per\cubic\metre} = 0,0021  \si{\kilogram\per\cubic\metre}$ & Schrittweite $0,01 \si{\kilogram\per\cubic\metre}$ \\
+                Strecke $s$ & $u_s = \frac{1}{2\sqrt{6}} \si{\milli\metre} = 0.21 \si{\milli\metre}$ & Schrittweite $1 \si{\milli\metre}$ \\
+                Dichte Flüssigkeit $\rho_F$ & $u_{\rho_F} = \frac{0,01}{2\sqrt{6}} \si{\gram \per \milli\litre} = 0,0021  \si{\gram\per\milli\litre}$ & Schrittweite $0,01 \si{\kilogram\per\cubic\metre}$ \\
 
             \end{tabular}
         \end{adjustwidth}
@@ -102,13 +102,26 @@
     \begin{align}
         u_{\bar{t}} &= \frac{{\it t}}{\sqrt{n}} u_{t_i} =  0,144 \si{\second}
     \end{align}
+    Auch vom Kugeldurchmesser kann erstmal der Mittelwert
+    \begin{align}
+        \bar{r} &= \frac{1}{n} \sum_{i=1}^{n} r_i = 3,998(17) \si{\milli\metre}
+    \end{align}
+    und dann der Fehler mit Student-t (n=10)
+    \begin{align}
+        u_{\bar{n}} &= \frac{{\it t}}{\sqrt{n}} u_{r_i} = 0.017 \si{\milli\metre}
+    \end{align}
+    berechnet werden
+
     Jetzt kann $\eta$ mit Formel \cite[(11)]{VIS}
     \begin{align}
         \eta &= \frac{2r^2g}{9v}(\rho_K - \rho_F) \\
         &= \frac{2r^2g}{9\frac{s}{\bar{t}}}(\frac{m}{\frac{4}{3} \pi r^3} - \rho_F)
         &= 
     \end{align}
-
+    und der Fehler mit der Gausschen Fehlerfortpflanzung \cite{ABW}
+    \begin{multline}
+        \sqrt{\sum_{i=0}^{4} 18.9988739756689 \left(\frac{\left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{0 i} {x}_{0} {x}_{3}}{{x}_{1}} - \frac{0.5 \left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{1 i} {x}_{0}^{2} {x}_{3}}{{x}_{1}^{2}} + \frac{0.5 \left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{3 i} {x}_{0}^{2}}{{x}_{1}} + \frac{0.5 \left(- \frac{2.25 \delta_{0 i} {x}_{2}}{\pi {x}_{0}^{4}} + \frac{0.75 \delta_{2 i}}{\pi {x}_{0}^{3}} - \delta_{4 i}\right) {x}_{0}^{2} {x}_{3}}{{x}_{1}}\right)^{2} {ui}_{i}^{2}}
+    \end{multline}
 
 
     \bibliographystyle{plain}
