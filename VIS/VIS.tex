@@ -1,0 +1,131 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts} %Matheschriften
+\usepackage{amssymb} %Mathesymbole
+%\usepackage{mathptmx} % Einstellung für Schriften und Sonderzeichen in mathematischen Umgebungen
+                        % ändert SChriftfont
+\usepackage{wasysym} % Stellt diverse Sonderzeichen bereit
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[section]{placeins}
+% allows for temporary adjustment of side margins
+\usepackage{changepage}
+
+
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{%
+ \renewcommand{\abstractname}{Einleitung}}
+
+\title{Versuch 4: Pohlsches Rad}
+\author{Jascha Fricker, Benedict Brouwer}
+
+\begin{document}
+    \maketitle
+
+    
+
+    \begin{abstract}
+        In diesen Versuch wird die Viskosität von verschiedenen Fluiden untersucht. Mit der Viskosität
+        und der Reynoldzahl kann ausgerechnet werden, ob eine Strömung turbulent oder laminar ist.
+        Dies ist in vielen Bereichen wichtig, da so z. B. ermittelt werden kann, ob ein Flugzeug fliegt oder
+        aus dem Himmel fällt.
+    \end{abstract}
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Kugelfallviskosimeter}
+
+    \subsection{Theorie}
+
+    Bei einem Kugelfallviskosimeter wird die dynamische Viskosität $\eta$ des Fluides mit 
+    der Fallgeschwindigkeit $v$ einer Kugel
+    mit gegebenem Radius $r$ und Masse $m$ bestimmt.
+    Bei annahme eines unendlich ausgedehnten Mediums, gilt
+    \begin{align}
+        \eta = \frac{2r^2g}{9v}(\rho_K - \rho_F)
+    \end{align}
+    mit Dichte der Kugel $rho_K$ und Dichte der Flüssigkeit $rho_F$.
+    Wird hingegen ein unendlich langer Zylinder mit Radius $R$ betrachtet, gilt
+    \begin{align}
+        \eta = \frac{2R^2g}{9v(1+2,4\frac{r}{R})}(\rho_K - \rho_F)
+        \label{eq:cylinder}
+    \end{align}
+    Um daraus die Reynoldszahl zu berechnen, gilt
+    \begin{align}
+        \Re = \frac{2r \rho_F v}{\eta}
+    \end{align}
+
+    \subsection{Experimenteller Aufbau}
+    In diesem Experiment wurde 17 mal die Kugel durch die Flüssigkeit fallen gelassen und
+    jedes mal wurde über einen bestimmten Abstand $s$ die Fallzeit $t$ gemessen.
+    Anschließend wurde noch die Dichte der Flüssigkeit $\rho_F$ mit einem Aerometer gemessen.
+    
+    \subsection{Ergebnisse}
+
+    Die Fehler, die betrachtet wurden, sind in der Tabelle ? aufgeführt.
+
+
+
+    \section{Anhang}
+    \subsection{Kugelfallviskosimeter}
+
+    \subsubsection{Berechnung der dynamischen Viskosität mit Fehler}
+    
+    \begin{table}
+       \begin{adjustwidth}{-5cm}{-5cm}
+            \centering
+            \begin{tabular}{c c c}
+                Messgröße & Fehler & Begründung \\ \hline
+                
+                Gewicht $m$ & $u_g = 0,0005 \si{\gram}$ & Skalierung \\
+                Radius Kugel $r$ & $u_r = 0,05 \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
+                Radius Zylinder $R$ & $u_R = 0,06 \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
+                Zeit $t$ & $u_t = \sqrt{2} 0,3\si{\second} = 0,425 \si{\second}$ & Reaktionszeit x2\\
+                Strecke $s$ & $u_s = \frac{1}{2\sqrt{6}} \si{\milli\metre} = 0.21 \si{\milli\metre}$ & Schrittweite $1 \si{\milli\metre}$ \\
+                Dichte Flüssigkeit $\rho_F$ & $u_{\rho_F} = \frac{0,01}{2\sqrt{6}} \si{\gram \per \milli\litre} = 0,0021  \si{\gram\per\milli\litre}$ & Schrittweite $0,01 \si{\kilogram\per\cubic\metre}$ \\
+
+            \end{tabular}
+        \end{adjustwidth}
+    \end{table}
+    
+    Als erstes wurde der Mittelwert der Fallzeiten berechnet.
+    \begin{align}
+        \bar{t} &= \frac{1}{n} \sum_{i=1}^{n} t_i = 3,94(15) \si{\second}
+    \end{align}
+    Der Fehler der Fallzeiten wurde mithilfe der Student-t-Verteilung (n=10) berechnet.
+    \begin{align}
+        u_{\bar{t}} &= \frac{{\it t}}{\sqrt{n}} u_{t_i} =  0,144 \si{\second}
+    \end{align}
+    Auch vom Kugeldurchmesser kann erstmal der Mittelwert
+    \begin{align}
+        \bar{r} &= \frac{1}{n} \sum_{i=1}^{n} r_i = 3,998(17) \si{\milli\metre}
+    \end{align}
+    und dann der Fehler mit Student-t (n=10)
+    \begin{align}
+        u_{\bar{n}} &= \frac{{\it t}}{\sqrt{n}} u_{r_i} = 0.017 \si{\milli\metre}
+    \end{align}
+    berechnet werden
+
+    Jetzt kann $\eta$ mit Formel \cite[(11)]{VIS}
+    \begin{align}
+        \eta &= \frac{2r^2g}{9v}(\rho_K - \rho_F) \\
+        &= \frac{2r^2g}{9\frac{s}{\bar{t}}}(\frac{m}{\frac{4}{3} \pi r^3} - \rho_F)
+        &= 
+    \end{align}
+    und der Fehler mit der Gausschen Fehlerfortpflanzung \cite{ABW}
+    \begin{multline}
+        \sqrt{\sum_{i=0}^{4} 18.9988739756689 \left(\frac{\left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{0 i} {x}_{0} {x}_{3}}{{x}_{1}} - \frac{0.5 \left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{1 i} {x}_{0}^{2} {x}_{3}}{{x}_{1}^{2}} + \frac{0.5 \left(- {x}_{4} + \frac{0.75 {x}_{2}}{\pi {x}_{0}^{3}}\right) \delta_{3 i} {x}_{0}^{2}}{{x}_{1}} + \frac{0.5 \left(- \frac{2.25 \delta_{0 i} {x}_{2}}{\pi {x}_{0}^{4}} + \frac{0.75 \delta_{2 i}}{\pi {x}_{0}^{3}} - \delta_{4 i}\right) {x}_{0}^{2} {x}_{3}}{{x}_{1}}\right)^{2} {ui}_{i}^{2}}
+    \end{multline}
+
+
+    \bibliographystyle{plain}
+    \bibliography{literature}
+
+\end{document}
