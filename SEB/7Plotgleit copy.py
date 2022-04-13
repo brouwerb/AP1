@@ -129,7 +129,7 @@ beschErrs =[]
 beschGew =[]
 beschGewErr =[]
 mu =[]
-muErr=[]
+mu=[]
 data=[]
 params=[]
 for angle in range(4):
@@ -151,11 +151,11 @@ for angle in range(4):
     beschGewErr.append(np.sqrt(intExtFehler(besch[angle],beschErrs[angle])**2/g**2))
     mu.append((math.tan(np.deg2rad(angles[angle]))-beschGew[angle]/math.cos(np.deg2rad(angles[angle]))))
     
-    muErr.append(np.sqrt(1/np.cos(angles[angle])**2 * beschGewErr[angle]**2))
+    mu.append(np.sqrt(1/np.cos(angles[angle])**2 * beschGewErr[angle]**2))
 
-mures = gewichteterMittelwert(mu,muErr)
+mures = gewichteterMittelwert(mu,mu)
 
-muresErr = intExtFehler(mu,muErr)
+muresErr = intExtFehler(mu,mu)
 
 
 fig, ax = plt.subplots()
