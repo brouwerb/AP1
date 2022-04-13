@@ -6,19 +6,20 @@ import matplotlib as mpl
 from scipy import optimize
 import roundwitherror as re
 
+
 X_START =0.22
-Y_START =55
+Y_START =5.5
 X_END = 0.49
-Y_END = 63
+Y_END = 6.3
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"$p*V$   in   $hpa*mm^3$"
+Y_LABEL = r"$p*V$   in   $pa*m^3$"
 X_LABEL = r"$\frac{1}{V}$    in    $\frac{1}{cm^3}$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 0.05
-Y_MAJOR_TICK = 2
+Y_MAJOR_TICK = 0.2
 X_MINOR_TICK =0.01
-Y_MINOR_TICK = 0.5
+Y_MINOR_TICK = 0.05
 SAVE_AS = "./ZUS/Plots/3Plot_n.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
@@ -30,7 +31,7 @@ worksheet = workbook.sheet_by_name('Daten')
 
 x=re.getAxis(104,0,124,'./ZUS/Data/G1.xls','Daten')
 y = re.getAxis(104,1,124,'./ZUS/Data/G1.xls','Daten')
-y = [y[i] *x[i] for i in range(len(y))]
+y = [y[i] *x[i]*0.1 for i in range(len(y))]
 x = [1/(x[i])for i in range(len(x))]
 
 
@@ -74,5 +75,7 @@ ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)
+
+
 
 # worksheet.cell(0, 0).value  
