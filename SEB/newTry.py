@@ -126,7 +126,7 @@ beschErrs =[]
 beschGew =[]
 beschGewErr =[]
 mu =[]
-muErr=[]
+mu=[]
 yAng = []
 for angle in range(4):
 
