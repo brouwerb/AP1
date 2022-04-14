@@ -5,20 +5,21 @@ from roundwitherror import *
    
  
 
-r = 0.0039975 #0
+r = 0.0039975/2 #0
 s = 0.35 #1
+#m = 0.00012
 m = 0.00008445 #2
 g = 9.807232
 t = 3.838235 #3
 rhof = 1222 #4
-r2 = 0.0533 #5
+r2 = 0.0533/2 #5
 
-ur = 0.000017
+ur = 0.000017/2
 us = 0.00021
 um = 0.0000005/10
 ut = 0.14425
 urho = 2.1 
-ur2 = 0.0006
+ur2 = 0.0006/2
 
 r=unumpy.uarray(r, ur)
 s=unumpy.uarray(s, us)
@@ -38,7 +39,7 @@ r2=unumpy.uarray(r2, ur2)
  and estimate errz.  
  """  
 
-rhok = m/(4/3*r**3*numpy.pi)
+rhok = m/((4/3)*(r**3)*numpy.pi)
 print(numpy.pi)
 print(rhok)
 v = s/t

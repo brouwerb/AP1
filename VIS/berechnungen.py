@@ -1,4 +1,4 @@
-import math
+import sympy
 from sympy import *
 from sympy.abc import i
 #  Variablen
@@ -7,23 +7,23 @@ from sympy.abc import i
 x = IndexedBase("x")
 u = IndexedBase("u")
 
-r, s, m, t, rhof, rhok, v = symbols('r s m t rho_f, rho_k, v')
-ur, us, um, t, urho = symbols('ur us um t urho')
-
-g = 9.807232
+r, s, m, t, rhof, rhok, v, g = symbols('r s m t rho_f rho_k v g')
+ur, us, um, ut, urho = symbols('u_r u_s u_m u_t u_rho')
 
 
-rhok = x[2]/(4/3*x[0]**3*pi)
-v = x[1]/x[3]
+
+
+rhok = m/(sympy.Rational(4, 3)*r**3*sympy.pi)
+v = s/t
 init_printing(use_unicode=True)
 
-nabla = ((2*(x[0]**2)*g)/(9*v))*(rhok - x[4])
+nabla = ((2*(r**2)*g)/(9*v))*(rhok - rhof)
 
 print(nabla)
 
-gausserr = sqrt(Sum((diff(nabla, x[i])**2 * u[i]**2), (i, 0, 4)))
+gausserr = sqrt((diff(nabla, r)**2 * ur**2) + (diff(nabla, s)**2 * us**2) + (diff(nabla, m)**2 * um**2) + (diff(nabla, t)**2 * ut**2) + (diff(nabla, rhof)**2 * urho**2))
 
-print(latex(gausserr))
+print(latex(simplify(gausserr)))
 
 nab = lambdify([x[0], x[1], x[2], x[3], x[4]], nabla)
 gauss = lambdify([x[0], x[1], x[2], x[3], x[4], u[0], u[1], u[2], u[3], u[4]], gausserr)
