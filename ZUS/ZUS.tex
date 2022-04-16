@@ -72,11 +72,28 @@
     Der Druck wurde mithilfe eines Manometers gemessen.
 
     \section{Ergebnisse}
-    Mithilfe der genauen Messreihe bei $50 \si{\degree \celsius}$ wurde durch einen Fit der
-    Funktion \ref{eq:ideal} (siehe Graph ?) die molare Stoffmenge $n = 0,002613(16) \si{\mole}$ bestimmt.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./Plots/3Plot_n.pdf}
+
+        \caption{Bestimmung der molaren Stoffmenge $n$}
+        \label{fig:n}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./Plots/4Plot_of_Hell.pdf}
+
+        \caption{Isotherme bei verschiedenen Temperaturen}
+        \label{fig:isotherme}
+    \end{figure}
+    Mithilfe der genauen Messreihe bei $50 \si{\celsius}$ wurde durch einen Fit der
+    Funktion \ref{eq:ideal} im Graph \ref{fig:n} die molare Stoffmenge $n = 0,002613(16) \si{\mole}$ bestimmt.
     Diese molare Masse wurde für alle Messreihen benutzt. \\
 
-    In dem Graphen ? sind alle gemessenen Isothermen mit Ausgleichsfunktionen dargestellt.
+    Die Isothermen sind im Graphen \ref{fig:isotherme} dargestellt, wobei der Druck gegen das Volumen aufgetragen wurde.
+
+    
 
     \section{Diskussion}
     \begin{table}
@@ -85,11 +102,16 @@
             $T_{krit} SF_6 = 45,55 \si{\degree \celsius}$ \cite{SH6} \\
             $p_{krit} SF_6 = 37,53 \si{\bar}$ \cite{SH6} \\
             $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
+            \\
             \begin{tabular}{c c}
-                Temperatur in $\si{\degree\celsius}$ & Dampfdruck in $\si{\bar}$ \\
-                
+                Temperatur in $\si{\degree\celsius}$ & Dampfdruck in $\si{\bar}$ \\ \hline
+                20 \si{\celsius} & 2,108 \si{\mega\pascal} \\
+                30 \si{\celsius} & 2,66 \si{\mega\pascal} \\
+                40 \si{\celsius} & 3,31 \si{\mega\pascal} \\
             \end{tabular}
         \end{tabular}
+        \caption{Literaturwerte}
+        \label{tab:literaturwerte}
     \end{table}
 
 
