@@ -69,14 +69,40 @@
     
     \subsection{Ergebnisse}
 
-    Die Fehler, die betrachtet wurden, sind in der Tabelle \ref{tab:errors} aufgeführt.
+    Die Messwerte und Fehler, die betrachtet wurden, sind in der Tabelle \ref{tab:errors} aufgeführt. Die Berechnung der dynamischen Viskosität \ref{sec:dynvisc} und Reynoldszahl \ref{sec:reynolds}
+    wurde im Anhang beschrieben. In der Tabelle \ref{tab:results1} werden die berechneten Ergebnisse zusammengefasst.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c c}
+            dynamische Viskosität nach \cite[(11)]{VIS} & $0,1244(51) \si{\pascal\second}$ \\
+            dynamische Viskosität nach \cite[(12)]{VIS} & $0,1054(44) \si{\pascal\second}$ \\
+            Reynoldszahl & $2,11(17)$ \\
+        \end{tabular}
+        \caption{Ergebnisse Kugelfallviskosimeter}
+        \label{tab:results1}
+    \end{table}
+    
+
+    \subsection{Diskussion}
+    Wie zu erwarten wird die Viskosität bei der genaueren Berechnung kleiner, da der Nenner der Formel
+    größer wird. Der Unterschied der Werte ist mit ca. 20\% jedoch sehr groß, so liegen die Werte
+    weit außerhalb des jeweils anderen Unsicherheitsintervalls. \\
+    Aus der errechneten dynamischen Viskosität kann anhand der Theorie \cite[Abbildung 8]{VIS} und einer Raumtemperatur von etwa $20 \si{\celsius}$ 
+    eine Glycerinkonzentration von ca. $87\%$ bestimmt werden. Aus anderen Literaturwerten \cite{GLY} kann anhand der Dichte von $1222 \si{\kilogram\per\meter\cubed}$
+    eine Glycerinkonzentration von ca. $85\%$ bestimmt werden. Diese sind so nah bei einander, das von einer
+    sinnvollen Messung und Berechnung ausgegangen werden kann. Da die Reynoldszahl größer als $1$ ist, 
+    war die Strömung um die Kugel turbulent.
+
+    \section{Kapillarviskosimeter}
+
+    \subsection{Theorie}
 
 
 
     \section{Anhang}
     \subsection{Kugelfallviskosimeter}
 
-    \subsubsection{Berechnung der dynamischen Viskosität mit Fehler}
+    \subsubsection{Berechnung der dynamischen Viskosität mit Fehler} \label{sec:dynvisc}
     
     \begin{table}
        \begin{adjustwidth}{-5cm}{-5cm}
@@ -85,8 +111,8 @@
                 Messgröße & Messwert mit Fehler & Begründung \\ \hline
                 
                 Gewicht $m$ & $g = 0,8445(5) \si{\gram}$ & Skalierung \\
-                Radius Kugel $r$ & $r = 3,998(17) \si{\milli\meter}$ & Student-t \\
-                Radius Zylinder $R$ & $R = 5,33(6) \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
+                Durchmesser Kugel $d$ & $d = 3,998(17) \si{\milli\meter}$ & Student-t \\
+                Durchmesser Zylinder $D$ & $D = 5,33(6) \si{\milli\meter}$ & ABW Skript \cite[Tabelle 6]{ABW} \\
                 Zeit $t$ & $t = 3,85(15) \si{\second}$ & Reaktionszeit x2\\
                 Strecke $s$ & $s = 35,00(21) \si{\milli\metre}$ & Schrittweite $1 \si{\milli\metre}$ \\
                 Dichte Flüssigkeit $\rho_F$ & $\rho_F = 1,2220(21)  \si{\gram\per\milli\litre}$ & Schrittweite $0,01 \si{\kilogram\per\cubic\metre}$ \\
@@ -107,30 +133,71 @@
     \end{align}
     Auch vom Kugeldurchmesser kann erstmal der Mittelwert
     \begin{align}
-        \bar{r} &= \frac{1}{n} \sum_{i=1}^{n} r_i = 3,998(17) \si{\milli\metre}
+        \bar{d} &= \frac{1}{n} \sum_{i=1}^{n} d_i = 3,998(17) \si{\milli\metre}
     \end{align}
     und dann der Fehler mit Student-t (n=10)
     \begin{align}
-        u_{\bar{n}} &= \frac{{\it t}}{\sqrt{n}} u_{r_i} = 0.017 \si{\milli\metre}
+        u_{\bar{d}} &= \frac{{\it t}}{\sqrt{n}} u_{d_i} = 0.017 \si{\milli\metre}
     \end{align}
     berechnet werden
 
     Jetzt kann $\eta$ mit Formel \cite[(11)]{VIS}
     \begin{align}
         \eta &= \frac{2r^2g}{9v}(\rho_K - \rho_F)  \nonumber \\
-        &= \frac{2r^2g}{9\frac{s}{\bar{t}}}(\frac{m}{\frac{4}{3} \pi r^3} - \rho_F) \nonumber \\
-        &= 0.1206(47) \si{\pascal\second}
+        &= \frac{2\frac{d}{2}^2g}{9\frac{s}{\bar{t}}}(\frac{m}{\frac{4}{3} \pi \frac{d}{2}^3} - \rho_F) \nonumber \\
+        &= 0,1244(51) \si{\pascal\second}
     \end{align}
     und der Fehler mit der Gausschen Fehlerfortpflanzung \cite{ABW}
     \begin{align}
-        u_{\eta} &= \sqrt{\sum^5_{i = 1}\left(\frac{\partial \eta}{\partial x_i}\right)^2 u_i^2}
+        u_{\eta} &= \sqrt{\sum^5_{i = 1}\left(\frac{\partial \eta}{\partial x_i}\right)^2 u_i^2} \\
+        &= \frac{\sqrt{\frac{g^{2} \cdot \left(16 \pi^{2} r^{8} s^{2} t^{2} u_{\rho}^{2} + r^{2} s^{2} \cdot \left(9 t^{2} u_{m}^{2} + u_{t}^{2} \left(3 m - 4 \pi r^{3} \rho_{f}\right)^{2}\right) + r^{2} t^{2} u_{s}^{2} \left(3 m - 4 \pi r^{3} \rho_{f}\right)^{2} + s^{2} t^{2} u_{r}^{2} \left(3 m + 8 \pi r^{3} \rho_{f}\right)^{2}\right)}{r^{4} s^{4}}}}{18 \pi} \\
+        &= 0,0051 \si{\pascal\second}
     \end{align}
     ausgerechnet werden.
     Mit der Formel \cite[(12)]{VIS} kann
     \begin{align}
-        \eta = 0.1206(47) \si{\pascal\second}
+        \eta = 0,1054(44) \si{\pascal\second}
     \end{align}
     sogar noch genauer ausgerechnet werden.
+    \subsubsection{Berechnung der Reynoldszahl mit Fehler} \label{sec:reynolds}
+    Mit der dynamischen Viskosität $\eta$ kann die Reynoldszahl $Re$ berechnet werden.
+    \begin{align}
+        Re &= \frac{\frac{d}{2} \rho_F v}{\eta} \nonumber \\
+            &= 2,11(17)
+    \end{align}
+    Als charakteristische Länge wurde der Radius $r$ der Kugel benutzt, aber auch mit Durchmesser
+    wäre die Reynoldszahl größer als 1.
+    \subsection{Frage}
+    \subsubsection{Fallschirmspringer}
+    Annahmen: Fallschirmspringer ist eine Kugel mit Radius $r = 0,4 - 0,8 \si{\metre}$ und Masse $m = 80 \si{\kilogram}$, Luftdichte bei ca. 2000m $rho_F = 1 \si{\kilogram\per\cubic\metre}$.
+    Damit kann die Viskosität der Luft
+    \begin{align}
+        \eta &= \frac{2 r^2 g}{9 v}(\frac{3m}{4 \pi r^3} - \rho_F) \nonumber \\
+        &= 0,9 - 1,9 \si{\pascal\second}
+    \end{align}
+    und die Reynoldszahl
+    \begin{align}
+        Re &= 11 - 50
+    \end{align}
+    berechnet werden. Es treten in jedem Fall turbulente Strömungen auf. Die Annahmen sind überhaupt nicht gut, da ein Fallschirmspringer je nach Körperhaltung (Ausgestreckt oder als Kugel)
+    sehr unterschiedliche Reibung hat und damit unterschiedliche Geschwindigkeiten erreichen kann. Es wurde aber nicht angegeben, mit welcher Körperhaltung
+    er $200 \si{\kilo\metre\per\hour}$  schnell fällt, so können je nach Annahme verschiedene Viskositäten berechnet werden.
+    Außerdem sind diese Werte verglichen mit Literaturwerten ($18 \si{\micro\pascal\second}$)komplett falsch, da wahrscheinlich die Reibung der Luft mit turbulenten Strömungen
+    nicht mit der verwendeten Stokesschen Formel \cite[(9)]{VIS} berechnet werden kann.
+
+    \subsubsection{Atmung}
+    Annahmen: Radius Nasenloch $r = 3 \si{\milli\metre}$,  Viskosität der Luft $\eta = 18 \si{\micro\pascal\second}$, Volumen verstärkter Atmung $V = 1 \si{\litre} = 0,001 \si{\metre\cubed}$
+    Atemfrequenz $f = 0,5 \si{\hertz}$. Daraus folgt, dass ein Einatmen genau eine Sekunde dauert.
+    \begin{align}
+        v &= \frac{V}{\pi r ^2 \cdot t} \nonumber \\
+            &= 35 \si{\metre\per\second}
+    \end{align}
+    Mit der Geschwindigkeit kann man die Reynoldszahl
+    \begin{align}
+        Re &= \frac{2r \rho_F v}{\eta} \nonumber \\
+        &= 15000
+    \end{align}
+    berechnen. Da diese viel größer als 2300 ist, entstehen Verwirbelungen.
 
     \bibliographystyle{plain}
     \bibliography{literature}
