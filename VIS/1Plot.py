@@ -99,8 +99,8 @@ for i in range(len(x)):
     #     color=COLOR_STYLE[0])
     sc[i]=ax.scatter(x[i],y[i],marker=POINT_STYLE[i],color=COLOR_STYLE[i],s=8,linewidths=1,edgecolors="black",zorder=10)
     theo[i],=ax.plot(xy[i][0],xy[i][1],color= COLOR_STYLE[i],linestyle="dotted")
-ax.legend([sc[0], theo[0],sc[1], theo[1]],[r"Kanüle mit d=0,317(11)",r"Ausgleichsgerade $W*x+b$"+"\n"+r"mit $W=$"+re.round_err(popt[0][0],perr[0][0])+r" $\frac{pa~s}{mm^3}$",
-                                        r"Kanüle mit d=0,365(11)",r"Ausgleichsgerade $W*x+b$"+"\n"+r"mit $W=$"+re.round_err(popt[1][0],perr[1][0])+r" $\frac{pa~s}{mm^3}$"],loc=4)
+ax.legend([sc[0], theo[0],sc[1], theo[1]],[r"Kanüle 1 mit d=0,317(11)",r"Ausgleichsgerade $W*x+b$"+"\n"+r"mit $W_1=$"+re.round_err(popt[0][0],perr[0][0])+r" $\frac{pa~s}{mm^3}$",
+                                        r"Kanüle 2 mit d=0,365(11)",r"Ausgleichsgerade $W*x+b$"+"\n"+r"mit $W_2=$"+re.round_err(popt[1][0],perr[1][0])+r" $\frac{pa~s}{mm^3}$"],loc=4)
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)

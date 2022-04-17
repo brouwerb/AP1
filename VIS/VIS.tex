@@ -97,6 +97,52 @@
 
     \subsection{Theorie}
 
+    Bei einem Kapillarviskosimeter kann die dynamische Viskosität $\eta$ des Fluides mit der Formel
+    \begin{align}
+        W &= \frac{8 \eta l}{\pi r^4} \\
+        \Delta p &= W \cdot i \\
+        \Rightarrow \ \ \eta &= \frac{W \cdot \pi r^4}{8 l} \\
+    \end{align}
+    berechnet werden. $l$ ist die länge der Kapillare, $r$ dehren Durchmesser, $i$ die Flussgeschwindigkeit und $W$ der
+    Strömungswiderstand. Der Druck kann durch den Höhenunterschied $h$ zwischen Kappilare und Wasserspiegel und der dichte dew Wassers $\rho$ angenähert werden:
+    \begin{align}
+        \Delta p &= \rho g h \\
+    \end{align}
+
+    \subsection{Experimenteller Aufbau}
+
+    In diesem Experiment wurde durch zwei Kapillare (Injektionskanüle)
+    Wasser mit einer verschieden großen Wassersäule und damit unterschiedlichem Druck strömen gelassen
+    und das Durchflussmenge nach einer bestimmten Zeit mit einer Waage bestimmt. Anschließend wurde doch mit einem
+    Mikroskop der Durchmesser der Kanüle gemessen.
+
+    \subsection{Ergebnisse}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./1Plot.pdf}
+
+        \caption{Messdaten, bestimmung des Strömungswiderstands}
+        \label{fig:mess}
+    \end{figure}
+    In Graph \ref{fig:mess} wurde die gemessene Stromstärke gegen den anliegenden Wasserdruck aufgetragen.
+    Die Strömungswiederstände $W_1 = 129(10) \si{\pascal\second\per\cubic\milli\metre}$ und 
+    $W_2 = 90,3(29) \si{\pascal\second\per\cubic\milli\metre}$ wurden mithilfe einer gefitteten Ausgleichsgerade
+    bestimmt. Aus den Messwerten in Tabelle ? kann jetzt die dynamische Viskosität von Wasser
+    ausgerechnet werden.
+    \begin{table}
+        \centering
+        \begin{tabular}{c c c}
+            gemessene Größe & Kanüle 1 & Kanüle 2 \\ \hline
+            Strömungswiderstand $W$ & $129(10) \si{\pascal\second\per\cubic\milli\metre}$ & $90,3(29) \si{\pascal\second\per\cubic\milli\metre}$ \\
+            Länge $l$ & $31,05(10) \si{\milli\metre}$ & $31,55(10) \si{\milli\metre}$ \\
+            Innendurchmesser $d$ & $0,315(10) \si{\milli\metre}$ & $0,365(10) \si{\milli\metre}$ \\
+            
+        \end{tabular}
+        \caption{Ergebnisse Kapillarviskosimeter}
+        \label{tab:results2}
+    \end{table}
+
 
 
     \section{Anhang}
