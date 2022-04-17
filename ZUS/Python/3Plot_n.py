@@ -5,6 +5,7 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib as mpl
 from scipy import optimize
 import roundwitherror as re
+from uncertainties import unumpy
 
 
 X_START =0.22
@@ -75,7 +76,11 @@ ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)
+temp = unumpy.uarray(273.15+49.7,0.1)
+val = unumpy.uarray(popt[1],perr[1])
+R=8.314462618
+
+res = val/(temp*R)
+print(re.round_err(float(unumpy.nominal_values(res)), float(unumpy.std_devs(res))))
 
 
-
-# worksheet.cell(0, 0).value  

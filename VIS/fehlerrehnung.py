@@ -1,4 +1,4 @@
-import uncertainties.unumpy as unumpy  
+from uncertainties import unumpy  
 import numpy 
 from roundwitherror import *
 
