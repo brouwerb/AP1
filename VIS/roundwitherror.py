@@ -124,7 +124,7 @@ def externerFehler(vals,errs):
         buf2+= wichtungsFaktor(errs[i])
     return np.sqrt(buf1/((len(vals)-1)*buf2))
     
-def intExtFehler(errs,vals):
+def intExtFehler(vals, errs):
     return max(internerFehler(errs),externerFehler(vals,errs))
 
 def cut(xy):
