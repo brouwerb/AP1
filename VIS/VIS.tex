@@ -31,7 +31,7 @@
 
     \begin{abstract}
         In diesen Versuch wird die Viskosität von verschiedenen Fluiden untersucht. Mit der Viskosität
-        und der Reynoldzahl kann ausgerechnet werden, ob eine Strömung turbulent oder laminar ist.
+        und der Reynoldszahl kann ausgerechnet werden, ob eine Strömung turbulent oder laminar ist.
         Dies ist in vielen Bereichen wichtig, da so z. B. ermittelt werden kann, ob ein Flugzeug fliegt oder
         aus dem Himmel fällt.
     \end{abstract}
@@ -47,7 +47,7 @@
     Bei einem Kugelfallviskosimeter wird die dynamische Viskosität $\eta$ des Fluides mit 
     der Fallgeschwindigkeit $v$ einer Kugel
     mit gegebenem Radius $r$ und Masse $m$ bestimmt.
-    Bei annahme eines unendlich ausgedehnten Mediums, gilt
+    Bei Annahme eines unendlich ausgedehnten Mediums, gilt
     \begin{align}
         \eta = \frac{2r^2g}{9v}(\rho_K - \rho_F)
     \end{align}
@@ -113,7 +113,7 @@
 
     In diesem Experiment wurde durch zwei Kapillare (Injektionskanüle)
     Wasser mit einer verschieden großen Wassersäule und damit unterschiedlichem Druck strömen gelassen
-    und das Durchflussmenge nach einer bestimmten Zeit mit einer Waage bestimmt. Anschließend wurde doch mit einem
+    und das Durchflussmenge nach einer bestimmten Zeit mit einer Waage bestimmt. Anschließend wurde mit einem
     Mikroskop der Durchmesser der Kanüle gemessen.
 
     \subsection{Ergebnisse}
@@ -155,11 +155,11 @@
 
     \subsection{Diskussion}
     Vergeicht man das Ergebnis mit dem Literaturwert $\eta_L = 1 \si{\pascal\second}$ \cite[Abb. 8]{VIS} bei einer Temperatur
-    von $20 \si{\celsius}$ sieht man, dass 'Literaturwert genau ein sigma Abstand zum mittelwert hat.
-    Schaut man sich die zwei verschiedenen Messreihen an, siht man, dass die erste genau auf dem Literaturwert
+    von $20 \si{\celsius}$ sieht man, dass der Literaturwert genau ein sigma Abstand zum Mittelwert hat.
+    Schaut man sich die zwei verschiedenen Messreihen an, sieht man, dass die erste genau auf dem Literaturwert
     liegt. Die zweite Messreihe mit der blauen Kanüle weicht hingegen deutlich vom Theoriewert ab.
-    Bisher kommt eigendlich nur ein systematischer Messfehler des Gewichtes oder ein Messfehler bei der Längen-
-    oder Durchmesserbestimmung in Frage. 
+    Vermutlich liegt dies an einem Messfehler des Gewichts, Längen-
+    oder Durchmesserbestimmung. 
 
 
 
@@ -243,26 +243,27 @@
     \begin{align}
         Re &= 11 - 50
     \end{align}
-    berechnet werden. Es treten in jedem Fall turbulente Strömungen auf. Die Annahmen sind überhaupt nicht gut, da ein Fallschirmspringer je nach Körperhaltung (Ausgestreckt oder als Kugel)
+    berechnet werden. Es treten in jedem Fall turbulente Strömungen auf. Die Annahmen sind nicht optimal, da ein Fallschirmspringer je nach Körperhaltung (Ausgestreckt oder als Kugel)
     sehr unterschiedliche Reibung hat und damit unterschiedliche Geschwindigkeiten erreichen kann. Es wurde aber nicht angegeben, mit welcher Körperhaltung
     er $200 \si{\kilo\metre\per\hour}$  schnell fällt, so können je nach Annahme verschiedene Viskositäten berechnet werden.
-    Außerdem sind diese Werte verglichen mit Literaturwerten ($18 \si{\micro\pascal\second}$)komplett falsch, da wahrscheinlich die Reibung der Luft mit turbulenten Strömungen
+    Außerdem sind diese Werte verglichen mit Literaturwerten ($18 \si{\micro\pascal\second}$)falsch, da vermutlich die Reibung der Luft mit turbulenten Strömungen
     nicht mit der verwendeten Stokesschen Formel \cite[(9)]{VIS} berechnet werden kann.
 
     \subsubsection{Atmung}
-    Annahmen: Radius Nasenloch $r = 3 \si{\milli\metre}$,  Viskosität der Luft $\eta = 18 \si{\micro\pascal\second}$, Volumen verstärkter Atmung $V = 1 \si{\litre} = 0,001 \si{\metre\cubed}$
-    Atemfrequenz $f = 0,5 \si{\hertz}$. Daraus folgt, dass ein Einatmen genau eine Sekunde dauert.
+    Annahmen: Radius Nasenloch $r = 3 \si{\milli\metre}$,  Viskosität der Luft $\eta = 18 \si{\micro\pascal\second}$,
+    Atemfrequenz $f = 0,25 \si{\hertz}$. Daraus folgt, dass ein Einatmen genau zwei Sekunden dauert.
     \begin{align}
         v &= \frac{V}{\pi r ^2 \cdot t} \nonumber \\
-            &= 35 \si{\metre\per\second}
+            &= 8.84 \si{\metre\per\second}
     \end{align}
     Mit der Geschwindigkeit kann man die Reynoldszahl
     \begin{align}
         Re &= \frac{2r \rho_F v}{\eta} \nonumber \\
-        &= 15000
+        &= 3802
     \end{align}
-    berechnen. Da diese viel größer als 2300 ist, entstehen Verwirbelungen.
-
+    berechnen. Da diese größer als 2300 ist, entstehen Verwirbelungen.
+	Bei verstärkter Atmung mit einem Volumen von $V = 1 \si{\litre} = 0,001 \si{\metre\cubed}$
+	ist die Luft noch turbulenter mit Reynoldszahl von $Re &= 7604$
     \bibliographystyle{plain}
     \bibliography{literature}
 
