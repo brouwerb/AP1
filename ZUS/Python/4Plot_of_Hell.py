@@ -6,6 +6,7 @@ import matplotlib as mpl
 from scipy import optimize
 import roundwitherror as re
 import string
+import math
 
 n=0.002613
 R=8.314462618
@@ -142,6 +143,7 @@ for i in range(len(pol[1])):
         buf = pol[1][i]*0.1
 upper=[[],[buf,buf]]    
 upper[0].append(pol[0][pol[1].index(buf*10)])
+Extrema= [pol[0][pol[1].index(buf*10)],buf]
 upper[0].append(pol[0][pol[1].index(buf*10)]+1)
 upper[0].append(166)
 upper[1].append(4)
@@ -180,9 +182,17 @@ Temps.append("Kondensationspunkt")
 Temps.append("Vollständig flüssig")
 
 ax.text(200, 1.7, "Koexistenzbereich")
-ax.text(550, 3.7, "nur Gas")
+ax.text(750, 3.4, "nur Gas")
 ax.text(45,3,"nur flüssig",rotation="vertical")
 ax.legend(Temps)
+
+def annotate(x,y,annotatePoints):
+    ax.annotate(f"({round(x,2)} , {round(y,2)})",[x,y],xytext=annotatePoints,
+    arrowprops=dict(arrowstyle="->",linewidth=1))
+    
+    
+print(Extrema)
+annotate(Extrema[0],Extrema[1],[500,4])
 
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
