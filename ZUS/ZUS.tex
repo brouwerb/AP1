@@ -15,6 +15,7 @@
 \usepackage[section]{placeins}
 % allows for temporary adjustment of side margins
 \usepackage{changepage}
+\usepackage{rotating}
 
 
 \usepackage[ngerman]{babel}
@@ -94,13 +95,14 @@
     Diese molare Masse wurde für alle Messreihen benutzt.
 
     \subsection{Isotherme}
-    \begin{figure}
+    
+    \begin{sidewaysfigure}
         \centering
         \includegraphics[width=\textwidth]{./Plots/4Plot_of_Hell.pdf}
 
         \caption{Isotherme bei verschiedenen Temperaturen}
         \label{fig:isotherme}
-    \end{figure}
+    \end{sidewaysfigure}
     Die Isothermen sind im Graphen \ref{fig:isotherme} dargestellt, wobei der Druck gegen das Volumen aufgetragen wurde.
     Die Punkte an denen nur noch Gas bzw. Flüssigkeit vorhanden ist, wurden mit einem Kreis markiert. Als
     Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
@@ -143,17 +145,22 @@
     \end{align}
     welche im Graph \ref{fig:dampf} dargestellt ist,
     kann die Ableitung der Exponenitalfunktion berechnet werden. So kann mit \ref{eq:delta}
-    die Verdampfungsenthalpie $L$ bestimmt werden
+    die Verdampfungsenthalpie $L$ bestimmt werden. Diese Werte sind in Tabelle \ref{tab:dampfmess}
+    aufgelistet.
     \begin{table}
+        \begin{adjustwidth}{-.5in}{-.5in}
         \centering
         \begin{tabular}{c c c c c}
-            Temperatur in $\si{\degree\celsius}$ & Dampfdruck in $\si{\bar}$ & $V_g$ & $V_fl$ & Verdampfungsenthalpie $L$ \\ \hline
-            20 \si{\celsius} & 2,108 \si{\mega\pascal} \\
-            30 \si{\celsius} & 2,66 \si{\mega\pascal} \\
-            40 \si{\celsius} & 3,31 \si{\mega\pascal} \\
+            Temperatur & Dampfdruck & $V_g$ & $V_fl$ & Verdampfungsenthalpie $L$ \\ \hline
+            $25.0 \si{\celsius}$ & $23.5 \si{\hecto\pascal}$ & $670 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 1038 \si{\joule\per\mole} $ \\
+            $30.0 \si{\celsius}$ & $25.0 \si{\hecto\pascal}$ & $670 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 1017 \si{\joule\per\mole} $ \\
+            $35.2 \si{\celsius}$ & $29.0 \si{\hecto\pascal}$ & $460 \si{\milli\litre\per\mole} $ & $ 150  \si{\milli\litre\per\mole} $ & $ 625 \si{\joule\per\mole} $ \\
+            $37.5 \si{\celsius}$ & $31.4 \si{\hecto\pascal}$ & $460 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 535 \si{\joule\per\mole} $ \\
+            $40.0 \si{\celsius}$ & $31.8 \si{\hecto\pascal}$ & $500 \si{\milli\litre\per\mole} $ & $ 230  \si{\milli\litre\per\mole} $ & $ 523 \si{\joule\per\mole} $ \\
+            $42.4 \si{\celsius}$ & $34.2 \si{\hecto\pascal}$ & $380 \si{\milli\litre\per\mole} $ & $ 150  \si{\milli\litre\per\mole} $ & $ 437 \si{\joule\per\mole} $
         \end{tabular}
-        \label{tab:dampfmess}
-        \caption{Ergebnisse Dampfdruck und Verdampfungsenthalpie}
+        \caption{Ergebnisse Dampfdruck und Verdampfungsenthalpie}\label{tab:dampfmess}
+        \end{adjustwidth}
     \end{table}
     \section{Diskussion}
     \begin{table}
