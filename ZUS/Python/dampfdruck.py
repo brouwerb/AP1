@@ -11,27 +11,26 @@ Y_START =0
 X_END = 0.1
 Y_END = 4
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"$F_{Haft}$ in $N$"
-X_LABEL = r"$F_{N}$ in $N$"
+Y_LABEL = r"$Dampfdruck$ in $MPa$"
+X_LABEL = r"$Kehrwert$ $t$ in $\frac{1}{^{\circ} C}$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 2
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.5
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./SEB/6Haftreib.pdf"
+SAVE_AS = "./ZUS/Plots/dampf.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
-workbook = xlrd.open_workbook('./SEB/SEB.xls')
-worksheet = workbook.sheet_by_name('Haftreibung')
+
 
 
 Temp = np.array([20, 30, 40])
 Druck = np.array([2.108, 2.66, 3.31])
 
 def exp(t, a, c):
-    return c * np.exp(a / t)
+    return c * np.exp(-a / t)
 
 
 
@@ -52,7 +51,7 @@ theo =[[],[],[]]
 
 sc=ax.scatter(1/Temp,Druck,)
 theo,=ax.plot(1/ex,ey, linestyle="dotted")
-#ax.legend([sc[0],theo[0]],[r"$F_{H}/F_{g}$",f"fit (a+bx) mit \na= {round_err(reg[0],err[0])} und b= {round_err(reg[1],err[1])}"])
+ax.legend([sc,theo],[r"Messwerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1],err[1])}"])
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)

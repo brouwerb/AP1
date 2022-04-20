@@ -70,7 +70,7 @@
     bezeichnet. Hier liegen sowohl Flüssigkeit als auch Gas vor. Die Höhe dieser Geraden kann auch rechnerisch durch die Maxwell-Konstruktion bestimmt werden.
     Der Zusammenhang zwischen Dampfudruck und Temperatur kann mit der Clausius-Clapeyron-Gleichung \cite[(9)]{ZUS} beschrieben werden.
     \begin{align}
-        \frac{\delta p_d}{\delta T} = \frac{L}{T \cdot\left(V_g - V_{fl}\right)}
+        \frac{d p_d}{d T} = \frac{L}{T \cdot\left(V_g - V_{fl}\right)} \label{eq:delta}
     \end{align}
     mit Verdampfungsenthalpie $L$, Gasvolumen $V_g$ und Flüssigkeitsvolumen $V_{fl}$.
 
@@ -106,8 +106,55 @@
     Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
     der Volumenmessung ($\Delta V = 0,05 \si{\milli\liter} \Rightarrow u_v = 0,011 \si{\milli\liter}$) und der Druckmessung
     ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet.
+    Die Bereiche in denen das Schwefelhexaflourid nur flüssig, gasförmig oder gemischt vorliegt, wurden mit verschiedenen
+    Farben im Graphen \ref{fig:isotherme} hervorgehoben.
+
+    \subsection{Kritischer Punkt}
+
+    Aus dem Graphen \ref{fig:isotherme} kann anhand der Ausgleichsfunktion durch die Randbereiche der Phasen
+    die kritische Temperatur $T_{krit}$ , das kritische Volumen $V_{krit}$ und der kritischen Druck $p_{krit}$ bestimmt werden.
+    \begin{table}
+        \centering
+        \begin{tabular}{c}
+            $T_{krit} SF_6 = 45,55 \si{\degree \celsius}$ \cite{SH6} \\
+            $p_{krit} SF_6 = 37,53 \si{\bar}$ \cite{SH6} \\
+            $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
+        \end{tabular}
+        \caption{kritischer Punkt}
+        \label{tab:krit}
+    \end{table}
+
+    \subsection{Dampfdruck}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{./Plots/dampf.pdf}
+
+        \caption{Dampfdruck}
+        \label{fig:dampf}
+    \end{figure}
+
+    Der Dampfdruck bei verschiedenen Temperaturen konnte durch die Höhe der geraden Teilbereiche
+    der Isothermen in \ref{fig:isotherme} bestimmt werden.
     
 
+    Durch das fitten des Verhältnisses zwischen $p$ und $T$ durch die Exponenitalfunktion
+    \begin{align}
+        p_d = c \cdot e^{-\frac{A}{T}},
+    \end{align}
+    welche im Graph \ref{fig:dampf} dargestellt ist,
+    kann die Ableitung der Exponenitalfunktion berechnet werden. So kann mit \ref{eq:delta}
+    die Verdampfungsenthalpie $L$ bestimmt werden
+    \begin{table}
+        \centering
+        \begin{tabular}{c c c c c}
+            Temperatur in $\si{\degree\celsius}$ & Dampfdruck in $\si{\bar}$ & $V_g$ & $V_fl$ & Verdampfungsenthalpie $L$ \\ \hline
+            20 \si{\celsius} & 2,108 \si{\mega\pascal} \\
+            30 \si{\celsius} & 2,66 \si{\mega\pascal} \\
+            40 \si{\celsius} & 3,31 \si{\mega\pascal} \\
+        \end{tabular}
+        \label{tab:dampfmess}
+        \caption{Ergebnisse Dampfdruck und Verdampfungsenthalpie}
+    \end{table}
     \section{Diskussion}
     \begin{table}
         \centering
