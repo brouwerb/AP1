@@ -21,7 +21,7 @@
 \addto\captionsngerman{%
  \renewcommand{\abstractname}{Einleitung}}
 
-\title{Versuch 4: Pohlsches Rad}
+\title{Versuch 6: Zustandsgleichung reller Gase}
 \author{Jascha Fricker, Benedict Brouwer}
 
 \begin{document}
@@ -58,7 +58,14 @@
     Wenn man den Druck p gegen das Volumen bei konstanter Temperatur aufträgt, entsteht ein sogenannter Isotherm.
     Dieser hat bei nierdigen Temperaturen zwei Extrema und einen Wendepunkt. 
     Eine wichtiger Parameter eines Gases ist die kritische Temperatur $T_{krit}$, bei der Isothermen dieser Temperatur
-    fallen Wendepunkt und Extrema zu einem Sattelpunkt zusammen. Für T < $T_{krit}$ gibt es bei der Isothermen ein Bereich,
+    fallen Wendepunkt und Extrema zu einem Sattelpunkt zusammen.
+    Mithilfe der kritischen Temperatur und dem kritischen Druck können die Parameter
+    \begin{align}
+        b &= \frac{V_{krit}}{3n} \label{eq:b}\\
+        a &= 27 \cdot \left(\frac{V_{krit}}{3n}\right)^2 \cdot p_{krit} \label{eq:a}
+    \end{align} 
+    berechnet werden.
+    Für $T < T_{krit}$ gibt es bei der Isothermen ein Bereich,
     wo die Messwerte nicht der Kurve folgen, sondern ein konstantes Wert entsteht. Dieser wird als Dampfdruck $p_{d}$
     bezeichnet. Hier liegen sowohl Flüssigkeit als auch Gas vor. Die Höhe dieser Geraden kann auch rechnerisch durch die Maxwell-Konstruktion bestimmt werden.
     Der Zusammenhang zwischen Dampfudruck und Temperatur kann mit der Clausius-Clapeyron-Gleichung \cite[(9)]{ZUS} beschrieben werden.
@@ -66,13 +73,14 @@
         \frac{\delta p_d}{\delta T} = \frac{L}{T \cdot\left(V_g - V_{fl}\right)}
     \end{align}
     mit Verdampfungsenthalpie $L$, Gasvolumen $V_g$ und Flüssigkeitsvolumen $V_{fl}$.
+
     \section{Experimentelles Vorgehen}
-    In dem Messaufbau konnte das Volumen der Kuvette, in dem das Gas eingeschlossen wurde, verändert und gemessen werden.
+    In dem Messaufbau konnte das Volumen der Küvette, in dem das Gas Schwefelhexaflourid eingeschlossen wurde, verändert und gemessen werden.
     Die Temperatur wurde durch ein Wasserbad auf einer konstanten Temperatur gehalten und durch ein Thermometer gemessen. 
-    Der Druck wurde mithilfe eines Manometers gemessen.
+    Der Druck in der Küvette wurde mithilfe eines Manometers gemessen.
 
     \section{Ergebnisse}
-
+    \subsection{Stoffmenge}
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{./Plots/3Plot_n.pdf}
@@ -80,6 +88,12 @@
         \caption{Bestimmung der molaren Stoffmenge $n$}
         \label{fig:n}
     \end{figure}
+    
+    Mithilfe der genauen Messreihe bei $50 \si{\celsius}$ wurde durch einen Fit der
+    Funktion \ref{eq:ideal} im Graph \ref{fig:n} die molare Stoffmenge $n = 0,002613(16) \si{\mole}$ bestimmt.
+    Diese molare Masse wurde für alle Messreihen benutzt.
+
+    \subsection{Isotherme}
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{./Plots/4Plot_of_Hell.pdf}
@@ -87,12 +101,11 @@
         \caption{Isotherme bei verschiedenen Temperaturen}
         \label{fig:isotherme}
     \end{figure}
-    Mithilfe der genauen Messreihe bei $50 \si{\celsius}$ wurde durch einen Fit der
-    Funktion \ref{eq:ideal} im Graph \ref{fig:n} die molare Stoffmenge $n = 0,002613(16) \si{\mole}$ bestimmt.
-    Diese molare Masse wurde für alle Messreihen benutzt. \\
-
     Die Isothermen sind im Graphen \ref{fig:isotherme} dargestellt, wobei der Druck gegen das Volumen aufgetragen wurde.
-
+    Die Punkte an denen nur noch Gas bzw. Flüssigkeit vorhanden ist, wurden mit einem Kreis markiert. Als
+    Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
+    der Volumenmessung ($\Delta V = 0,05 \si{\milli\liter} \Rightarrow u_v = 0,011 \si{\milli\liter}$) und der Druckmessung
+    ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet.
     
 
     \section{Diskussion}
