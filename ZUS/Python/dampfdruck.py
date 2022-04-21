@@ -159,13 +159,13 @@ print(l)
 
 
 fig, ax = plt.subplots()
-ax.grid()
+
 sc=[[],[],[]]
 theo =[[],[],[]]
 
-sc[0]=ax.scatter(1/temp,druck)
-sc[1]=ax.scatter(1/Temptheo,Drucktheo)
-theo,=ax.plot(1/ex,ey, linestyle="dotted")
+sc[0]=ax.scatter(1/temp,druck,color = "blue",linewidths=0.5,edgecolors="black")
+sc[1]=ax.scatter(1/Temptheo,Drucktheo,color ="red",linewidths=0.5,edgecolors="black")
+theo,=ax.plot(1/ex,ey, linestyle="dotted",color = "black")
 ax.legend([sc[0], sc[1], theo],[r'Theoriewerte', r"Messwerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1]/1e5,err[1]/1e5)} hPa"],loc="best")
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
@@ -176,7 +176,7 @@ ax.set_xlim(X_START,X_END)
 ax.set_ylim(Y_START,Y_END)
 ax.set_yscale("log")
 
-
+ax.grid(True,which="both")
 # # For the minor ticks, use no labels; default NullFormatter.
 # ax.xaxis.set_major_locator(MultipleLocator(X_MAJOR_TICK))
 # ax.xaxis.set_minor_locator(MultipleLocator(X_MINOR_TICK))

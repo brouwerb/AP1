@@ -14,7 +14,7 @@ Kelvin = 273.15
 muly = 1*0.1#1e5
 mulx = 1*1/n#1e-6
 Tempgenau =0.1
-fehlerDruck = 0.05
+fehlerDruck = 0.011
 
 X_START =0
 Y_START =12 * muly
@@ -71,7 +71,7 @@ def expArr(x,p):
     return exp(x,p[0],p[1],p[2])
 def fehlerVM(V):
     un = 1.6e-5
-    uV = 0.05
+    uV = 0.011
     return np.sqrt((1/n*uV)**2+(V/n**2*un)**2)
 
 
@@ -177,7 +177,7 @@ c = [expArr(a[i],pUpper)  if expArr(a[i],pUpper)<Y_END else Y_END for i in range
 print(b)
 print(c)
 ax.fill_between(a,b,c,color ="green",alpha=0.2)
-Temps =[re.round_err(Temps[i][j],Tempgenau) + r" $°$"for i in range(len(Temps)) for j in range(len(Temps[i]))]
+Temps =[re.round_err(Temps[i][j],Tempgenau) + r" $\circ$"for i in range(len(Temps)) for j in range(len(Temps[i]))]
 Temps.append("Kondensationspunkt")
 Temps.append("Vollständig flüssig")
 
