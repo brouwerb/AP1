@@ -108,7 +108,7 @@
     Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
     der Volumenmessung ($\Delta V = 0,05 \si{\milli\liter} \Rightarrow u_v = 0,011 \si{\milli\liter}$) und der Druckmessung
     ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet (Berechnung der Unsicherheiten 	mittels Dreiecks- bzw. Rechtecksverteilung)
-    Die Bereiche in denen das Schwefelhexaflourid nur flüssig, gasförmig oder gemischt vorliegt, wurden mit verschiedenen
+    Die Bereiche in denen das Schwefelhexafluorid nur flüssig, gasförmig oder gemischt vorliegt, wurden mit verschiedenen
     Farben im Graphen \ref{fig:isotherme} hervorgehoben.
 
     \subsection{Kritischer Punkt}
@@ -119,24 +119,21 @@
     \begin{table}
         \centering
         \begin{tabular}{c}
-            Literatur \\ \hline
-            $T_{krit} SF_6 = 45,55 \si{\degree \celsius}$ \cite{SH6} \\
-            $p_{krit} SF_6 = 37,53 \si{\bar}$ \cite{SH6} \\
-            $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
-            \\
             Messwerte \\ \hline
             $p_{krit} = 3,51 \si{\mega\pascal}$ \\
             $V_{krit} = 0,693 \si{\centi\metre\cubed}$ \\
             $\rho_{krit} = \frac{n \cdot M}{V} = 551 \si{\kilogram \per \meter \cubed}$ \\
             $a_{mol} = 0,7406(91) \frac{Pa m^6}{mol^2}$ \\
             $a_{Teilchen} = 1.229(15)*10^{-24} \frac{Pa m^6}{mol^2}$ \\
-            $b_{mol} = 8.840(55)\si{\cubic\metre\per\mol}$\\
+            $b_{mol} = 8.840(55)*10^{-5}\si{\cubic\metre\per\mol}$\\
             $b_{Teilchen} = 1.4679(90)*10^{-28} \si{\cubic\metre\per\mol}$
         \end{tabular}
         \caption{kritischer Punkt}
         \label{tab:krit}
     \end{table}
-    Anhand des Parameter b kann überlegt werden, dass ? sozusagen das Volumen der "Hülle" eines einzelnen Teilchens ist.
+    Durch Gleichung \ref{eq:a} und \ref{eq:b} kann daraus der der Wert von $a_{mol}$ und $b_{mol}$ bestimmt werden. Durch Teilen
+    von $a_{mol}$ und $b_{mol}$ mit der Avogadrokonstante ergibt sich $a_{Teilchen}$ und $b_{Teilchen}$.
+    Anhand des Parameter $b_{mol}$ kann überlegt werden, dass ? sozusagen das Volumen der "Hülle" eines einzelnen Teilchens ist.
     \subsection{Dampfdruck}
     \begin{figure}
         \centering
@@ -190,12 +187,15 @@
 
     \subsection{Kritischer Punkt}
     In Tabelle \ref{tab:krit} werden die kritischen Werte für $SF_6$ aus der Literatur aufgelistet.
-    \begin{table}
+    \begin{table}[H]
         \centering
         \begin{tabular}{c}
-            $T_{krit} SF_6 = 45,55 \si{\celsius}$ \cite{SH6} \\
+            Literatur \\ \hline
+            $T_{krit} SF_6 = 45,55 \si{\degree \celsius}$ \cite{SH6} \\
             $p_{krit} SF_6 = 37,53 \si{\bar}$ \cite{SH6} \\
             $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
+            $a_{mol} SF_6= 0,7857 \frac{Pa m^6}{mol^2}$ \cite{Theo}\\
+            $b_{mol} = 8.79*10^{-5}\si{\cubic\metre\per\mol}$\cite{Theo}\\
             \\
             \begin{tabular}{c c}
                 Temperatur in $\si{\degree\celsius}$ & Dampfdruck in $\si{\bar}$ \\ \hline
@@ -207,11 +207,12 @@
         \caption{Literaturwerte}
         \label{tab:literaturwerte}
     \end{table}
-    Beachtet man die ungenaue Bestimmungsmethoden, sind die Messwerte vergleichsweise nah an an den Literatuwerten.
+    Beachtet man die ungenaue Bestimmungsmethoden, sind die Messwerte vergleichsweise nah an an den Literaturwerten. 
+    Auch die Literaturwerte von $a$ und $b$ liegen im Konfidenzintervall der zugehörigen gemessenen bzw. berechneten Werte. 
 
     \subsection{Dampfdruck}
     Wie im Graph \ref{fig:dampf} zu sehen liegen die Literaturwerte des Dampfdrucks relativ weit von den Messwerten.
-    Bei der Verdampfungsenthalpie hingegen gibt es sehr große Sprunge im Graphen, und obwohl die Ausgleichsfunktion
+    Bei der Verdampfungsenthalpie hingegen gibt es sehr große Sprünge im Graphen, und obwohl die Ausgleichsfunktion
     uns nicht bekannt ist, haben die berechneten Werte wahrscheinlich sehr große Fehler.
 
     \subsection{Fehler durch zu kleine Zeit zwischen den Messungen}
@@ -220,8 +221,9 @@
     Da die Messungen jedoch bei konstanter Temperatur durchgeführt werden müssen, muss vor 
     der nächsten Messung das Gas erst wieder vom Wasserbad abgekühlt bzw. erhitzt werden. Sonst verfälscht
     eine zu große bzw. kleine Temperatur die Messwerte.
-    
-
+    \section{Zusammenfassung}
+	Zusammenfassend lässt sich sagen, dass der Versuch erfolgreich war. Sowohl die kritischen Punkte als auch die Parameter a und b sind mit den 
+	Literaturwerten vereinbar. Allerdings sind Werte des Damp
 
     \bibliographystyle{plain}
     \bibliography{literature}
