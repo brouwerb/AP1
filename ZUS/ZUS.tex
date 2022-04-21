@@ -15,7 +15,7 @@
 \usepackage[section]{placeins}
 % allows for temporary adjustment of side margins
 \usepackage{changepage}
-\usepackage{rotating}
+%\usepackage{rotating}
 
 
 \usepackage[ngerman]{babel}
@@ -47,15 +47,15 @@
         p V &= n R T \nonumber \nonumber\\
         n &= \frac{p V}{R T} \label{eq:ideal}
     \end{align}
-    (Siehe \cite[(1)]{ZUS}) beschrieben werden. So kann auch bei gegebenem Druck $p$, Temperatur $T$ Volumen $V$ und
-    Gaskonstanten $R$ die molare Stoffmenge $n$ bestimmt werden. \\
+    (Siehe \cite[(1)]{ZUS}) beschrieben werden. So kann bei gegebenem Druck $p$, Temperatur $T$, Volumen $V$,
+    Gaskonstanten $R$ und die molare Stoffmenge $n$ bestimmt werden. \\
 
     Wenn hingegen die Wechselwirkung zwischen der Teilchen $a$ mit dichtester Kugelpackung $b$
     berücksichtigt werden soll, gilt die Van der Waals Gleichung \cite[(4)]{ZUS}:
     \begin{align}
         \left(p+\left(\frac{n}{V}\right)^2 \cdot a\right) \cdot \left(V-n \cdot b \right) = n \cdot R \cdot T
     \end{align}
-    Diese Gleichung bescreibt auch den Phasenübergang von gasförmig zu flüssig bei niedrigen Temperaturen.
+    Diese Gleichung beschreibt auch den Phasenübergang von gasförmig zu flüssig bei niedrigen Temperaturen.
     Wenn man den Druck p gegen das Volumen bei konstanter Temperatur aufträgt, entsteht ein sogenannter Isotherm.
     Dieser hat bei nierdigen Temperaturen zwei Extrema und einen Wendepunkt. 
     Eine wichtiger Parameter eines Gases ist die kritische Temperatur $T_{krit}$, bei der Isothermen dieser Temperatur
@@ -103,11 +103,11 @@
         \caption{Isotherme bei verschiedenen Temperaturen}
         \label{fig:isotherme}
     \end{sidewaysfigure}
-    Die Isothermen sind im Graphen \ref{fig:isotherme} dargestellt, wobei der Druck gegen das Volumen aufgetragen wurde.
+    Die Isotherme sind im Graphen \ref{fig:isotherme} dargestellt, wobei der Druck gegen das Volumen aufgetragen wurde.
     Die Punkte an denen nur noch Gas bzw. Flüssigkeit vorhanden ist, wurden mit einem Kreis markiert. Als
     Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
     der Volumenmessung ($\Delta V = 0,05 \si{\milli\liter} \Rightarrow u_v = 0,011 \si{\milli\liter}$) und der Druckmessung
-    ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet.
+    ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet (Berechnung der Unsicherheiten 	mittels Dreiecks- bzw. Rechtecksverteilung)
     Die Bereiche in denen das Schwefelhexaflourid nur flüssig, gasförmig oder gemischt vorliegt, wurden mit verschiedenen
     Farben im Graphen \ref{fig:isotherme} hervorgehoben.
 
@@ -125,13 +125,13 @@
             $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
             \\
             Messwerte \\ \hline
-            $p_{krit} SF_6 = 3,51 \si{\mega\pascal}$ \\
-            $V_{krit} SF_6 = 0,693 \si{\centi\metre\cubed}$ \\
-            $\rho_{krit} SF_6 = \frac{n \cdot M}{V} = 551 \si{\kilogram \per \meter \cubed}$ \\
-            $a_{mol} SF_6 = 0,7406(91) \frac{Pa m^6}{mol^2}$ \\
-            $a_{Teilchen} SF_6 = 1.229(15)*10^{-24} \frac{Pa m^6}{mol^2}$ \\
-            $b_{mol} SF_6 = 8.840(55)\si{\cubic\metre\per\mol}$\\
-            $b_{Teilchen} = 1.4679(90)\si{\cubic\metre\per\mol}$
+            $p_{krit} = 3,51 \si{\mega\pascal}$ \\
+            $V_{krit} = 0,693 \si{\centi\metre\cubed}$ \\
+            $\rho_{krit} = \frac{n \cdot M}{V} = 551 \si{\kilogram \per \meter \cubed}$ \\
+            $a_{mol} = 0,7406(91) \frac{Pa m^6}{mol^2}$ \\
+            $a_{Teilchen} = 1.229(15)*10^{-24} \frac{Pa m^6}{mol^2}$ \\
+            $b_{mol} = 8.840(55)\si{\cubic\metre\per\mol}$\\
+            $b_{Teilchen} = 1.4679(90)*10^{-28} \si{\cubic\metre\per\mol}$
         \end{tabular}
         \caption{kritischer Punkt}
         \label{tab:krit}
@@ -150,7 +150,7 @@
     der Isothermen in \ref{fig:isotherme} bestimmt werden.
     
 
-    Durch das fitten des Verhältnisses zwischen $p$ und $T$ durch die Exponenitalfunktion
+    Durch fitten des Verhältnisses zwischen $p$ und $T$ durch die Exponenitalfunktion
     \begin{align}
         p_d = c \cdot e^{-\frac{A}{T}},
     \end{align}
@@ -182,18 +182,18 @@
     \end{figure}
     \section{Diskussion}
     \subsection{Isotherme}
-    Leider konnten die Isothermen nicht durch die Theoriefunktion gefittet werden, wir haben uns auch dagagen entschieden die 
-    Messpunkte zu verbind, da so ein falscher Eindruck entstehen könnte. Die Daten zu den verschiedenen Phasenübergängen waren 
+    Leider konnten die Isothermen nicht durch die Theoriefunktion gefittet werden, wir haben uns auch dagegen entschieden die 
+    Messpunkte zu verbinden, da so ein falscher Eindruck entstehen könnte. Die Daten zu den verschiedenen Phasenübergängen waren 
     nicht genau, wie in \ref{fig:isotherme} zu sehen. Auch kann es sein, dass manchmal nicht lang genug vor der 
     Messung gewartet wurde, sodass sich die Temperatur nicht ausgeglichen hatte und falsche Messwerte abgelesen wurden.
-    Diese Fehler schlagen sich natürlich auch auf die nachfolgenden Berechnungen der charackteristischen Werte aus.
+    Diese Fehler schlagen sich natürlich auch auf die nachfolgenden Berechnungen der charakteristischen Werte aus.
 
     \subsection{Kritischer Punkt}
-    In Tabelle \ref{tab:krit} werden die kritischen Werte für SF6 aus der Literatur aufgelistet.
+    In Tabelle \ref{tab:krit} werden die kritischen Werte für $SF_6$ aus der Literatur aufgelistet.
     \begin{table}
         \centering
         \begin{tabular}{c}
-            $T_{krit} SF_6 = 45,55 \si{\degree \celsius}$ \cite{SH6} \\
+            $T_{krit} SF_6 = 45,55 \si{\celsius}$ \cite{SH6} \\
             $p_{krit} SF_6 = 37,53 \si{\bar}$ \cite{SH6} \\
             $\rho_{krit} SF_6 = 735 \si{\kilogram \per \meter \cubed}$ \cite{SH6} \\
             \\
@@ -207,19 +207,19 @@
         \caption{Literaturwerte}
         \label{tab:literaturwerte}
     \end{table}
-    Beachtet man die ungenaue Bestimmungsmethoden, sind die Messwerte doch sehr nah an an den Literatuwerten.
+    Beachtet man die ungenaue Bestimmungsmethoden, sind die Messwerte vergleichsweise nah an an den Literatuwerten.
 
     \subsection{Dampfdruck}
-    Wie im Graph \ref{fig:dampf} zu sehen liegen die Literaturwerte des Dampfdrucks nocht sehr weit von den Messwerten.
+    Wie im Graph \ref{fig:dampf} zu sehen liegen die Literaturwerte des Dampfdrucks relativ weit von den Messwerten.
     Bei der Verdampfungsenthalpie hingegen gibt es sehr große Sprunge im Graphen, und obwohl die Ausgleichsfunktion
     uns nicht bekannt ist, haben die berechneten Werte wahrscheinlich sehr große Fehler.
 
     \subsection{Fehler durch zu kleine Zeit zwischen den Messungen}
 
-    Wenn das Volumen des Gases verkleinert bzw. vergrößert, dann erhitzt sich das Gas bzw es kühlt ab.
-    Da die Messungen jedoch bei konstanter Termperatur durchgeführt werden müssen, muss vor 
-    der nächsten Messung das Gas erst wieder vom Wasserban abgekühlt bzw. erhitzt werden. Sonst verfälscht
-    eine zu große bzw kleine Temperatur die Messwerte.
+    Wenn das Volumen des Gases verkleinert bzw. vergrößert, dann erhitzt sich das Gas bzw. es kühlt ab.
+    Da die Messungen jedoch bei konstanter Temperatur durchgeführt werden müssen, muss vor 
+    der nächsten Messung das Gas erst wieder vom Wasserbad abgekühlt bzw. erhitzt werden. Sonst verfälscht
+    eine zu große bzw. kleine Temperatur die Messwerte.
     
 
 
