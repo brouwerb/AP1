@@ -13,21 +13,22 @@ import matplotlib as mpl
 from scipy import optimize
 import roundwitherror as re
 import string
+from copy import deepcopy
 
 X_START =0
 Y_START =10
 X_END = 0.1
 Y_END = 50
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
-Y_LABEL = r"$Dampfdruck$ in $MPa$"
-X_LABEL = r"$Kehrwert$ $t$ in $\frac{1}{^{\circ} C}$"
+Y_LABEL = r"Verdampfungsenthalpie in $J/mol$"
+X_LABEL = r"Temperatur in $^{\circ}C$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 2
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.5
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./ZUS/Plots/dampf.pdf"
+SAVE_AS = "./ZUS/Plots/verd.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
@@ -100,13 +101,15 @@ for i in range(3):
         perr[i].append(np.sqrt(np.diag(perBuf)))
         #print(popt[i][j])
 
-print(Temps)
+#print(Temps)
 #print(x)
 
-temp = []
+temp2 = []
 druck = []
 vg = []
 vf = []
+
+g =  0.002613 #*0.14605
 
 
 for i in range(3):
@@ -115,26 +118,32 @@ for i in range(3):
         #print(j)
         for k in range(1):
             ar = y[i][j][k][(x[i][j][k].index(float(FluAb[i][j][0]))):x[i][j][k].index(float(GaBis[i][j][0]))]
-            print(ar)
-            temp.append(Temps[i][j])
+            #print(ar)
+            temp2.append(Temps[i][j])
+            print(temp2)
             druck.append(sum(ar)/len(ar))
-            vf.append(FluAb[i][j][0]/0.002613)
-            vg.append(GaBis[i][j][0]/0.002613)
+            vg.append(FluAb[i][j][0]/(g*1e6))
+            vf.append(GaBis[i][j][0]/(g*1e6))
             
 
-print(temp, druck)
+#print(temp2, druck)
 
 Temptheo = np.array([20, 30, 40])
 Drucktheo = np.array([2.108, 2.66, 3.31])*10
-
-temp = np.array(temp)
+temps = deepcopy(temp2)
+#print(temp2)
+#print(temps)
+temp = np.array(temp2)
 druck = np.array(druck)
+#print(temp2)
 
 def exp(t, a, c):
     return c * np.exp(-a / t)
 
 def dexp(t, val):
     return val[0] * val[1] * np.exp(-val[0] / t) / t**2
+
+temps.sort()
 
 
 
@@ -151,11 +160,15 @@ ey = exp(ex, reg[0], reg[1])/1e5
 l = []
 
 for i in range(len(temp)):
-    print(dexp(temp[i],reg))
+    #print(dexp(temp[i],reg))
     l.append(dexp(temp[i],reg)*temp[i]*(vg[i]-vf[i]))
 
-print(l)
+print(temp2, temps)
 
+for i in temps:
+    j = temp2.index(i)
+    #print(i, j, temp2[j])
+    print(f"${temp2[j]} \si{{\celcius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
 
 
 fig, ax = plt.subplots()
@@ -163,18 +176,18 @@ ax.grid()
 sc=[[],[],[]]
 theo =[[],[],[]]
 
-sc[0]=ax.scatter(1/temp,druck)
-sc[1]=ax.scatter(1/Temptheo,Drucktheo)
-theo,=ax.plot(1/ex,ey, linestyle="dotted")
-ax.legend([sc[0], sc[1], theo],[r'Theoriewerte', r"Messwerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1]/1e5,err[1]/1e5)} hPa"],loc="best")
+sc[0]=ax.scatter(temp,l)
+#sc[1]=ax.scatter(1/Temptheo,Drucktheo)
+#theo,=ax.plot(1/ex,ey, linestyle="dotted")
+#ax.legend([sc[0], sc[1], theo],[r'Theoriewerte', r"Messwerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1]/1e5,err[1]/1e5)} hPa"],loc="best")
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)
 
 
-ax.set_xlim(X_START,X_END)
-ax.set_ylim(Y_START,Y_END)
-ax.set_yscale("log")
+# ax.set_xlim(X_START,X_END)
+# ax.set_ylim(Y_START,Y_END)
+
 
 
 # # For the minor ticks, use no labels; default NullFormatter.
