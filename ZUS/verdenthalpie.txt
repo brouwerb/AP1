@@ -1,0 +1,6 @@
+$298.1 \si{\celsius}$ & $23.5 \ \si{\hecto\pascal}$ & $670 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 7804 \ \si{\joule\per\mole} $ \\
+$303.1 \si{\celsius}$ & $25.0 \ \si{\hecto\pascal}$ & $670 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 8632 \ \si{\joule\per\mole} $ \\
+$308.3 \si{\celsius}$ & $29.0 \ \si{\hecto\pascal}$ & $460 \ \si{\milli\litre\per\mole} $ & $ 150 \ \si{\milli\litre\per\mole} $ & $ 6112 \ \si{\joule\per\mole} $ \\
+$310.6 \si{\celsius}$ & $31.4 \ \si{\hecto\pascal}$ & $460 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 5586 \ \si{\joule\per\mole} $ \\
+$313.1 \si{\celsius}$ & $31.8 \ \si{\hecto\pascal}$ & $500 \ \si{\milli\litre\per\mole} $ & $ 230 \ \si{\milli\litre\per\mole} $ & $ 5852 \ \si{\joule\per\mole} $ \\
+$315.5 \si{\celsius}$ & $34.2 \ \si{\hecto\pascal}$ & $380 \ \si{\milli\litre\per\mole} $ & $ 150 \ \si{\milli\litre\per\mole} $ & $ 5242 \ \si{\joule\per\mole} $ \\

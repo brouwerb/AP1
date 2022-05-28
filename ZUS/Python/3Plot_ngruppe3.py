@@ -21,7 +21,7 @@ X_MAJOR_TICK = 0.05
 Y_MAJOR_TICK = 0.2
 X_MINOR_TICK =0.01
 Y_MINOR_TICK = 0.05
-SAVE_AS = "./ZUS/Plots/3Plot_n.pdf"
+SAVE_AS = "./ZUS/Plots/3Plot_g3.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
@@ -30,8 +30,8 @@ worksheet = workbook.sheet_by_name('Daten')
 
 
 
-x=re.getAxis(104,0,125,'./ZUS/Data/G1.xls','Daten')
-y = re.getAxis(104,1,125,'./ZUS/Data/G1.xls','Daten')
+x=re.getAxis(26,8,46,'./ZUS/Data/G3.xls','Daten')
+y = re.getAxis(26,9,46,'./ZUS/Data/G3.xls','Daten')
 y = [y[i] *x[i]*0.1 for i in range(len(y))]
 x = [1/(x[i])for i in range(len(x))]
 
@@ -76,7 +76,7 @@ ax.yaxis.set_minor_locator(MultipleLocator(Y_MINOR_TICK))
 #print(f"der Fehler des Slopes ist: {std_err}")
 plt.show()
 fig.savefig(SAVE_AS)
-temp = unumpy.uarray(273.15+49.7,0.1)
+temp = unumpy.uarray(273.15+52.5,0.1)
 val = unumpy.uarray(popt[1],perr[1])
 R=8.314462618
 

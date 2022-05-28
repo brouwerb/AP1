@@ -21,7 +21,7 @@ X_END = 0.1
 Y_END = 50
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
 Y_LABEL = r"Verdampfungsenthalpie in $J/mol$"
-X_LABEL = r"Temperatur in $^{\circ}C$"
+X_LABEL = r"Temperatur in $^{\circ}K$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 2
@@ -109,7 +109,7 @@ druck = []
 vg = []
 vf = []
 
-g =  0.002613 #*0.14605
+g =  0.002622 #*0.14605
 
 
 for i in range(3):
@@ -119,7 +119,7 @@ for i in range(3):
         for k in range(1):
             ar = y[i][j][k][(x[i][j][k].index(float(FluAb[i][j][0]))):x[i][j][k].index(float(GaBis[i][j][0]))]
             #print(ar)
-            temp2.append(Temps[i][j])
+            temp2.append(Temps[i][j] + 273.15)
             print(temp2)
             druck.append(sum(ar)/len(ar))
             vg.append(FluAb[i][j][0]/(g*1e6))
@@ -128,7 +128,7 @@ for i in range(3):
 
 #print(temp2, druck)
 
-Temptheo = np.array([20, 30, 40])
+Temptheo = np.array([20, 30, 40]) + 273.15
 Drucktheo = np.array([2.108, 2.66, 3.31])*10
 temps = deepcopy(temp2)
 #print(temp2)
@@ -168,8 +168,13 @@ print(temp2, temps)
 for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    print(f"${temp2[j]} \si{{\celcius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
+    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
 
+with open('./ZUS/verdenthalpie.txt', 'w') as f:
+   for i in temps:
+    j = temp2.index(i)
+    #print(i, j, temp2[j])
+    f.write(f"${round(temp2[j], 1)} \si{{\celsius}}$ & ${round(druck[j], 1)} \ \si{{\hecto\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
 
 fig, ax = plt.subplots()
 ax.grid()

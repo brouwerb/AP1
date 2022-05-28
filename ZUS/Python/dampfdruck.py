@@ -14,13 +14,13 @@ from scipy import optimize
 import roundwitherror as re
 import string
 
-X_START =0
+X_START =0.003
 Y_START =10
-X_END = 0.1
+X_END = 0.004
 Y_END = 50
 TITEL = "Ordnung der Maxima in Bezug zur Röhrenlänge"
 Y_LABEL = r"$Dampfdruck$ in $MPa$"
-X_LABEL = r"$Kehrwert$ $t$ in $\frac{1}{^{\circ} C}$"
+X_LABEL = r"$Kehrwert$ $t$ in $\frac{1}{^{\circ} K}$"
 X_ERROR = 4
 Y_ERROR = 1
 X_MAJOR_TICK = 2
@@ -116,7 +116,7 @@ for i in range(3):
         for k in range(1):
             ar = y[i][j][k][(x[i][j][k].index(float(FluAb[i][j][0]))):x[i][j][k].index(float(GaBis[i][j][0]))]
             print(ar)
-            temp.append(Temps[i][j])
+            temp.append(Temps[i][j] + 273.15)
             druck.append(sum(ar)/len(ar))
             vf.append(FluAb[i][j][0]/0.002613)
             vg.append(GaBis[i][j][0]/0.002613)
@@ -124,7 +124,7 @@ for i in range(3):
 
 print(temp, druck)
 
-Temptheo = np.array([20, 30, 40])
+Temptheo = np.array([20, 30, 40]) + 273.15
 Drucktheo = np.array([2.108, 2.66, 3.31])*10
 
 temp = np.array(temp)
@@ -166,7 +166,7 @@ theo =[[],[],[]]
 sc[0]=ax.scatter(1/temp,druck,color = "blue",linewidths=0.5,edgecolors="black")
 sc[1]=ax.scatter(1/Temptheo,Drucktheo,color ="red",linewidths=0.5,edgecolors="black")
 theo,=ax.plot(1/ex,ey, linestyle="dotted",color = "black")
-ax.legend([sc[0], sc[1], theo],[r'Theoriewerte', r"Messwerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1]/1e5,err[1]/1e5)} hPa"],loc="best")
+ax.legend([sc[0], sc[1], theo],[r'Messwerte', r"Theoriewerte",f"fit ($c \cdot e^{{\\frac{{A}}{{T}}}}$) mit \nA= {round_err(reg[0],err[0])} und c= {round_err(reg[1]/1e5,err[1]/1e5)} hPa"],loc="best")
 ax.set(xlabel=X_LABEL, ylabel=Y_LABEL)
 #ax.scatter(x,y,marker='x',color="C0")
 #ax.plot([X_START,X_END],[reg.intercept,intercept+X_END*slope],color="red",linewidth=0.8)

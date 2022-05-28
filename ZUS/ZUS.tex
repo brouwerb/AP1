@@ -23,22 +23,23 @@
  \renewcommand{\abstractname}{Einleitung}}
 
 \title{Versuch 6: Zustandsgleichung reller Gase}
-\author{Jascha Fricker, Benedict Brouwer}
+\author{Team 2-11: Jascha Fricker, Benedict Brouwer}
 
 \begin{document}
     \maketitle
 
     
 
-    \begin{abstract}
-        Dieser Versuch beschäftigt sich mit dem Verhalten von Gasen bei verschiedenen Drücken und Temperaturen.
-        Dabei wird nicht nur bei niedrigem Druck das gasförmige Verhalten untersucht, sondern auch bei hohem Druck
-        der Übergang zur flüssigen Phase.
-    \end{abstract}
+   
 
     \tableofcontents
 
     \newpage
+    
+    \section{Einleitung}
+        Dieser Versuch beschäftigt sich mit dem Verhalten von Gasen bei verschiedenen Drücken und Temperaturen.
+        Dabei wird nicht nur bei niedrigem Druck das gasförmige Verhalten untersucht, sondern auch bei hohem Druck
+        der Übergang zur flüssigen Phase.
 
     \section{Theorie}
     Wenn bei niedrigem Druck die Wechselwirkung zwischen den Gasmolekülen vernachlässigt werden kann,
@@ -55,20 +56,18 @@
     \begin{align}
         \left(p+\left(\frac{n}{V}\right)^2 \cdot a\right) \cdot \left(V-n \cdot b \right) = n \cdot R \cdot T
     \end{align}
-    Diese Gleichung beschreibt auch den Phasenübergang von gasförmig zu flüssig bei niedrigen Temperaturen.
-    Wenn man den Druck p gegen das Volumen bei konstanter Temperatur aufträgt, entsteht ein sogenannter Isotherm.
-    Dieser hat bei nierdigen Temperaturen zwei Extrema und einen Wendepunkt. 
     Eine wichtiger Parameter eines Gases ist die kritische Temperatur $T_{krit}$, bei der Isothermen dieser Temperatur
-    fallen Wendepunkt und Extrema zu einem Sattelpunkt zusammen.
+    fallen Wendepunkt und Extrema der Gleichung zu einem Sattelpunkt zusammen.
     Mithilfe der kritischen Temperatur und dem kritischen Druck können die Parameter
     \begin{align}
         b &= \frac{V_{krit}}{3n} \label{eq:b}\\
         a &= 27 \cdot \left(\frac{V_{krit}}{3n}\right)^2 \cdot p_{krit} \label{eq:a}
     \end{align} 
     berechnet werden.
-    Für $T < T_{krit}$ gibt es bei der Isothermen ein Bereich,
-    wo die Messwerte nicht der Kurve folgen, sondern ein konstantes Wert entsteht. Dieser wird als Dampfdruck $p_{d}$
-    bezeichnet. Hier liegen sowohl Flüssigkeit als auch Gas vor. Die Höhe dieser Geraden kann auch rechnerisch durch die Maxwell-Konstruktion bestimmt werden.
+    Diese Van der Waals Gleichung beschreibt aber nur das Verhältnis von Druck und Volumen außerhalb des Koexistenzbereiches von Gas und Flüssigkeit.
+    Für $T < T_{krit}$ gibt es bei der Isothermen diesen Bereich, wo sowohl Flüssigkeit als auch Gas vorliegen.
+    Hier folgen die Messwerte nicht der Kurve, sondern ein konstanter Druck wird gehalten. Dieser wird als Dampfdruck $p_{d}$
+    bezeichnet. Die Höhe dieser Geraden kann auch rechnerisch durch die Maxwell-Konstruktion bestimmt werden.
     Der Zusammenhang zwischen Dampfudruck und Temperatur kann mit der Clausius-Clapeyron-Gleichung \cite[(9)]{ZUS} beschrieben werden.
     \begin{align}
         \frac{d p_d}{d T} = \frac{L}{T \cdot\left(V_g - V_{fl}\right)} \label{eq:delta}
@@ -90,9 +89,13 @@
         \label{fig:n}
     \end{figure}
     
-    Mithilfe der genauen Messreihe bei $50 \si{\celsius}$ wurde durch einen Fit der
-    Funktion \ref{eq:ideal} im Graph \ref{fig:n} die molare Stoffmenge $n = 0,002613(16) \si{\mole}$ bestimmt.
-    Diese molare Masse wurde für alle Messreihen benutzt.
+    Mithilfe der genauen Messreihe bei $50 \si{\celsius}$ wurde die molare Stoffmenge $n = 2.622(15) \si{\milli\mole}$ bestimmt.
+    Dazu wurde im Graph \ref{fig:n} das Produkt von Volume und Druck gegen den Kehrwehrt des Volumens aufgetragen. Durch einen Fit einer
+    Geraden konnte der Wert $p \cdot V = b$ für $V_{\infty}$ bestimmt werden und mit der Funktion (\ref{eq:ideal}) die molare Masse berechnet werden.
+    In gleicher Weise konnte bei Gruppe 3 aus der Messreihe bei $52,5 \si{\celsius}$  eine molare Stoffmenge
+    $n = 2.640(24) \si{\milli\mole}$ bestimmt werden. Leider hat die Gruppe 2 die Daten zur Bestimmung der Stoffmenge nicht angegeben, da aber
+    die Stoffmenge im Vergleich zu Gruppe 3 ungefähr gleich ist, wird angenommen, dass auch bei Gruppe 2 eine vergleichbare Stoffmenge
+    in der Küvette war.
 
     \subsection{Isotherme}
     
@@ -107,7 +110,7 @@
     Die Punkte an denen nur noch Gas bzw. Flüssigkeit vorhanden ist, wurden mit einem Kreis markiert. Als
     Unsicherheit wurde die Schrittweite des Thermometers ($\Delta T = 0,1 \si{\celsius} \Rightarrow u_t = 0,028 \si{\celsius}$)
     der Volumenmessung ($\Delta V = 0,05 \si{\milli\liter} \Rightarrow u_v = 0,011 \si{\milli\liter}$) und der Druckmessung
-    ($\Delta p = 0,5 \si{\hecto\pascal} \Rightarrow u_p = 0,11 \si{\hecto\pascal}$) verwendet (Berechnung der Unsicherheiten 	mittels Dreiecks- bzw. Rechtecksverteilung)
+    ($\Delta p = 0,5 \si{\mega\pascal} \Rightarrow u_p = 0,11 \si{\mega\pascal}$) verwendet (Berechnung der Unsicherheiten 	mittels Dreiecks- bzw. Rechtecksverteilung)
     Die Bereiche in denen das Schwefelhexafluorid nur flüssig, gasförmig oder gemischt vorliegt, wurden mit verschiedenen
     Farben im Graphen \ref{fig:isotherme} hervorgehoben.
 
@@ -116,7 +119,7 @@
     Aus dem Graphen \ref{fig:isotherme} kann anhand der Ausgleichsfunktion durch die Randbereiche der Phasen
     die kritische Temperatur $T_{krit}$ , das kritische Volumen $V_{krit}$ und der kritischen Druck $p_{krit}$ bestimmt werden.
     
-    \begin{table}
+    \begin{table}[h]
         \centering
         \begin{tabular}{c}
             Messwerte \\ \hline
@@ -133,7 +136,7 @@
     \end{table}
     Durch Gleichung \ref{eq:a} und \ref{eq:b} kann daraus der der Wert von $a_{mol}$ und $b_{mol}$ bestimmt werden. Durch Teilen
     von $a_{mol}$ und $b_{mol}$ mit der Avogadrokonstante ergibt sich $a_{Teilchen}$ und $b_{Teilchen}$.
-    Anhand des Parameter $b_{mol}$ kann überlegt werden, dass ? sozusagen das Volumen der "Hülle" eines einzelnen Teilchens ist.
+    Anhand des Parameter $b_{mol}$ kann überlegt werden, dass $b_{Teilchen}$ sozusagen das Volumen der ``Hülle'' eines einzelnen Teilchens ist.
     \subsection{Dampfdruck}
     \begin{figure}
         \centering
@@ -154,19 +157,16 @@
     welche im Graph \ref{fig:dampf} dargestellt ist,
     kann die Ableitung der Exponenitalfunktion berechnet werden. So kann mit \ref{eq:delta}
     die Verdampfungsenthalpie $L$ bestimmt werden. Diese Werte sind in Tabelle \ref{tab:dampfmess}
-    aufgelistet. In \ref{fig:verd} wird die Verdampfungsenthalpie $L$ verglichen mit Temperatur $T$ dargestellt.
+    aufgelistet. Die Theoriewerte entammen aus \cite{SH6}. In \ref{fig:verd} wird die Verdampfungsenthalpie $L$ verglichen mit Temperatur $T$ dargestellt.
     \begin{table}
         \begin{adjustwidth}{-.5in}{-.5in}
         \centering
         \begin{tabular}{c c c c c}
-            Temperatur & Dampfdruck & $V_g$ & $V_fl$ & Verdampfungsenthalpie $L$ \\ \hline
-            $25.0 \si{\celsius}$ & $23.5 \si{\hecto\pascal}$ & $670 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 1038 \si{\joule\per\mole} $ \\
-            $30.0 \si{\celsius}$ & $25.0 \si{\hecto\pascal}$ & $670 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 1017 \si{\joule\per\mole} $ \\
-            $35.2 \si{\celsius}$ & $29.0 \si{\hecto\pascal}$ & $460 \si{\milli\litre\per\mole} $ & $ 150  \si{\milli\litre\per\mole} $ & $ 625 \si{\joule\per\mole} $ \\
-            $37.5 \si{\celsius}$ & $31.4 \si{\hecto\pascal}$ & $460 \si{\milli\litre\per\mole} $ & $ 190  \si{\milli\litre\per\mole} $ & $ 535 \si{\joule\per\mole} $ \\
-            $40.0 \si{\celsius}$ & $31.8 \si{\hecto\pascal}$ & $500 \si{\milli\litre\per\mole} $ & $ 230  \si{\milli\litre\per\mole} $ & $ 523 \si{\joule\per\mole} $ \\
-            $42.4 \si{\celsius}$ & $34.2 \si{\hecto\pascal}$ & $380 \si{\milli\litre\per\mole} $ & $ 150  \si{\milli\litre\per\mole} $ & $ 437 \si{\joule\per\mole} $
+            Temperatur & Dampfdruck & $V_g$ & $V_{fl}$ & Verdampfungsenthalpie $L$ \\ \hline
+            
+            \input{verdenthalpie.txt}
         \end{tabular}
+        
         \caption{Ergebnisse Dampfdruck und Verdampfungsenthalpie}\label{tab:dampfmess}
         \end{adjustwidth}
     \end{table}
