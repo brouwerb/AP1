@@ -174,7 +174,7 @@ with open('./ZUS/verdenthalpie.txt', 'w') as f:
    for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    f.write(f"${round(temp2[j], 1)} \si{{\celsius}}$ & ${round(druck[j], 1)} \ \si{{\hecto\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
+    f.write(f"${round(temp2[j], 1)} \si{{\kelvin}}$ & ${round(druck[j], 1)} \ \si{{\hecto\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
 
 fig, ax = plt.subplots()
 ax.grid()
