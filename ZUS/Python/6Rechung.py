@@ -9,9 +9,9 @@ n = 0.002613
 un =0.000016
 Vk = (265.21e-6)*n
 print(Vk)
-uVk =0
+uVk =75e-6
 pk = 3.51e6
-upk = 0
+upk = 0.25e6
 Av = 6.02214e23
 
 n=unumpy.uarray(n, un)
