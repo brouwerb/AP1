@@ -112,6 +112,7 @@ for i in range(3):
         #print(popt[i][j])
 
 fig, ax = plt.subplots()
+plt.style.use("./AKU/AP1_style.mplstyle")
 ax.grid()
 for i in range(len(x)):
     for j in range(len(x[i])):
