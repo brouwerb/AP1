@@ -122,8 +122,8 @@ for i in range(3):
             temp2.append(Temps[i][j] + 273.15)
             print(temp2)
             druck.append(sum(ar)/len(ar))
-            vg.append(FluAb[i][j][0]/(g*1e3))
-            vf.append(GaBis[i][j][0]/(g*1e3))
+            vg.append(FluAb[i][j][0]/(g*1e6))
+            vf.append(GaBis[i][j][0]/(g*1e6))
             
 
 #print(temp2, druck)
@@ -174,7 +174,7 @@ print(temp2, temps)
 for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e3, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e3, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
+    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
 
 with open('./ZUS/verdenthalpie.txt', 'w') as f:
    for i in temps:
