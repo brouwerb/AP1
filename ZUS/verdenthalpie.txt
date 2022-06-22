@@ -1,6 +1,6 @@
-$298.1 \si{\kelvin}$ & $235.23 \ \si{\mega\pascal}$ & $667430 \ \si{\milli\litre\per\mole} $ & $ 190690 \ \si{\milli\litre\per\mole} $ & $ 7973813 \ \si{\joule\per\mole} $ \\
-$303.1 \si{\kelvin}$ & $250.0 \ \si{\mega\pascal}$ & $667430 \ \si{\milli\litre\per\mole} $ & $ 190690 \ \si{\milli\litre\per\mole} $ & $ 8334808 \ \si{\joule\per\mole} $ \\
-$308.3 \si{\kelvin}$ & $289.69 \ \si{\mega\pascal}$ & $457670 \ \si{\milli\litre\per\mole} $ & $ 152560 \ \si{\milli\litre\per\mole} $ & $ 6076856 \ \si{\joule\per\mole} $ \\
-$310.6 \si{\kelvin}$ & $314.29 \ \si{\mega\pascal}$ & $457670 \ \si{\milli\litre\per\mole} $ & $ 190690 \ \si{\milli\litre\per\mole} $ & $ 5726042 \ \si{\joule\per\mole} $ \\
-$313.1 \si{\kelvin}$ & $317.86 \ \si{\mega\pascal}$ & $495800 \ \si{\milli\litre\per\mole} $ & $ 228830 \ \si{\milli\litre\per\mole} $ & $ 5744878 \ \si{\joule\per\mole} $ \\
-$315.5 \si{\kelvin}$ & $342.08 \ \si{\mega\pascal}$ & $381390 \ \si{\milli\litre\per\mole} $ & $ 152560 \ \si{\milli\litre\per\mole} $ & $ 5259181 \ \si{\joule\per\mole} $ \\
+$298.1 \si{\kelvin}$ & $235.23 \ \si{\mega\pascal}$ & $670 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 7974 \ \si{\joule\per\mole} $ \\
+$303.1 \si{\kelvin}$ & $250.0 \ \si{\mega\pascal}$ & $670 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 8335 \ \si{\joule\per\mole} $ \\
+$308.3 \si{\kelvin}$ & $289.69 \ \si{\mega\pascal}$ & $460 \ \si{\milli\litre\per\mole} $ & $ 150 \ \si{\milli\litre\per\mole} $ & $ 6077 \ \si{\joule\per\mole} $ \\
+$310.6 \si{\kelvin}$ & $314.29 \ \si{\mega\pascal}$ & $460 \ \si{\milli\litre\per\mole} $ & $ 190 \ \si{\milli\litre\per\mole} $ & $ 5726 \ \si{\joule\per\mole} $ \\
+$313.1 \si{\kelvin}$ & $317.86 \ \si{\mega\pascal}$ & $500 \ \si{\milli\litre\per\mole} $ & $ 230 \ \si{\milli\litre\per\mole} $ & $ 5745 \ \si{\joule\per\mole} $ \\
+$315.5 \si{\kelvin}$ & $342.08 \ \si{\mega\pascal}$ & $380 \ \si{\milli\litre\per\mole} $ & $ 150 \ \si{\milli\litre\per\mole} $ & $ 5259 \ \si{\joule\per\mole} $ \\
