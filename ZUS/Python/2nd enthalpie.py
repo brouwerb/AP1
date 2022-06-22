@@ -28,7 +28,7 @@ X_MAJOR_TICK = 2
 Y_MAJOR_TICK =0.5
 X_MINOR_TICK =0.5
 Y_MINOR_TICK = 0.1
-SAVE_AS = "./ZUS/Plots/verd.pdf"
+SAVE_AS = "./ZUS/Plots/test.pdf"
 POINT_STYLE = ["o","^","s"]
 COLOR_STYLE =["blue","red","green"]
 
@@ -122,8 +122,8 @@ for i in range(3):
             temp2.append(Temps[i][j] + 273.15)
             print(temp2)
             druck.append(sum(ar)/len(ar))
-            vg.append(FluAb[i][j][0]/(g*1e6))
-            vf.append(GaBis[i][j][0]/(g*1e6))
+            vg.append(FluAb[i][j][0]/(g*1e3))
+            vf.append(GaBis[i][j][0]/(g*1e3))
             
 
 #print(temp2, druck)
@@ -164,8 +164,9 @@ for i in range(len(temp)):
     
     #l.append(dexp(temp[i],reg)*temp[i]*(vg[i]-vf[i]))
     A = 2120
-    print(A,temp[i],druck[i],vg[i],vf[i])
-    l.append(A/temp[i]*(vg[i]-vf[i])* druck[i])
+    
+    l.append(A/temp[i]*(vg[i]-vf[i])* druck[i]*1e5)
+    print(A,temp[i],druck[i]*1e5,vg[i],vf[i],l[i])
 
 
 print(temp2, temps)
@@ -173,13 +174,13 @@ print(temp2, temps)
 for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
+    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e3, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e3, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
 
 with open('./ZUS/verdenthalpie.txt', 'w') as f:
    for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    f.write(f"${round(temp2[j], 1)} \si{{\kelvin}}$ & ${round(druck[j], 1)} \ \si{{\hecto\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
+    f.write(f"${round(temp2[j], 1)} \si{{\kelvin}}$ & ${round(druck[j]*10, 2)} \ \si{{\mega\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
 
 fig, ax = plt.subplots()
 ax.grid()
