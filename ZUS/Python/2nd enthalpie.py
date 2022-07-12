@@ -174,13 +174,13 @@ print(temp2, temps)
 for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j], 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
+    print(f"${temp2[j]} \si{{\celsius}}$ & ${round(druck[j]*0.1, 1)} \si{{\hecto\pascal}}$ & ${round(vg[j]*1e6, -1)} \si{{\milli\litre\per\mole}} $ & $ {round(vf[j]*1e6, -1)}  \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \si{{\joule\per\mole}} $ \\\\")
 
 with open('./ZUS/verdenthalpie.txt', 'w') as f:
    for i in temps:
     j = temp2.index(i)
     #print(i, j, temp2[j])
-    f.write(f"${round(temp2[j], 1)} \si{{\kelvin}}$ & ${round(druck[j]*10, 2)} \ \si{{\mega\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
+    f.write(f"${round(temp2[j], 1)} \si{{\kelvin}}$ & ${round(druck[j]*0.1, 2)} \ \si{{\mega\pascal}}$ & ${int(round(vg[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {int(round(vf[j]*1e6, -1))} \ \si{{\milli\litre\per\mole}} $ & $ {round(l[j])} \ \si{{\joule\per\mole}} $ \\\\" + "\n")
 
 fig, ax = plt.subplots()
 ax.grid()
